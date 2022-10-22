@@ -23,8 +23,9 @@ def main():
             with open(Path(root).joinpath(file)) as f:
                 data = yaml.safe_load(f)
             assert type(data) is list, data
-            if len(data) != 1:
-                print(f"{file}: {len(data)}")
+            # for some reason, all the plans are arrays of length 1
+            # if len(data) != 1:
+            #     print(f"{file}: {len(data)}")
             validator.validate(data)
 
 
