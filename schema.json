@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "type": "array",
+  "$id": "/$defs/ExplainAnalyze",
+  "definitions": {
+    "NodeType": {
+      "enum": [
+        "Hash Join",
+        "Hash",
+        "Index Only Scan",
+        "Index Scan",
+        "Materialize",
+        "Memoize",
+        "Merge Join",
+        "Nested Loop",
+        "Seq Scan",
+        "Sort"
+      ]
+    },
+    "JoinType": {
+      "enum": ["Inner", "Left", "Right", "Anti"]
+    },
+    "Plan": {
+      "type": "object",
+      "properties": {
+        "Node Type": { "$ref": "/$defs/NodeType" },
+        "Parallel Aware": { "type": "boolean" },
+        "Async Capable": { "type": "boolean" },
+        "Relation Name": { "type": "string" },
+        "Schema": { "type": "string" },
+        "Alias": { "type": "string" },
+        "Startup Cost": { "type": "number" },
+        "Total Cost": { "type": "number" },
+        "Plan Rows": { "type": "integer" },
+        "Plan Width": { "type": "integer" },
+        "Actual Startup Time": { "type": "number" },
+        "Actual Total Time": { "type": "number" },
+        "Actual Rows": { "type": "integer" },
+        "Actual Loops": { "type": "integer" },
+        "Output": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Shared Hit Blocks": { "type": "integer" },
+        "Shared Read Blocks": { "type": "integer" },
+        "Shared Dirtied Blocks": { "type": "integer" },
+        "Shared Written Blocks": { "type": "integer" },
+        "Local Hit Blocks": { "type": "integer" },
+        "Local Read Blocks": { "type": "integer" },
+        "Local Dirtied Blocks": { "type": "integer" },
+        "Local Written Blocks": { "type": "integer" },
+        "Temp Read Blocks": { "type": "integer" },
+        "Temp Written Blocks": { "type": "integer" },
+        "Join Type": { "$ref": "/$defs/JoinType" },
+        "Inner Unique": { "type": "boolean" },
+        "Join Filter": { "type": "string" },
+        "Rows Removed by Join Filter": { "type": "integer" },
+        "Plans": {
+          "type": "array",
+          "items": { "$ref": "/$defs/Plan" }
+        },
+        "Hash Cond": { "type": "string" },
+        "Sort Key": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Sort Method": { "type": "string" },
+        "Sort Space Used": { "type": "integer" },
+        "Sort Space Type": { "type": "string" }
+      },
+      "required": [
+        "Actual Loops",
+        "Actual Rows",
+        "Actual Startup Time",
+        "Actual Total Time",
+        "Async Capable",
+        "Local Dirtied Blocks",
+        "Local Hit Blocks",
+        "Local Read Blocks",
+        "Local Written Blocks",
+        "Node Type",
+        "Output",
+        "Parallel Aware",
+        "Plan Rows",
+        "Plan Width",
+        "Shared Dirtied Blocks",
+        "Shared Hit Blocks",
+        "Shared Read Blocks",
+        "Shared Written Blocks",
+        "Startup Cost",
+        "Temp Read Blocks",
+        "Temp Written Blocks",
+        "Total Cost"
+      ]
+    },
+    "Planning": {
+      "type": "object",
+      "properties": {
+        "Shared Hit Blocks": { "type": "integer" },
+        "Shared Read Blocks": { "type": "integer" },
+        "Shared Dirtied Blocks": { "type": "integer" },
+        "Shared Written Blocks": { "type": "integer" },
+        "Local Hit Blocks": { "type": "integer" },
+        "Local Read Blocks": { "type": "integer" },
+        "Local Dirtied Blocks": { "type": "integer" },
+        "Local Written Blocks": { "type": "integer" },
+        "Temp Read Blocks": { "type": "integer" },
+        "Temp Written Blocks": { "type": "integer" }
+      },
+      "required": [
+        "Local Dirtied Blocks",
+        "Local Hit Blocks",
+        "Local Read Blocks",
+        "Local Written Blocks",
+        "Shared Dirtied Blocks",
+        "Shared Hit Blocks",
+        "Shared Read Blocks",
+        "Shared Written Blocks",
+        "Temp Read Blocks",
+        "Temp Written Blocks"
+      ]
+    },
+    "ExplainAnalyze": {
+      "type": "object",
+      "properties": {
+        "Plan": { "$ref": "/$defs/Plan" },
+        "Planning": { "$ref": "/$defs/Planning" },
+        "Planning Time": { "type": "number" },
+        "Triggers": {
+          "type": "null"
+        },
+        "Execution Time": { "type": "number" }
+      },
+      "required": [
+        "Execution Time",
+        "Plan",
+        "Planning",
+        "Planning Time",
+        "Triggers"
+      ]
+    }
+  }
+}

@@ -1,0 +1,178 @@
+$id: /$defs/ExplainAnalyze
+$schema: https://json-schema.org/draft-07/schema
+definitions:
+  ExplainAnalyze:
+    properties:
+      Execution Time:
+        type: number
+      Plan:
+        $ref: /$defs/Plan
+      Planning:
+        $ref: /$defs/Planning
+      Planning Time:
+        type: number
+      Triggers:
+        type: 'null'
+    required:
+    - Execution Time
+    - Plan
+    - Planning
+    - Planning Time
+    - Triggers
+    type: object
+  JoinType:
+    enum:
+    - Inner
+    - Left
+    - Right
+    - Anti
+  NodeType:
+    enum:
+    - Hash Join
+    - Hash
+    - Index Only Scan
+    - Index Scan
+    - Materialize
+    - Memoize
+    - Merge Join
+    - Nested Loop
+    - Seq Scan
+    - Sort
+  Plan:
+    properties:
+      Actual Loops:
+        type: integer
+      Actual Rows:
+        type: integer
+      Actual Startup Time:
+        type: number
+      Actual Total Time:
+        type: number
+      Alias:
+        type: string
+      Async Capable:
+        type: boolean
+      Hash Cond:
+        type: string
+      Inner Unique:
+        type: boolean
+      Join Filter:
+        type: string
+      Join Type:
+        $ref: /$defs/JoinType
+      Local Dirtied Blocks:
+        type: integer
+      Local Hit Blocks:
+        type: integer
+      Local Read Blocks:
+        type: integer
+      Local Written Blocks:
+        type: integer
+      Node Type:
+        $ref: /$defs/NodeType
+      Output:
+        items:
+          type: string
+        type: array
+      Parallel Aware:
+        type: boolean
+      Plan Rows:
+        type: integer
+      Plan Width:
+        type: integer
+      Plans:
+        items:
+          $ref: /$defs/Plan
+        type: array
+      Relation Name:
+        type: string
+      Rows Removed by Join Filter:
+        type: integer
+      Schema:
+        type: string
+      Shared Dirtied Blocks:
+        type: integer
+      Shared Hit Blocks:
+        type: integer
+      Shared Read Blocks:
+        type: integer
+      Shared Written Blocks:
+        type: integer
+      Sort Key:
+        items:
+          type: string
+        type: array
+      Sort Method:
+        type: string
+      Sort Space Type:
+        type: string
+      Sort Space Used:
+        type: integer
+      Startup Cost:
+        type: number
+      Temp Read Blocks:
+        type: integer
+      Temp Written Blocks:
+        type: integer
+      Total Cost:
+        type: number
+    required:
+    - Actual Loops
+    - Actual Rows
+    - Actual Startup Time
+    - Actual Total Time
+    - Async Capable
+    - Local Dirtied Blocks
+    - Local Hit Blocks
+    - Local Read Blocks
+    - Local Written Blocks
+    - Node Type
+    - Output
+    - Parallel Aware
+    - Plan Rows
+    - Plan Width
+    - Shared Dirtied Blocks
+    - Shared Hit Blocks
+    - Shared Read Blocks
+    - Shared Written Blocks
+    - Startup Cost
+    - Temp Read Blocks
+    - Temp Written Blocks
+    - Total Cost
+    type: object
+  Planning:
+    properties:
+      Local Dirtied Blocks:
+        type: integer
+      Local Hit Blocks:
+        type: integer
+      Local Read Blocks:
+        type: integer
+      Local Written Blocks:
+        type: integer
+      Shared Dirtied Blocks:
+        type: integer
+      Shared Hit Blocks:
+        type: integer
+      Shared Read Blocks:
+        type: integer
+      Shared Written Blocks:
+        type: integer
+      Temp Read Blocks:
+        type: integer
+      Temp Written Blocks:
+        type: integer
+    required:
+    - Local Dirtied Blocks
+    - Local Hit Blocks
+    - Local Read Blocks
+    - Local Written Blocks
+    - Shared Dirtied Blocks
+    - Shared Hit Blocks
+    - Shared Read Blocks
+    - Shared Written Blocks
+    - Temp Read Blocks
+    - Temp Written Blocks
+    type: object
+type: array
+
