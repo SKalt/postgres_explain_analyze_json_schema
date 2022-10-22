@@ -1,0 +1,45 @@
+- Plan: 
+    Node Type: "Seq Scan"
+    Parallel Aware: false
+    Async Capable: false
+    Relation Name: "pg_tablespace"
+    Schema: "pg_catalog"
+    Alias: "tablespace"
+    Startup Cost: 0.00
+    Total Cost: 1.03
+    Plan Rows: 2
+    Plan Width: 224
+    Actual Startup Time: 0.010
+    Actual Total Time: 0.010
+    Actual Rows: 2
+    Actual Loops: 1
+    Output: 
+      - "spcname"
+      - "pg_get_userbyid(spcowner)"
+      - "pg_tablespace_location(oid)"
+      - "spcacl"
+      - "spcoptions"
+    Shared Hit Blocks: 1
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 6
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.058
+  Triggers: 
+  Execution Time: 0.016

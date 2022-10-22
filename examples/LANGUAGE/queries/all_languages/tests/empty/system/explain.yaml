@@ -1,0 +1,657 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Inner"
+    Startup Cost: 1.10
+    Total Cost: 108.40
+    Plan Rows: 4
+    Plan Width: 738
+    Actual Startup Time: 0.084
+    Actual Total Time: 0.088
+    Actual Rows: 4
+    Actual Loops: 1
+    Output: 
+      - "lang.lanname"
+      - "lang_owner.rolname"
+      - "lang.lanispl"
+      - "lang.lanpltrusted"
+      - "pg_get_userbyid(handler_fn.proowner)"
+      - "lang.lanacl"
+      - "handler_fn_ns.nspname"
+      - "handler_fn.proname"
+      - "inline_block_handler_fn_ns.nspname"
+      - "inline_block_handler_fn.proname"
+      - "pg_get_userbyid(inline_block_handler_fn.proowner)"
+      - "validator_fn_ns.nspname"
+      - "validator_fn.proname"
+      - "pg_get_userbyid(validator_fn.proowner)"
+    Inner Unique: false
+    Join Filter: "(lang.lanowner = lang_owner.oid)"
+    Rows Removed by Join Filter: 44
+    Shared Hit Blocks: 36
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Seq Scan"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_authid"
+        Schema: "pg_catalog"
+        Alias: "lang_owner"
+        Startup Cost: 0.00
+        Total Cost: 1.12
+        Plan Rows: 12
+        Plan Width: 68
+        Actual Startup Time: 0.003
+        Actual Total Time: 0.004
+        Actual Rows: 12
+        Actual Loops: 1
+        Output: 
+          - "lang_owner.oid"
+          - "lang_owner.rolname"
+          - "lang_owner.rolsuper"
+          - "lang_owner.rolinherit"
+          - "lang_owner.rolcreaterole"
+          - "lang_owner.rolcreatedb"
+          - "lang_owner.rolcanlogin"
+          - "lang_owner.rolreplication"
+          - "lang_owner.rolbypassrls"
+          - "lang_owner.rolconnlimit"
+          - "lang_owner.rolpassword"
+          - "lang_owner.rolvaliduntil"
+        Shared Hit Blocks: 1
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+      - Node Type: "Materialize"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Startup Cost: 1.10
+        Total Cost: 106.54
+        Plan Rows: 4
+        Plan Width: 498
+        Actual Startup Time: 0.003
+        Actual Total Time: 0.006
+        Actual Rows: 4
+        Actual Loops: 12
+        Output: 
+          - "lang.lanname"
+          - "lang.lanispl"
+          - "lang.lanpltrusted"
+          - "lang.lanacl"
+          - "lang.lanowner"
+          - "validator_fn.proname"
+          - "validator_fn.proowner"
+          - "validator_fn_ns.nspname"
+          - "inline_block_handler_fn.proname"
+          - "inline_block_handler_fn.proowner"
+          - "inline_block_handler_fn_ns.nspname"
+          - "handler_fn.proowner"
+          - "handler_fn.proname"
+          - "handler_fn_ns.nspname"
+        Shared Hit Blocks: 35
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Left"
+            Startup Cost: 1.10
+            Total Cost: 106.52
+            Plan Rows: 4
+            Plan Width: 498
+            Actual Startup Time: 0.033
+            Actual Total Time: 0.064
+            Actual Rows: 4
+            Actual Loops: 1
+            Output: 
+              - "lang.lanname"
+              - "lang.lanispl"
+              - "lang.lanpltrusted"
+              - "lang.lanacl"
+              - "lang.lanowner"
+              - "validator_fn.proname"
+              - "validator_fn.proowner"
+              - "validator_fn_ns.nspname"
+              - "inline_block_handler_fn.proname"
+              - "inline_block_handler_fn.proowner"
+              - "inline_block_handler_fn_ns.nspname"
+              - "handler_fn.proowner"
+              - "handler_fn.proname"
+              - "handler_fn_ns.nspname"
+            Inner Unique: false
+            Join Filter: "(lang.lanplcallfoid > '0'::oid)"
+            Rows Removed by Join Filter: 0
+            Shared Hit Blocks: 35
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Left"
+                Startup Cost: 0.69
+                Total Cost: 72.64
+                Plan Rows: 4
+                Plan Width: 370
+                Actual Startup Time: 0.025
+                Actual Total Time: 0.045
+                Actual Rows: 4
+                Actual Loops: 1
+                Output: 
+                  - "lang.lanname"
+                  - "lang.lanispl"
+                  - "lang.lanpltrusted"
+                  - "lang.lanacl"
+                  - "lang.lanplcallfoid"
+                  - "lang.lanowner"
+                  - "validator_fn.proname"
+                  - "validator_fn.proowner"
+                  - "validator_fn_ns.nspname"
+                  - "inline_block_handler_fn.proname"
+                  - "inline_block_handler_fn.proowner"
+                  - "inline_block_handler_fn_ns.nspname"
+                Inner Unique: false
+                Join Filter: "(lang.laninline > '0'::oid)"
+                Rows Removed by Join Filter: 0
+                Shared Hit Blocks: 24
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Nested Loop"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Left"
+                    Startup Cost: 0.28
+                    Total Cost: 38.76
+                    Plan Rows: 4
+                    Plan Width: 242
+                    Actual Startup Time: 0.016
+                    Actual Total Time: 0.023
+                    Actual Rows: 4
+                    Actual Loops: 1
+                    Output: 
+                      - "lang.lanname"
+                      - "lang.lanispl"
+                      - "lang.lanpltrusted"
+                      - "lang.lanacl"
+                      - "lang.lanplcallfoid"
+                      - "lang.lanowner"
+                      - "lang.laninline"
+                      - "validator_fn.proname"
+                      - "validator_fn.proowner"
+                      - "validator_fn_ns.nspname"
+                    Inner Unique: false
+                    Join Filter: "(lang.lanvalidator > '0'::oid)"
+                    Rows Removed by Join Filter: 0
+                    Shared Hit Blocks: 13
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_language"
+                        Schema: "pg_catalog"
+                        Alias: "lang"
+                        Startup Cost: 0.00
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 114
+                        Actual Startup Time: 0.001
+                        Actual Total Time: 0.002
+                        Actual Rows: 4
+                        Actual Loops: 1
+                        Output: 
+                          - "lang.oid"
+                          - "lang.lanname"
+                          - "lang.lanowner"
+                          - "lang.lanispl"
+                          - "lang.lanpltrusted"
+                          - "lang.lanplcallfoid"
+                          - "lang.laninline"
+                          - "lang.lanvalidator"
+                          - "lang.lanacl"
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Nested Loop"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Join Type: "Inner"
+                        Startup Cost: 0.28
+                        Total Cost: 9.38
+                        Plan Rows: 4
+                        Plan Width: 136
+                        Actual Startup Time: 0.004
+                        Actual Total Time: 0.004
+                        Actual Rows: 0
+                        Actual Loops: 4
+                        Output: 
+                          - "validator_fn.proname"
+                          - "validator_fn.proowner"
+                          - "validator_fn.oid"
+                          - "validator_fn_ns.nspname"
+                        Inner Unique: false
+                        Shared Hit Blocks: 12
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Index Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Scan Direction: "Forward"
+                            Index Name: "pg_proc_oid_index"
+                            Relation Name: "pg_proc"
+                            Schema: "pg_catalog"
+                            Alias: "validator_fn"
+                            Startup Cost: 0.28
+                            Total Cost: 8.30
+                            Plan Rows: 1
+                            Plan Width: 72
+                            Actual Startup Time: 0.004
+                            Actual Total Time: 0.004
+                            Actual Rows: 0
+                            Actual Loops: 4
+                            Output: 
+                              - "validator_fn.oid"
+                              - "validator_fn.proname"
+                              - "validator_fn.pronamespace"
+                              - "validator_fn.proowner"
+                              - "validator_fn.prolang"
+                              - "validator_fn.procost"
+                              - "validator_fn.prorows"
+                              - "validator_fn.provariadic"
+                              - "validator_fn.prosupport"
+                              - "validator_fn.prokind"
+                              - "validator_fn.prosecdef"
+                              - "validator_fn.proleakproof"
+                              - "validator_fn.proisstrict"
+                              - "validator_fn.proretset"
+                              - "validator_fn.provolatile"
+                              - "validator_fn.proparallel"
+                              - "validator_fn.pronargs"
+                              - "validator_fn.pronargdefaults"
+                              - "validator_fn.prorettype"
+                              - "validator_fn.proargtypes"
+                              - "validator_fn.proallargtypes"
+                              - "validator_fn.proargmodes"
+                              - "validator_fn.proargnames"
+                              - "validator_fn.proargdefaults"
+                              - "validator_fn.protrftypes"
+                              - "validator_fn.prosrc"
+                              - "validator_fn.probin"
+                              - "validator_fn.prosqlbody"
+                              - "validator_fn.proconfig"
+                              - "validator_fn.proacl"
+                            Index Cond: "(validator_fn.oid = lang.lanvalidator)"
+                            Rows Removed by Index Recheck: 0
+                            Filter: "(validator_fn.pronamespace = validator_fn.oid)"
+                            Rows Removed by Filter: 1
+                            Shared Hit Blocks: 12
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                          - Node Type: "Seq Scan"
+                            Parent Relationship: "Inner"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Relation Name: "pg_namespace"
+                            Schema: "pg_catalog"
+                            Alias: "validator_fn_ns"
+                            Startup Cost: 0.00
+                            Total Cost: 1.04
+                            Plan Rows: 4
+                            Plan Width: 64
+                            Actual Startup Time: 0.000
+                            Actual Total Time: 0.000
+                            Actual Rows: 0
+                            Actual Loops: 0
+                            Output: 
+                              - "validator_fn_ns.oid"
+                              - "validator_fn_ns.nspname"
+                              - "validator_fn_ns.nspowner"
+                              - "validator_fn_ns.nspacl"
+                            Shared Hit Blocks: 0
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                  - Node Type: "Nested Loop"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 0.41
+                    Total Cost: 8.46
+                    Plan Rows: 1
+                    Plan Width: 136
+                    Actual Startup Time: 0.005
+                    Actual Total Time: 0.005
+                    Actual Rows: 0
+                    Actual Loops: 4
+                    Output: 
+                      - "inline_block_handler_fn.proname"
+                      - "inline_block_handler_fn.proowner"
+                      - "inline_block_handler_fn.oid"
+                      - "inline_block_handler_fn_ns.nspname"
+                    Inner Unique: true
+                    Shared Hit Blocks: 11
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Index Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Scan Direction: "Forward"
+                        Index Name: "pg_proc_oid_index"
+                        Relation Name: "pg_proc"
+                        Schema: "pg_catalog"
+                        Alias: "inline_block_handler_fn"
+                        Startup Cost: 0.28
+                        Total Cost: 8.30
+                        Plan Rows: 1
+                        Plan Width: 76
+                        Actual Startup Time: 0.002
+                        Actual Total Time: 0.002
+                        Actual Rows: 0
+                        Actual Loops: 4
+                        Output: 
+                          - "inline_block_handler_fn.oid"
+                          - "inline_block_handler_fn.proname"
+                          - "inline_block_handler_fn.pronamespace"
+                          - "inline_block_handler_fn.proowner"
+                          - "inline_block_handler_fn.prolang"
+                          - "inline_block_handler_fn.procost"
+                          - "inline_block_handler_fn.prorows"
+                          - "inline_block_handler_fn.provariadic"
+                          - "inline_block_handler_fn.prosupport"
+                          - "inline_block_handler_fn.prokind"
+                          - "inline_block_handler_fn.prosecdef"
+                          - "inline_block_handler_fn.proleakproof"
+                          - "inline_block_handler_fn.proisstrict"
+                          - "inline_block_handler_fn.proretset"
+                          - "inline_block_handler_fn.provolatile"
+                          - "inline_block_handler_fn.proparallel"
+                          - "inline_block_handler_fn.pronargs"
+                          - "inline_block_handler_fn.pronargdefaults"
+                          - "inline_block_handler_fn.prorettype"
+                          - "inline_block_handler_fn.proargtypes"
+                          - "inline_block_handler_fn.proallargtypes"
+                          - "inline_block_handler_fn.proargmodes"
+                          - "inline_block_handler_fn.proargnames"
+                          - "inline_block_handler_fn.proargdefaults"
+                          - "inline_block_handler_fn.protrftypes"
+                          - "inline_block_handler_fn.prosrc"
+                          - "inline_block_handler_fn.probin"
+                          - "inline_block_handler_fn.prosqlbody"
+                          - "inline_block_handler_fn.proconfig"
+                          - "inline_block_handler_fn.proacl"
+                        Index Cond: "(inline_block_handler_fn.oid = lang.laninline)"
+                        Rows Removed by Index Recheck: 0
+                        Shared Hit Blocks: 9
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Index Scan"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Scan Direction: "Forward"
+                        Index Name: "pg_namespace_oid_index"
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "inline_block_handler_fn_ns"
+                        Startup Cost: 0.13
+                        Total Cost: 0.15
+                        Plan Rows: 1
+                        Plan Width: 68
+                        Actual Startup Time: 0.006
+                        Actual Total Time: 0.006
+                        Actual Rows: 1
+                        Actual Loops: 1
+                        Output: 
+                          - "inline_block_handler_fn_ns.oid"
+                          - "inline_block_handler_fn_ns.nspname"
+                          - "inline_block_handler_fn_ns.nspowner"
+                          - "inline_block_handler_fn_ns.nspacl"
+                        Index Cond: "(inline_block_handler_fn_ns.oid = inline_block_handler_fn.pronamespace)"
+                        Rows Removed by Index Recheck: 0
+                        Shared Hit Blocks: 2
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 0.41
+                Total Cost: 8.46
+                Plan Rows: 1
+                Plan Width: 136
+                Actual Startup Time: 0.004
+                Actual Total Time: 0.004
+                Actual Rows: 0
+                Actual Loops: 4
+                Output: 
+                  - "handler_fn.proowner"
+                  - "handler_fn.proname"
+                  - "handler_fn.oid"
+                  - "handler_fn_ns.nspname"
+                Inner Unique: true
+                Shared Hit Blocks: 11
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_proc_oid_index"
+                    Relation Name: "pg_proc"
+                    Schema: "pg_catalog"
+                    Alias: "handler_fn"
+                    Startup Cost: 0.28
+                    Total Cost: 8.30
+                    Plan Rows: 1
+                    Plan Width: 76
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.002
+                    Actual Rows: 0
+                    Actual Loops: 4
+                    Output: 
+                      - "handler_fn.oid"
+                      - "handler_fn.proname"
+                      - "handler_fn.pronamespace"
+                      - "handler_fn.proowner"
+                      - "handler_fn.prolang"
+                      - "handler_fn.procost"
+                      - "handler_fn.prorows"
+                      - "handler_fn.provariadic"
+                      - "handler_fn.prosupport"
+                      - "handler_fn.prokind"
+                      - "handler_fn.prosecdef"
+                      - "handler_fn.proleakproof"
+                      - "handler_fn.proisstrict"
+                      - "handler_fn.proretset"
+                      - "handler_fn.provolatile"
+                      - "handler_fn.proparallel"
+                      - "handler_fn.pronargs"
+                      - "handler_fn.pronargdefaults"
+                      - "handler_fn.prorettype"
+                      - "handler_fn.proargtypes"
+                      - "handler_fn.proallargtypes"
+                      - "handler_fn.proargmodes"
+                      - "handler_fn.proargnames"
+                      - "handler_fn.proargdefaults"
+                      - "handler_fn.protrftypes"
+                      - "handler_fn.prosrc"
+                      - "handler_fn.probin"
+                      - "handler_fn.prosqlbody"
+                      - "handler_fn.proconfig"
+                      - "handler_fn.proacl"
+                    Index Cond: "(handler_fn.oid = lang.lanplcallfoid)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 9
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_namespace_oid_index"
+                    Relation Name: "pg_namespace"
+                    Schema: "pg_catalog"
+                    Alias: "handler_fn_ns"
+                    Startup Cost: 0.13
+                    Total Cost: 0.15
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.006
+                    Actual Total Time: 0.006
+                    Actual Rows: 1
+                    Actual Loops: 1
+                    Output: 
+                      - "handler_fn_ns.oid"
+                      - "handler_fn_ns.nspname"
+                      - "handler_fn_ns.nspowner"
+                      - "handler_fn_ns.nspacl"
+                    Index Cond: "(handler_fn_ns.oid = handler_fn.pronamespace)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 2
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 49
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.757
+  Triggers: 
+  Execution Time: 0.192

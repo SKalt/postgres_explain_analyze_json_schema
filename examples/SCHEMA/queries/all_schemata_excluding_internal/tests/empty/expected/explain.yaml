@@ -1,0 +1,181 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Inner"
+    Startup Cost: 0.00
+    Total Cost: 177.55
+    Plan Rows: 1
+    Plan Width: 173
+    Actual Startup Time: 1.420
+    Actual Total Time: 1.424
+    Actual Rows: 1
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "schema_owner.rolname"
+      - "ns.nspacl"
+    Inner Unique: true
+    Join Filter: "(ns.nspowner = schema_owner.oid)"
+    Rows Removed by Join Filter: 11
+    Shared Hit Blocks: 67
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Anti"
+        Startup Cost: 0.00
+        Total Cost: 176.28
+        Plan Rows: 1
+        Plan Width: 113
+        Actual Startup Time: 1.405
+        Actual Total Time: 1.408
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "ns.nspname"
+          - "ns.nspacl"
+          - "ns.nspowner"
+        Inner Unique: false
+        Join Filter: "(ns.oid = dependency.objid)"
+        Rows Removed by Join Filter: 4
+        Shared Hit Blocks: 66
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_namespace"
+            Schema: "pg_catalog"
+            Alias: "ns"
+            Startup Cost: 0.00
+            Total Cost: 1.05
+            Plan Rows: 1
+            Plan Width: 117
+            Actual Startup Time: 0.011
+            Actual Total Time: 0.014
+            Actual Rows: 1
+            Actual Loops: 1
+            Output: 
+              - "ns.oid"
+              - "ns.nspname"
+              - "ns.nspowner"
+              - "ns.nspacl"
+            Filter: "(ns.nspname <> ALL ('{pg_catalog,pg_toast,information_schema}'::name[]))"
+            Rows Removed by Filter: 3
+            Shared Hit Blocks: 1
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_depend"
+            Schema: "pg_catalog"
+            Alias: "dependency"
+            Startup Cost: 0.00
+            Total Cost: 175.18
+            Plan Rows: 4
+            Plan Width: 4
+            Actual Startup Time: 1.383
+            Actual Total Time: 1.386
+            Actual Rows: 4
+            Actual Loops: 1
+            Output: 
+              - "dependency.classid"
+              - "dependency.objid"
+              - "dependency.objsubid"
+              - "dependency.refclassid"
+              - "dependency.refobjid"
+              - "dependency.refobjsubid"
+              - "dependency.deptype"
+            Filter: "(dependency.deptype = 'e'::\"char\")"
+            Rows Removed by Filter: 8810
+            Shared Hit Blocks: 65
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+      - Node Type: "Seq Scan"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_authid"
+        Schema: "pg_catalog"
+        Alias: "schema_owner"
+        Startup Cost: 0.00
+        Total Cost: 1.12
+        Plan Rows: 12
+        Plan Width: 68
+        Actual Startup Time: 0.005
+        Actual Total Time: 0.008
+        Actual Rows: 12
+        Actual Loops: 1
+        Output: 
+          - "schema_owner.oid"
+          - "schema_owner.rolname"
+          - "schema_owner.rolsuper"
+          - "schema_owner.rolinherit"
+          - "schema_owner.rolcreaterole"
+          - "schema_owner.rolcreatedb"
+          - "schema_owner.rolcanlogin"
+          - "schema_owner.rolreplication"
+          - "schema_owner.rolbypassrls"
+          - "schema_owner.rolconnlimit"
+          - "schema_owner.rolpassword"
+          - "schema_owner.rolvaliduntil"
+        Shared Hit Blocks: 1
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 8
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.398
+  Triggers: 
+  Execution Time: 1.466

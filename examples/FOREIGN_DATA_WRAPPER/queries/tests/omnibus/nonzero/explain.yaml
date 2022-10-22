@@ -1,0 +1,486 @@
+- Plan: 
+    Node Type: "Hash Join"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Right"
+    Startup Cost: 162.40
+    Total Cost: 320.33
+    Plan Rows: 47
+    Plan Width: 576
+    Actual Startup Time: 4.143
+    Actual Total Time: 4.184
+    Actual Rows: 1
+    Actual Loops: 1
+    Output: 
+      - "fdw.fdwname"
+      - "pg_get_userbyid(fdw.fdwowner)"
+      - "fdw.fdwacl"
+      - "fdw.fdwoptions"
+      - "handler_fn_ns.nspname"
+      - "handler_fn.proname"
+      - "pg_get_userbyid(handler_fn.proowner)"
+      - "validator_fn_ns.nspname"
+      - "validator_fn.proname"
+      - "pg_get_userbyid(validator_fn.proowner)"
+    Inner Unique: false
+    Hash Cond: "(handler_fn.oid = fdw.fdwhandler)"
+    Join Filter: "(fdw.fdwhandler > '0'::oid)"
+    Rows Removed by Join Filter: 0
+    Shared Hit Blocks: 193
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 1.09
+        Total Cost: 145.94
+        Plan Rows: 3236
+        Plan Width: 136
+        Actual Startup Time: 0.027
+        Actual Total Time: 1.638
+        Actual Rows: 3307
+        Actual Loops: 1
+        Output: 
+          - "handler_fn.proname"
+          - "handler_fn.proowner"
+          - "handler_fn.oid"
+          - "handler_fn_ns.nspname"
+        Inner Unique: true
+        Hash Cond: "(handler_fn.pronamespace = handler_fn_ns.oid)"
+        Shared Hit Blocks: 96
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_proc"
+            Schema: "pg_catalog"
+            Alias: "handler_fn"
+            Startup Cost: 0.00
+            Total Cost: 127.36
+            Plan Rows: 3236
+            Plan Width: 76
+            Actual Startup Time: 0.002
+            Actual Total Time: 0.346
+            Actual Rows: 3307
+            Actual Loops: 1
+            Output: 
+              - "handler_fn.oid"
+              - "handler_fn.proname"
+              - "handler_fn.pronamespace"
+              - "handler_fn.proowner"
+              - "handler_fn.prolang"
+              - "handler_fn.procost"
+              - "handler_fn.prorows"
+              - "handler_fn.provariadic"
+              - "handler_fn.prosupport"
+              - "handler_fn.prokind"
+              - "handler_fn.prosecdef"
+              - "handler_fn.proleakproof"
+              - "handler_fn.proisstrict"
+              - "handler_fn.proretset"
+              - "handler_fn.provolatile"
+              - "handler_fn.proparallel"
+              - "handler_fn.pronargs"
+              - "handler_fn.pronargdefaults"
+              - "handler_fn.prorettype"
+              - "handler_fn.proargtypes"
+              - "handler_fn.proallargtypes"
+              - "handler_fn.proargmodes"
+              - "handler_fn.proargnames"
+              - "handler_fn.proargdefaults"
+              - "handler_fn.protrftypes"
+              - "handler_fn.prosrc"
+              - "handler_fn.probin"
+              - "handler_fn.prosqlbody"
+              - "handler_fn.proconfig"
+              - "handler_fn.proacl"
+            Shared Hit Blocks: 95
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 1.04
+            Total Cost: 1.04
+            Plan Rows: 4
+            Plan Width: 68
+            Actual Startup Time: 0.016
+            Actual Total Time: 0.017
+            Actual Rows: 21
+            Actual Loops: 1
+            Output: 
+              - "handler_fn_ns.nspname"
+              - "handler_fn_ns.oid"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 11
+            Shared Hit Blocks: 1
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Seq Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Relation Name: "pg_namespace"
+                Schema: "pg_catalog"
+                Alias: "handler_fn_ns"
+                Startup Cost: 0.00
+                Total Cost: 1.04
+                Plan Rows: 4
+                Plan Width: 68
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.005
+                Actual Rows: 21
+                Actual Loops: 1
+                Output: 
+                  - "handler_fn_ns.nspname"
+                  - "handler_fn_ns.oid"
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+      - Node Type: "Hash"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Startup Cost: 160.72
+        Total Cost: 160.72
+        Plan Rows: 47
+        Plan Width: 268
+        Actual Startup Time: 2.155
+        Actual Total Time: 2.156
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "fdw.fdwname"
+          - "fdw.fdwowner"
+          - "fdw.fdwacl"
+          - "fdw.fdwoptions"
+          - "fdw.fdwhandler"
+          - "validator_fn.proname"
+          - "validator_fn.proowner"
+          - "validator_fn_ns.nspname"
+        Hash Buckets: 1024
+        Original Hash Buckets: 1024
+        Hash Batches: 1
+        Original Hash Batches: 1
+        Peak Memory Usage: 9
+        Shared Hit Blocks: 97
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Hash Join"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Right"
+            Startup Cost: 3.15
+            Total Cost: 160.72
+            Plan Rows: 47
+            Plan Width: 268
+            Actual Startup Time: 2.104
+            Actual Total Time: 2.145
+            Actual Rows: 1
+            Actual Loops: 1
+            Output: 
+              - "fdw.fdwname"
+              - "fdw.fdwowner"
+              - "fdw.fdwacl"
+              - "fdw.fdwoptions"
+              - "fdw.fdwhandler"
+              - "validator_fn.proname"
+              - "validator_fn.proowner"
+              - "validator_fn_ns.nspname"
+            Inner Unique: false
+            Hash Cond: "(validator_fn.oid = fdw.fdwvalidator)"
+            Join Filter: "(fdw.fdwvalidator > '0'::oid)"
+            Rows Removed by Join Filter: 0
+            Shared Hit Blocks: 97
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 1.09
+                Total Cost: 145.94
+                Plan Rows: 3236
+                Plan Width: 136
+                Actual Startup Time: 0.030
+                Actual Total Time: 1.728
+                Actual Rows: 3307
+                Actual Loops: 1
+                Output: 
+                  - "validator_fn.proname"
+                  - "validator_fn.proowner"
+                  - "validator_fn.oid"
+                  - "validator_fn_ns.nspname"
+                Inner Unique: true
+                Hash Cond: "(validator_fn.pronamespace = validator_fn_ns.oid)"
+                Shared Hit Blocks: 96
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_proc"
+                    Schema: "pg_catalog"
+                    Alias: "validator_fn"
+                    Startup Cost: 0.00
+                    Total Cost: 127.36
+                    Plan Rows: 3236
+                    Plan Width: 76
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.366
+                    Actual Rows: 3307
+                    Actual Loops: 1
+                    Output: 
+                      - "validator_fn.oid"
+                      - "validator_fn.proname"
+                      - "validator_fn.pronamespace"
+                      - "validator_fn.proowner"
+                      - "validator_fn.prolang"
+                      - "validator_fn.procost"
+                      - "validator_fn.prorows"
+                      - "validator_fn.provariadic"
+                      - "validator_fn.prosupport"
+                      - "validator_fn.prokind"
+                      - "validator_fn.prosecdef"
+                      - "validator_fn.proleakproof"
+                      - "validator_fn.proisstrict"
+                      - "validator_fn.proretset"
+                      - "validator_fn.provolatile"
+                      - "validator_fn.proparallel"
+                      - "validator_fn.pronargs"
+                      - "validator_fn.pronargdefaults"
+                      - "validator_fn.prorettype"
+                      - "validator_fn.proargtypes"
+                      - "validator_fn.proallargtypes"
+                      - "validator_fn.proargmodes"
+                      - "validator_fn.proargnames"
+                      - "validator_fn.proargdefaults"
+                      - "validator_fn.protrftypes"
+                      - "validator_fn.prosrc"
+                      - "validator_fn.probin"
+                      - "validator_fn.prosqlbody"
+                      - "validator_fn.proconfig"
+                      - "validator_fn.proacl"
+                    Shared Hit Blocks: 95
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 1.04
+                    Total Cost: 1.04
+                    Plan Rows: 4
+                    Plan Width: 68
+                    Actual Startup Time: 0.017
+                    Actual Total Time: 0.017
+                    Actual Rows: 21
+                    Actual Loops: 1
+                    Output: 
+                      - "validator_fn_ns.nspname"
+                      - "validator_fn_ns.oid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 11
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "validator_fn_ns"
+                        Startup Cost: 0.00
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 68
+                        Actual Startup Time: 0.003
+                        Actual Total Time: 0.006
+                        Actual Rows: 21
+                        Actual Loops: 1
+                        Output: 
+                          - "validator_fn_ns.nspname"
+                          - "validator_fn_ns.oid"
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Hash"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Startup Cost: 1.47
+                Total Cost: 1.47
+                Plan Rows: 47
+                Plan Width: 140
+                Actual Startup Time: 0.013
+                Actual Total Time: 0.013
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "fdw.fdwname"
+                  - "fdw.fdwowner"
+                  - "fdw.fdwacl"
+                  - "fdw.fdwoptions"
+                  - "fdw.fdwhandler"
+                  - "fdw.fdwvalidator"
+                Hash Buckets: 1024
+                Original Hash Buckets: 1024
+                Hash Batches: 1
+                Original Hash Batches: 1
+                Peak Memory Usage: 9
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_foreign_data_wrapper"
+                    Schema: "pg_catalog"
+                    Alias: "fdw"
+                    Startup Cost: 0.00
+                    Total Cost: 1.47
+                    Plan Rows: 47
+                    Plan Width: 140
+                    Actual Startup Time: 0.005
+                    Actual Total Time: 0.005
+                    Actual Rows: 1
+                    Actual Loops: 1
+                    Output: 
+                      - "fdw.fdwname"
+                      - "fdw.fdwowner"
+                      - "fdw.fdwacl"
+                      - "fdw.fdwoptions"
+                      - "fdw.fdwhandler"
+                      - "fdw.fdwvalidator"
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 36
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.513
+  Triggers: 
+  Execution Time: 4.313

@@ -1,0 +1,571 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 69.31
+    Total Cost: 69.40
+    Plan Rows: 36
+    Plan Width: 440
+    Actual Startup Time: 6.833
+    Actual Total Time: 6.837
+    Actual Rows: 7
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "cls.relnamespace"
+      - "cls.relname"
+      - "cls.oid"
+      - "cls_space.spcname"
+      - "cls.reltablespace"
+      - "cls.relfilenode"
+      - "(pg_get_userbyid(cls.relowner))"
+      - "cls.relowner"
+      - "cls.relacl"
+      - "(obj_description(cls.oid, 'pg_class'::name))"
+      - "cls.relreplident"
+      - "cls.relispopulated"
+      - "cls.relpersistence"
+      - "cls.relkind"
+      - "cls.reltype"
+      - "cls.reltuples"
+      - "(CASE WHEN cls.relispartition THEN pg_get_expr(cls.relpartbound, cls.oid, true) ELSE NULL::text END)"
+      - "cls.relpages"
+      - "cls.relallvisible"
+      - "cls.relnatts"
+      - "cls.relchecks"
+      - "(pg_get_viewdef(cls.oid, true))"
+    Sort Key: 
+      - "cls.relname"
+    Sort Method: "quicksort"
+    Sort Space Used: 33
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 487
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Left"
+        Startup Cost: 37.46
+        Total Cost: 68.38
+        Plan Rows: 36
+        Plan Width: 440
+        Actual Startup Time: 1.935
+        Actual Total Time: 6.813
+        Actual Rows: 7
+        Actual Loops: 1
+        Output: 
+          - "ns.nspname"
+          - "cls.relnamespace"
+          - "cls.relname"
+          - "cls.oid"
+          - "cls_space.spcname"
+          - "cls.reltablespace"
+          - "cls.relfilenode"
+          - "pg_get_userbyid(cls.relowner)"
+          - "cls.relowner"
+          - "cls.relacl"
+          - "obj_description(cls.oid, 'pg_class'::name)"
+          - "cls.relreplident"
+          - "cls.relispopulated"
+          - "cls.relpersistence"
+          - "cls.relkind"
+          - "cls.reltype"
+          - "cls.reltuples"
+          - "CASE WHEN cls.relispartition THEN pg_get_expr(cls.relpartbound, cls.oid, true) ELSE NULL::text END"
+          - "cls.relpages"
+          - "cls.relallvisible"
+          - "cls.relnatts"
+          - "cls.relchecks"
+          - "pg_get_viewdef(cls.oid, true)"
+        Inner Unique: false
+        Hash Cond: "(cls.reloftype = underlying_composite_type.oid)"
+        Shared Hit Blocks: 487
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Left"
+            Startup Cost: 1.20
+            Total Cost: 22.35
+            Plan Rows: 36
+            Plan Width: 317
+            Actual Startup Time: 0.039
+            Actual Total Time: 0.168
+            Actual Rows: 7
+            Actual Loops: 1
+            Output: 
+              - "cls.relnamespace"
+              - "cls.relname"
+              - "cls.oid"
+              - "cls.reltablespace"
+              - "cls.relfilenode"
+              - "cls.relowner"
+              - "cls.relacl"
+              - "cls.relreplident"
+              - "cls.relispopulated"
+              - "cls.relpersistence"
+              - "cls.relkind"
+              - "cls.reltype"
+              - "cls.reltuples"
+              - "cls.relispartition"
+              - "cls.relpartbound"
+              - "cls.relpages"
+              - "cls.relallvisible"
+              - "cls.relnatts"
+              - "cls.relchecks"
+              - "cls.reloftype"
+              - "ns.nspname"
+              - "cls_space.spcname"
+            Inner Unique: true
+            Shared Hit Blocks: 15
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 1.06
+                Total Cost: 20.90
+                Plan Rows: 36
+                Plan Width: 253
+                Actual Startup Time: 0.028
+                Actual Total Time: 0.143
+                Actual Rows: 7
+                Actual Loops: 1
+                Output: 
+                  - "cls.relnamespace"
+                  - "cls.relname"
+                  - "cls.oid"
+                  - "cls.reltablespace"
+                  - "cls.relfilenode"
+                  - "cls.relowner"
+                  - "cls.relacl"
+                  - "cls.relreplident"
+                  - "cls.relispopulated"
+                  - "cls.relpersistence"
+                  - "cls.relkind"
+                  - "cls.reltype"
+                  - "cls.reltuples"
+                  - "cls.relispartition"
+                  - "cls.relpartbound"
+                  - "cls.relpages"
+                  - "cls.relallvisible"
+                  - "cls.relnatts"
+                  - "cls.relchecks"
+                  - "cls.reloftype"
+                  - "ns.nspname"
+                Inner Unique: true
+                Hash Cond: "(cls.relnamespace = ns.oid)"
+                Shared Hit Blocks: 14
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_class"
+                    Schema: "pg_catalog"
+                    Alias: "cls"
+                    Startup Cost: 0.00
+                    Total Cost: 19.06
+                    Plan Rows: 144
+                    Plan Width: 193
+                    Actual Startup Time: 0.008
+                    Actual Total Time: 0.102
+                    Actual Rows: 144
+                    Actual Loops: 1
+                    Output: 
+                      - "cls.oid"
+                      - "cls.relname"
+                      - "cls.relnamespace"
+                      - "cls.reltype"
+                      - "cls.reloftype"
+                      - "cls.relowner"
+                      - "cls.relam"
+                      - "cls.relfilenode"
+                      - "cls.reltablespace"
+                      - "cls.relpages"
+                      - "cls.reltuples"
+                      - "cls.relallvisible"
+                      - "cls.reltoastrelid"
+                      - "cls.relhasindex"
+                      - "cls.relisshared"
+                      - "cls.relpersistence"
+                      - "cls.relkind"
+                      - "cls.relnatts"
+                      - "cls.relchecks"
+                      - "cls.relhasrules"
+                      - "cls.relhastriggers"
+                      - "cls.relhassubclass"
+                      - "cls.relrowsecurity"
+                      - "cls.relforcerowsecurity"
+                      - "cls.relispopulated"
+                      - "cls.relreplident"
+                      - "cls.relispartition"
+                      - "cls.relrewrite"
+                      - "cls.relfrozenxid"
+                      - "cls.relminmxid"
+                      - "cls.relacl"
+                      - "cls.reloptions"
+                      - "cls.relpartbound"
+                    Filter: "(cls.relkind = ANY ('{v,m}'::\"char\"[]))"
+                    Rows Removed by Filter: 341
+                    Shared Hit Blocks: 13
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 1.05
+                    Total Cost: 1.05
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.009
+                    Actual Total Time: 0.010
+                    Actual Rows: 1
+                    Actual Loops: 1
+                    Output: 
+                      - "ns.nspname"
+                      - "ns.oid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 9
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "ns"
+                        Startup Cost: 0.00
+                        Total Cost: 1.05
+                        Plan Rows: 1
+                        Plan Width: 68
+                        Actual Startup Time: 0.003
+                        Actual Total Time: 0.004
+                        Actual Rows: 1
+                        Actual Loops: 1
+                        Output: 
+                          - "ns.nspname"
+                          - "ns.oid"
+                        Filter: "(ns.nspname = 'public'::name)"
+                        Rows Removed by Filter: 3
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Memoize"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Startup Cost: 0.14
+                Total Cost: 0.24
+                Plan Rows: 1
+                Plan Width: 68
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.002
+                Actual Rows: 0
+                Actual Loops: 7
+                Output: 
+                  - "cls_space.spcname"
+                  - "cls_space.oid"
+                Cache Key: "cls.reltablespace"
+                Cache Hits: 6
+                Cache Misses: 1
+                Cache Evictions: 0
+                Cache Overflows: 0
+                Peak Memory Usage: 1
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_tablespace_oid_index"
+                    Relation Name: "pg_tablespace"
+                    Schema: "pg_catalog"
+                    Alias: "cls_space"
+                    Startup Cost: 0.13
+                    Total Cost: 0.23
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.007
+                    Actual Total Time: 0.007
+                    Actual Rows: 0
+                    Actual Loops: 1
+                    Output: 
+                      - "cls_space.spcname"
+                      - "cls_space.oid"
+                    Index Cond: "(cls_space.oid = cls.reltablespace)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 27.68
+            Total Cost: 27.68
+            Plan Rows: 687
+            Plan Width: 4
+            Actual Startup Time: 0.405
+            Actual Total Time: 0.406
+            Actual Rows: 661
+            Actual Loops: 1
+            Output: 
+              - "underlying_composite_type.oid"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 32
+            Shared Hit Blocks: 17
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 1.09
+                Total Cost: 27.68
+                Plan Rows: 687
+                Plan Width: 4
+                Actual Startup Time: 0.020
+                Actual Total Time: 0.268
+                Actual Rows: 661
+                Actual Loops: 1
+                Output: 
+                  - "underlying_composite_type.oid"
+                Inner Unique: true
+                Hash Cond: "(underlying_composite_type.typnamespace = underlying_type_ns.oid)"
+                Shared Hit Blocks: 17
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_type"
+                    Schema: "pg_catalog"
+                    Alias: "underlying_composite_type"
+                    Startup Cost: 0.00
+                    Total Cost: 22.87
+                    Plan Rows: 687
+                    Plan Width: 8
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.064
+                    Actual Rows: 661
+                    Actual Loops: 1
+                    Output: 
+                      - "underlying_composite_type.oid"
+                      - "underlying_composite_type.typname"
+                      - "underlying_composite_type.typnamespace"
+                      - "underlying_composite_type.typowner"
+                      - "underlying_composite_type.typlen"
+                      - "underlying_composite_type.typbyval"
+                      - "underlying_composite_type.typtype"
+                      - "underlying_composite_type.typcategory"
+                      - "underlying_composite_type.typispreferred"
+                      - "underlying_composite_type.typisdefined"
+                      - "underlying_composite_type.typdelim"
+                      - "underlying_composite_type.typrelid"
+                      - "underlying_composite_type.typsubscript"
+                      - "underlying_composite_type.typelem"
+                      - "underlying_composite_type.typarray"
+                      - "underlying_composite_type.typinput"
+                      - "underlying_composite_type.typoutput"
+                      - "underlying_composite_type.typreceive"
+                      - "underlying_composite_type.typsend"
+                      - "underlying_composite_type.typmodin"
+                      - "underlying_composite_type.typmodout"
+                      - "underlying_composite_type.typanalyze"
+                      - "underlying_composite_type.typalign"
+                      - "underlying_composite_type.typstorage"
+                      - "underlying_composite_type.typnotnull"
+                      - "underlying_composite_type.typbasetype"
+                      - "underlying_composite_type.typtypmod"
+                      - "underlying_composite_type.typndims"
+                      - "underlying_composite_type.typcollation"
+                      - "underlying_composite_type.typdefaultbin"
+                      - "underlying_composite_type.typdefault"
+                      - "underlying_composite_type.typacl"
+                    Shared Hit Blocks: 16
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 1.04
+                    Total Cost: 1.04
+                    Plan Rows: 4
+                    Plan Width: 4
+                    Actual Startup Time: 0.008
+                    Actual Total Time: 0.008
+                    Actual Rows: 4
+                    Actual Loops: 1
+                    Output: 
+                      - "underlying_type_ns.oid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 9
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "underlying_type_ns"
+                        Startup Cost: 0.00
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 4
+                        Actual Startup Time: 0.002
+                        Actual Total Time: 0.002
+                        Actual Rows: 4
+                        Actual Loops: 1
+                        Output: 
+                          - "underlying_type_ns.oid"
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 31
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.690
+  Triggers: 
+  Execution Time: 7.011

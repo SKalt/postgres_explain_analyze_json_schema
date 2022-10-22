@@ -1,0 +1,2244 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 1025.23
+    Total Cost: 1027.24
+    Plan Rows: 804
+    Plan Width: 1347
+    Actual Startup Time: 19.022
+    Actual Total Time: 19.104
+    Actual Rows: 804
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "op.oprname"
+      - "(pg_get_userbyid(op.oprowner))"
+      - "op.oprkind"
+      - "op.oprcanmerge"
+      - "op.oprcanhash"
+      - "left_operand_type_schema.nspname"
+      - "left_operand_type.typname"
+      - "right_operand_type_schema.nspname"
+      - "right_operand_type.typname"
+      - "result_type_schema.nspname"
+      - "result_type.typname"
+      - "commutator_operator_schema.nspname"
+      - "commutator_operator.oprname"
+      - "negator_operator_schema.nspname"
+      - "negator_operator.oprname"
+      - "fn_schema.nspname"
+      - "fn.proname"
+      - "restriction_selectivity_estimation_fn_schema.nspname"
+      - "restriction_selectivity_estimation_fn.proname"
+      - "join_fn_schema.nspname"
+      - "join_fn.proname"
+      - "join_selectivity_estimation_fn_schema.nspname"
+      - "join_selectivity_estimation_fn.proname"
+    Sort Key: 
+      - "ns.nspname"
+      - "op.oprname"
+    Sort Method: "quicksort"
+    Sort Space Used: 1467
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 470
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Right"
+        Startup Cost: 817.05
+        Total Cost: 986.43
+        Plan Rows: 804
+        Plan Width: 1347
+        Actual Startup Time: 16.052
+        Actual Total Time: 17.815
+        Actual Rows: 804
+        Actual Loops: 1
+        Output: 
+          - "ns.nspname"
+          - "op.oprname"
+          - "pg_get_userbyid(op.oprowner)"
+          - "op.oprkind"
+          - "op.oprcanmerge"
+          - "op.oprcanhash"
+          - "left_operand_type_schema.nspname"
+          - "left_operand_type.typname"
+          - "right_operand_type_schema.nspname"
+          - "right_operand_type.typname"
+          - "result_type_schema.nspname"
+          - "result_type.typname"
+          - "commutator_operator_schema.nspname"
+          - "commutator_operator.oprname"
+          - "negator_operator_schema.nspname"
+          - "negator_operator.oprname"
+          - "fn_schema.nspname"
+          - "fn.proname"
+          - "restriction_selectivity_estimation_fn_schema.nspname"
+          - "restriction_selectivity_estimation_fn.proname"
+          - "join_fn_schema.nspname"
+          - "join_fn.proname"
+          - "join_selectivity_estimation_fn_schema.nspname"
+          - "join_selectivity_estimation_fn.proname"
+        Inner Unique: false
+        Hash Cond: "(join_fn.oid = (op.oprcode)::oid)"
+        Shared Hit Blocks: 470
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Hash Join"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 1.09
+            Total Cost: 144.42
+            Plan Rows: 3202
+            Plan Width: 132
+            Actual Startup Time: 0.019
+            Actual Total Time: 1.112
+            Actual Rows: 3202
+            Actual Loops: 1
+            Output: 
+              - "join_fn.proname"
+              - "join_fn.oid"
+              - "join_fn_schema.nspname"
+            Inner Unique: true
+            Hash Cond: "(join_fn.pronamespace = join_fn_schema.oid)"
+            Shared Hit Blocks: 95
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Seq Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Relation Name: "pg_proc"
+                Schema: "pg_catalog"
+                Alias: "join_fn"
+                Startup Cost: 0.00
+                Total Cost: 126.02
+                Plan Rows: 3202
+                Plan Width: 72
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.242
+                Actual Rows: 3202
+                Actual Loops: 1
+                Output: 
+                  - "join_fn.oid"
+                  - "join_fn.proname"
+                  - "join_fn.pronamespace"
+                  - "join_fn.proowner"
+                  - "join_fn.prolang"
+                  - "join_fn.procost"
+                  - "join_fn.prorows"
+                  - "join_fn.provariadic"
+                  - "join_fn.prosupport"
+                  - "join_fn.prokind"
+                  - "join_fn.prosecdef"
+                  - "join_fn.proleakproof"
+                  - "join_fn.proisstrict"
+                  - "join_fn.proretset"
+                  - "join_fn.provolatile"
+                  - "join_fn.proparallel"
+                  - "join_fn.pronargs"
+                  - "join_fn.pronargdefaults"
+                  - "join_fn.prorettype"
+                  - "join_fn.proargtypes"
+                  - "join_fn.proallargtypes"
+                  - "join_fn.proargmodes"
+                  - "join_fn.proargnames"
+                  - "join_fn.proargdefaults"
+                  - "join_fn.protrftypes"
+                  - "join_fn.prosrc"
+                  - "join_fn.probin"
+                  - "join_fn.prosqlbody"
+                  - "join_fn.proconfig"
+                  - "join_fn.proacl"
+                Shared Hit Blocks: 94
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+              - Node Type: "Hash"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Startup Cost: 1.04
+                Total Cost: 1.04
+                Plan Rows: 4
+                Plan Width: 68
+                Actual Startup Time: 0.006
+                Actual Total Time: 0.006
+                Actual Rows: 4
+                Actual Loops: 1
+                Output: 
+                  - "join_fn_schema.nspname"
+                  - "join_fn_schema.oid"
+                Hash Buckets: 1024
+                Original Hash Buckets: 1024
+                Hash Batches: 1
+                Original Hash Batches: 1
+                Peak Memory Usage: 9
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_namespace"
+                    Schema: "pg_catalog"
+                    Alias: "join_fn_schema"
+                    Startup Cost: 0.00
+                    Total Cost: 1.04
+                    Plan Rows: 4
+                    Plan Width: 68
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.003
+                    Actual Rows: 4
+                    Actual Loops: 1
+                    Output: 
+                      - "join_fn_schema.nspname"
+                      - "join_fn_schema.oid"
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 805.91
+            Total Cost: 805.91
+            Plan Rows: 804
+            Plan Width: 1163
+            Actual Startup Time: 16.003
+            Actual Total Time: 16.037
+            Actual Rows: 804
+            Actual Loops: 1
+            Output: 
+              - "op.oprname"
+              - "op.oprowner"
+              - "op.oprkind"
+              - "op.oprcanmerge"
+              - "op.oprcanhash"
+              - "op.oprcode"
+              - "result_type.typname"
+              - "result_type_schema.nspname"
+              - "right_operand_type.typname"
+              - "right_operand_type_schema.nspname"
+              - "left_operand_type.typname"
+              - "left_operand_type_schema.nspname"
+              - "ns.nspname"
+              - "restriction_selectivity_estimation_fn.proname"
+              - "restriction_selectivity_estimation_fn_schema.nspname"
+              - "fn.proname"
+              - "fn_schema.nspname"
+              - "negator_operator.oprname"
+              - "negator_operator_schema.nspname"
+              - "commutator_operator.oprname"
+              - "commutator_operator_schema.nspname"
+              - "join_selectivity_estimation_fn.proname"
+              - "join_selectivity_estimation_fn_schema.nspname"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 823
+            Shared Hit Blocks: 375
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Right"
+                Startup Cost: 638.53
+                Total Cost: 805.91
+                Plan Rows: 804
+                Plan Width: 1163
+                Actual Startup Time: 13.535
+                Actual Total Time: 15.184
+                Actual Rows: 804
+                Actual Loops: 1
+                Output: 
+                  - "op.oprname"
+                  - "op.oprowner"
+                  - "op.oprkind"
+                  - "op.oprcanmerge"
+                  - "op.oprcanhash"
+                  - "op.oprcode"
+                  - "result_type.typname"
+                  - "result_type_schema.nspname"
+                  - "right_operand_type.typname"
+                  - "right_operand_type_schema.nspname"
+                  - "left_operand_type.typname"
+                  - "left_operand_type_schema.nspname"
+                  - "ns.nspname"
+                  - "restriction_selectivity_estimation_fn.proname"
+                  - "restriction_selectivity_estimation_fn_schema.nspname"
+                  - "fn.proname"
+                  - "fn_schema.nspname"
+                  - "negator_operator.oprname"
+                  - "negator_operator_schema.nspname"
+                  - "commutator_operator.oprname"
+                  - "commutator_operator_schema.nspname"
+                  - "join_selectivity_estimation_fn.proname"
+                  - "join_selectivity_estimation_fn_schema.nspname"
+                Inner Unique: false
+                Hash Cond: "(join_selectivity_estimation_fn.oid = (op.oprcode)::oid)"
+                Shared Hit Blocks: 375
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Hash Join"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 1.09
+                    Total Cost: 144.42
+                    Plan Rows: 3202
+                    Plan Width: 132
+                    Actual Startup Time: 0.022
+                    Actual Total Time: 1.083
+                    Actual Rows: 3202
+                    Actual Loops: 1
+                    Output: 
+                      - "join_selectivity_estimation_fn.proname"
+                      - "join_selectivity_estimation_fn.oid"
+                      - "join_selectivity_estimation_fn_schema.nspname"
+                    Inner Unique: true
+                    Hash Cond: "(join_selectivity_estimation_fn.pronamespace = join_selectivity_estimation_fn_schema.oid)"
+                    Shared Hit Blocks: 95
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_proc"
+                        Schema: "pg_catalog"
+                        Alias: "join_selectivity_estimation_fn"
+                        Startup Cost: 0.00
+                        Total Cost: 126.02
+                        Plan Rows: 3202
+                        Plan Width: 72
+                        Actual Startup Time: 0.002
+                        Actual Total Time: 0.227
+                        Actual Rows: 3202
+                        Actual Loops: 1
+                        Output: 
+                          - "join_selectivity_estimation_fn.oid"
+                          - "join_selectivity_estimation_fn.proname"
+                          - "join_selectivity_estimation_fn.pronamespace"
+                          - "join_selectivity_estimation_fn.proowner"
+                          - "join_selectivity_estimation_fn.prolang"
+                          - "join_selectivity_estimation_fn.procost"
+                          - "join_selectivity_estimation_fn.prorows"
+                          - "join_selectivity_estimation_fn.provariadic"
+                          - "join_selectivity_estimation_fn.prosupport"
+                          - "join_selectivity_estimation_fn.prokind"
+                          - "join_selectivity_estimation_fn.prosecdef"
+                          - "join_selectivity_estimation_fn.proleakproof"
+                          - "join_selectivity_estimation_fn.proisstrict"
+                          - "join_selectivity_estimation_fn.proretset"
+                          - "join_selectivity_estimation_fn.provolatile"
+                          - "join_selectivity_estimation_fn.proparallel"
+                          - "join_selectivity_estimation_fn.pronargs"
+                          - "join_selectivity_estimation_fn.pronargdefaults"
+                          - "join_selectivity_estimation_fn.prorettype"
+                          - "join_selectivity_estimation_fn.proargtypes"
+                          - "join_selectivity_estimation_fn.proallargtypes"
+                          - "join_selectivity_estimation_fn.proargmodes"
+                          - "join_selectivity_estimation_fn.proargnames"
+                          - "join_selectivity_estimation_fn.proargdefaults"
+                          - "join_selectivity_estimation_fn.protrftypes"
+                          - "join_selectivity_estimation_fn.prosrc"
+                          - "join_selectivity_estimation_fn.probin"
+                          - "join_selectivity_estimation_fn.prosqlbody"
+                          - "join_selectivity_estimation_fn.proconfig"
+                          - "join_selectivity_estimation_fn.proacl"
+                        Shared Hit Blocks: 94
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Hash"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Startup Cost: 1.04
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 68
+                        Actual Startup Time: 0.006
+                        Actual Total Time: 0.006
+                        Actual Rows: 4
+                        Actual Loops: 1
+                        Output: 
+                          - "join_selectivity_estimation_fn_schema.nspname"
+                          - "join_selectivity_estimation_fn_schema.oid"
+                        Hash Buckets: 1024
+                        Original Hash Buckets: 1024
+                        Hash Batches: 1
+                        Original Hash Batches: 1
+                        Peak Memory Usage: 9
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Seq Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Relation Name: "pg_namespace"
+                            Schema: "pg_catalog"
+                            Alias: "join_selectivity_estimation_fn_schema"
+                            Startup Cost: 0.00
+                            Total Cost: 1.04
+                            Plan Rows: 4
+                            Plan Width: 68
+                            Actual Startup Time: 0.002
+                            Actual Total Time: 0.002
+                            Actual Rows: 4
+                            Actual Loops: 1
+                            Output: 
+                              - "join_selectivity_estimation_fn_schema.nspname"
+                              - "join_selectivity_estimation_fn_schema.oid"
+                            Shared Hit Blocks: 1
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 627.39
+                    Total Cost: 627.39
+                    Plan Rows: 804
+                    Plan Width: 1035
+                    Actual Startup Time: 13.474
+                    Actual Total Time: 13.507
+                    Actual Rows: 804
+                    Actual Loops: 1
+                    Output: 
+                      - "op.oprname"
+                      - "op.oprowner"
+                      - "op.oprkind"
+                      - "op.oprcanmerge"
+                      - "op.oprcanhash"
+                      - "op.oprcode"
+                      - "result_type.typname"
+                      - "result_type_schema.nspname"
+                      - "right_operand_type.typname"
+                      - "right_operand_type_schema.nspname"
+                      - "left_operand_type.typname"
+                      - "left_operand_type_schema.nspname"
+                      - "ns.nspname"
+                      - "restriction_selectivity_estimation_fn.proname"
+                      - "restriction_selectivity_estimation_fn_schema.nspname"
+                      - "fn.proname"
+                      - "fn_schema.nspname"
+                      - "negator_operator.oprname"
+                      - "negator_operator_schema.nspname"
+                      - "commutator_operator.oprname"
+                      - "commutator_operator_schema.nspname"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 723
+                    Shared Hit Blocks: 280
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Hash Join"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Join Type: "Left"
+                        Startup Cost: 426.85
+                        Total Cost: 627.39
+                        Plan Rows: 804
+                        Plan Width: 1035
+                        Actual Startup Time: 9.940
+                        Actual Total Time: 12.601
+                        Actual Rows: 804
+                        Actual Loops: 1
+                        Output: 
+                          - "op.oprname"
+                          - "op.oprowner"
+                          - "op.oprkind"
+                          - "op.oprcanmerge"
+                          - "op.oprcanhash"
+                          - "op.oprcode"
+                          - "result_type.typname"
+                          - "result_type_schema.nspname"
+                          - "right_operand_type.typname"
+                          - "right_operand_type_schema.nspname"
+                          - "left_operand_type.typname"
+                          - "left_operand_type_schema.nspname"
+                          - "ns.nspname"
+                          - "restriction_selectivity_estimation_fn.proname"
+                          - "restriction_selectivity_estimation_fn_schema.nspname"
+                          - "fn.proname"
+                          - "fn_schema.nspname"
+                          - "negator_operator.oprname"
+                          - "negator_operator_schema.nspname"
+                          - "commutator_operator.oprname"
+                          - "commutator_operator_schema.nspname"
+                        Inner Unique: false
+                        Hash Cond: "(op.oprcom = commutator_operator.oid)"
+                        Shared Hit Blocks: 280
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Hash Join"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Join Type: "Left"
+                            Startup Cost: 389.33
+                            Total Cost: 578.81
+                            Plan Rows: 804
+                            Plan Width: 911
+                            Actual Startup Time: 9.144
+                            Actual Total Time: 11.467
+                            Actual Rows: 804
+                            Actual Loops: 1
+                            Output: 
+                              - "op.oprname"
+                              - "op.oprowner"
+                              - "op.oprkind"
+                              - "op.oprcanmerge"
+                              - "op.oprcanhash"
+                              - "op.oprcom"
+                              - "op.oprcode"
+                              - "result_type.typname"
+                              - "result_type_schema.nspname"
+                              - "right_operand_type.typname"
+                              - "right_operand_type_schema.nspname"
+                              - "left_operand_type.typname"
+                              - "left_operand_type_schema.nspname"
+                              - "ns.nspname"
+                              - "restriction_selectivity_estimation_fn.proname"
+                              - "restriction_selectivity_estimation_fn_schema.nspname"
+                              - "fn.proname"
+                              - "fn_schema.nspname"
+                              - "negator_operator.oprname"
+                              - "negator_operator_schema.nspname"
+                            Inner Unique: false
+                            Hash Cond: "(op.oprnegate = negator_operator.oid)"
+                            Shared Hit Blocks: 265
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Hash Join"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Join Type: "Left"
+                                Startup Cost: 351.80
+                                Total Cost: 530.23
+                                Plan Rows: 804
+                                Plan Width: 787
+                                Actual Startup Time: 8.360
+                                Actual Total Time: 10.409
+                                Actual Rows: 804
+                                Actual Loops: 1
+                                Output: 
+                                  - "op.oprname"
+                                  - "op.oprowner"
+                                  - "op.oprkind"
+                                  - "op.oprcanmerge"
+                                  - "op.oprcanhash"
+                                  - "op.oprcom"
+                                  - "op.oprnegate"
+                                  - "op.oprcode"
+                                  - "result_type.typname"
+                                  - "result_type_schema.nspname"
+                                  - "right_operand_type.typname"
+                                  - "right_operand_type_schema.nspname"
+                                  - "left_operand_type.typname"
+                                  - "left_operand_type_schema.nspname"
+                                  - "ns.nspname"
+                                  - "restriction_selectivity_estimation_fn.proname"
+                                  - "restriction_selectivity_estimation_fn_schema.nspname"
+                                  - "fn.proname"
+                                  - "fn_schema.nspname"
+                                Inner Unique: false
+                                Hash Cond: "((op.oprrest)::oid = restriction_selectivity_estimation_fn.oid)"
+                                Shared Hit Blocks: 250
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Hash Join"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Join Type: "Right"
+                                    Startup Cost: 167.36
+                                    Total Cost: 334.73
+                                    Plan Rows: 804
+                                    Plan Width: 663
+                                    Actual Startup Time: 5.120
+                                    Actual Total Time: 6.908
+                                    Actual Rows: 804
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "op.oprname"
+                                      - "op.oprowner"
+                                      - "op.oprkind"
+                                      - "op.oprcanmerge"
+                                      - "op.oprcanhash"
+                                      - "op.oprcom"
+                                      - "op.oprnegate"
+                                      - "op.oprcode"
+                                      - "op.oprrest"
+                                      - "result_type.typname"
+                                      - "result_type_schema.nspname"
+                                      - "right_operand_type.typname"
+                                      - "right_operand_type_schema.nspname"
+                                      - "left_operand_type.typname"
+                                      - "left_operand_type_schema.nspname"
+                                      - "ns.nspname"
+                                      - "fn.proname"
+                                      - "fn_schema.nspname"
+                                    Inner Unique: false
+                                    Hash Cond: "(fn.oid = (op.oprcode)::oid)"
+                                    Shared Hit Blocks: 155
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Hash Join"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Join Type: "Inner"
+                                        Startup Cost: 1.09
+                                        Total Cost: 144.42
+                                        Plan Rows: 3202
+                                        Plan Width: 132
+                                        Actual Startup Time: 0.037
+                                        Actual Total Time: 1.221
+                                        Actual Rows: 3202
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "fn.proname"
+                                          - "fn.oid"
+                                          - "fn_schema.nspname"
+                                        Inner Unique: true
+                                        Hash Cond: "(fn.pronamespace = fn_schema.oid)"
+                                        Shared Hit Blocks: 95
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Seq Scan"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Relation Name: "pg_proc"
+                                            Schema: "pg_catalog"
+                                            Alias: "fn"
+                                            Startup Cost: 0.00
+                                            Total Cost: 126.02
+                                            Plan Rows: 3202
+                                            Plan Width: 72
+                                            Actual Startup Time: 0.004
+                                            Actual Total Time: 0.250
+                                            Actual Rows: 3202
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "fn.oid"
+                                              - "fn.proname"
+                                              - "fn.pronamespace"
+                                              - "fn.proowner"
+                                              - "fn.prolang"
+                                              - "fn.procost"
+                                              - "fn.prorows"
+                                              - "fn.provariadic"
+                                              - "fn.prosupport"
+                                              - "fn.prokind"
+                                              - "fn.prosecdef"
+                                              - "fn.proleakproof"
+                                              - "fn.proisstrict"
+                                              - "fn.proretset"
+                                              - "fn.provolatile"
+                                              - "fn.proparallel"
+                                              - "fn.pronargs"
+                                              - "fn.pronargdefaults"
+                                              - "fn.prorettype"
+                                              - "fn.proargtypes"
+                                              - "fn.proallargtypes"
+                                              - "fn.proargmodes"
+                                              - "fn.proargnames"
+                                              - "fn.proargdefaults"
+                                              - "fn.protrftypes"
+                                              - "fn.prosrc"
+                                              - "fn.probin"
+                                              - "fn.prosqlbody"
+                                              - "fn.proconfig"
+                                              - "fn.proacl"
+                                            Shared Hit Blocks: 94
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                          - Node Type: "Hash"
+                                            Parent Relationship: "Inner"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Startup Cost: 1.04
+                                            Total Cost: 1.04
+                                            Plan Rows: 4
+                                            Plan Width: 68
+                                            Actual Startup Time: 0.012
+                                            Actual Total Time: 0.014
+                                            Actual Rows: 4
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "fn_schema.nspname"
+                                              - "fn_schema.oid"
+                                            Hash Buckets: 1024
+                                            Original Hash Buckets: 1024
+                                            Hash Batches: 1
+                                            Original Hash Batches: 1
+                                            Peak Memory Usage: 9
+                                            Shared Hit Blocks: 1
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                            Plans: 
+                                              - Node Type: "Seq Scan"
+                                                Parent Relationship: "Outer"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Relation Name: "pg_namespace"
+                                                Schema: "pg_catalog"
+                                                Alias: "fn_schema"
+                                                Startup Cost: 0.00
+                                                Total Cost: 1.04
+                                                Plan Rows: 4
+                                                Plan Width: 68
+                                                Actual Startup Time: 0.003
+                                                Actual Total Time: 0.004
+                                                Actual Rows: 4
+                                                Actual Loops: 1
+                                                Output: 
+                                                  - "fn_schema.nspname"
+                                                  - "fn_schema.oid"
+                                                Shared Hit Blocks: 1
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                      - Node Type: "Hash"
+                                        Parent Relationship: "Inner"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Startup Cost: 156.22
+                                        Total Cost: 156.22
+                                        Plan Rows: 804
+                                        Plan Width: 535
+                                        Actual Startup Time: 5.042
+                                        Actual Total Time: 5.058
+                                        Actual Rows: 804
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "op.oprname"
+                                          - "op.oprowner"
+                                          - "op.oprkind"
+                                          - "op.oprcanmerge"
+                                          - "op.oprcanhash"
+                                          - "op.oprcom"
+                                          - "op.oprnegate"
+                                          - "op.oprcode"
+                                          - "op.oprrest"
+                                          - "result_type.typname"
+                                          - "result_type_schema.nspname"
+                                          - "right_operand_type.typname"
+                                          - "right_operand_type_schema.nspname"
+                                          - "left_operand_type.typname"
+                                          - "left_operand_type_schema.nspname"
+                                          - "ns.nspname"
+                                        Hash Buckets: 1024
+                                        Original Hash Buckets: 1024
+                                        Hash Batches: 1
+                                        Original Hash Batches: 1
+                                        Peak Memory Usage: 450
+                                        Shared Hit Blocks: 60
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Hash Join"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Join Type: "Inner"
+                                            Startup Cost: 96.67
+                                            Total Cost: 156.22
+                                            Plan Rows: 804
+                                            Plan Width: 535
+                                            Actual Startup Time: 1.952
+                                            Actual Total Time: 4.113
+                                            Actual Rows: 804
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "op.oprname"
+                                              - "op.oprowner"
+                                              - "op.oprkind"
+                                              - "op.oprcanmerge"
+                                              - "op.oprcanhash"
+                                              - "op.oprcom"
+                                              - "op.oprnegate"
+                                              - "op.oprcode"
+                                              - "op.oprrest"
+                                              - "result_type.typname"
+                                              - "result_type_schema.nspname"
+                                              - "right_operand_type.typname"
+                                              - "right_operand_type_schema.nspname"
+                                              - "left_operand_type.typname"
+                                              - "left_operand_type_schema.nspname"
+                                              - "ns.nspname"
+                                            Inner Unique: true
+                                            Hash Cond: "(op.oprnamespace = ns.oid)"
+                                            Shared Hit Blocks: 60
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                            Plans: 
+                                              - Node Type: "Hash Join"
+                                                Parent Relationship: "Outer"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Join Type: "Left"
+                                                Startup Cost: 95.58
+                                                Total Cost: 150.78
+                                                Plan Rows: 804
+                                                Plan Width: 475
+                                                Actual Startup Time: 1.916
+                                                Actual Total Time: 3.650
+                                                Actual Rows: 804
+                                                Actual Loops: 1
+                                                Output: 
+                                                  - "op.oprname"
+                                                  - "op.oprowner"
+                                                  - "op.oprkind"
+                                                  - "op.oprcanmerge"
+                                                  - "op.oprcanhash"
+                                                  - "op.oprnamespace"
+                                                  - "op.oprcom"
+                                                  - "op.oprnegate"
+                                                  - "op.oprcode"
+                                                  - "op.oprrest"
+                                                  - "result_type.typname"
+                                                  - "result_type_schema.nspname"
+                                                  - "right_operand_type.typname"
+                                                  - "right_operand_type_schema.nspname"
+                                                  - "left_operand_type.typname"
+                                                  - "left_operand_type_schema.nspname"
+                                                Inner Unique: false
+                                                Hash Cond: "(op.oprleft = left_operand_type.oid)"
+                                                Shared Hit Blocks: 59
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                                Plans: 
+                                                  - Node Type: "Hash Join"
+                                                    Parent Relationship: "Outer"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Join Type: "Left"
+                                                    Startup Cost: 63.72
+                                                    Total Cost: 107.87
+                                                    Plan Rows: 804
+                                                    Plan Width: 351
+                                                    Actual Startup Time: 1.287
+                                                    Actual Total Time: 2.553
+                                                    Actual Rows: 804
+                                                    Actual Loops: 1
+                                                    Output: 
+                                                      - "op.oprname"
+                                                      - "op.oprowner"
+                                                      - "op.oprkind"
+                                                      - "op.oprcanmerge"
+                                                      - "op.oprcanhash"
+                                                      - "op.oprnamespace"
+                                                      - "op.oprleft"
+                                                      - "op.oprcom"
+                                                      - "op.oprnegate"
+                                                      - "op.oprcode"
+                                                      - "op.oprrest"
+                                                      - "result_type.typname"
+                                                      - "result_type_schema.nspname"
+                                                      - "right_operand_type.typname"
+                                                      - "right_operand_type_schema.nspname"
+                                                    Inner Unique: false
+                                                    Hash Cond: "(op.oprright = right_operand_type.oid)"
+                                                    Shared Hit Blocks: 44
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                                    Plans: 
+                                                      - Node Type: "Hash Join"
+                                                        Parent Relationship: "Outer"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Join Type: "Left"
+                                                        Startup Cost: 31.86
+                                                        Total Cost: 64.95
+                                                        Plan Rows: 804
+                                                        Plan Width: 227
+                                                        Actual Startup Time: 0.661
+                                                        Actual Total Time: 1.429
+                                                        Actual Rows: 804
+                                                        Actual Loops: 1
+                                                        Output: 
+                                                          - "op.oprname"
+                                                          - "op.oprowner"
+                                                          - "op.oprkind"
+                                                          - "op.oprcanmerge"
+                                                          - "op.oprcanhash"
+                                                          - "op.oprnamespace"
+                                                          - "op.oprleft"
+                                                          - "op.oprright"
+                                                          - "op.oprcom"
+                                                          - "op.oprnegate"
+                                                          - "op.oprcode"
+                                                          - "op.oprrest"
+                                                          - "result_type.typname"
+                                                          - "result_type_schema.nspname"
+                                                        Inner Unique: false
+                                                        Hash Cond: "(op.oprresult = result_type.oid)"
+                                                        Shared Hit Blocks: 29
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                        Plans: 
+                                                          - Node Type: "Seq Scan"
+                                                            Parent Relationship: "Outer"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Relation Name: "pg_operator"
+                                                            Schema: "pg_catalog"
+                                                            Alias: "op"
+                                                            Startup Cost: 0.00
+                                                            Total Cost: 22.04
+                                                            Plan Rows: 804
+                                                            Plan Width: 103
+                                                            Actual Startup Time: 0.003
+                                                            Actual Total Time: 0.121
+                                                            Actual Rows: 804
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "op.oid"
+                                                              - "op.oprname"
+                                                              - "op.oprnamespace"
+                                                              - "op.oprowner"
+                                                              - "op.oprkind"
+                                                              - "op.oprcanmerge"
+                                                              - "op.oprcanhash"
+                                                              - "op.oprleft"
+                                                              - "op.oprright"
+                                                              - "op.oprresult"
+                                                              - "op.oprcom"
+                                                              - "op.oprnegate"
+                                                              - "op.oprcode"
+                                                              - "op.oprrest"
+                                                              - "op.oprjoin"
+                                                            Shared Hit Blocks: 14
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                          - Node Type: "Hash"
+                                                            Parent Relationship: "Inner"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Startup Cost: 24.35
+                                                            Total Cost: 24.35
+                                                            Plan Rows: 601
+                                                            Plan Width: 132
+                                                            Actual Startup Time: 0.636
+                                                            Actual Total Time: 0.647
+                                                            Actual Rows: 601
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "result_type.typname"
+                                                              - "result_type.oid"
+                                                              - "result_type_schema.nspname"
+                                                            Hash Buckets: 1024
+                                                            Original Hash Buckets: 1024
+                                                            Hash Batches: 1
+                                                            Original Hash Batches: 1
+                                                            Peak Memory Usage: 105
+                                                            Shared Hit Blocks: 15
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                            Plans: 
+                                                              - Node Type: "Hash Join"
+                                                                Parent Relationship: "Outer"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Join Type: "Inner"
+                                                                Startup Cost: 1.09
+                                                                Total Cost: 24.35
+                                                                Plan Rows: 601
+                                                                Plan Width: 132
+                                                                Actual Startup Time: 0.032
+                                                                Actual Total Time: 0.386
+                                                                Actual Rows: 601
+                                                                Actual Loops: 1
+                                                                Output: 
+                                                                  - "result_type.typname"
+                                                                  - "result_type.oid"
+                                                                  - "result_type_schema.nspname"
+                                                                Inner Unique: true
+                                                                Hash Cond: "(result_type.typnamespace = result_type_schema.oid)"
+                                                                Shared Hit Blocks: 15
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                                                Plans: 
+                                                                  - Node Type: "Seq Scan"
+                                                                    Parent Relationship: "Outer"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Relation Name: "pg_type"
+                                                                    Schema: "pg_catalog"
+                                                                    Alias: "result_type"
+                                                                    Startup Cost: 0.00
+                                                                    Total Cost: 20.01
+                                                                    Plan Rows: 601
+                                                                    Plan Width: 72
+                                                                    Actual Startup Time: 0.002
+                                                                    Actual Total Time: 0.075
+                                                                    Actual Rows: 601
+                                                                    Actual Loops: 1
+                                                                    Output: 
+                                                                      - "result_type.oid"
+                                                                      - "result_type.typname"
+                                                                      - "result_type.typnamespace"
+                                                                      - "result_type.typowner"
+                                                                      - "result_type.typlen"
+                                                                      - "result_type.typbyval"
+                                                                      - "result_type.typtype"
+                                                                      - "result_type.typcategory"
+                                                                      - "result_type.typispreferred"
+                                                                      - "result_type.typisdefined"
+                                                                      - "result_type.typdelim"
+                                                                      - "result_type.typrelid"
+                                                                      - "result_type.typsubscript"
+                                                                      - "result_type.typelem"
+                                                                      - "result_type.typarray"
+                                                                      - "result_type.typinput"
+                                                                      - "result_type.typoutput"
+                                                                      - "result_type.typreceive"
+                                                                      - "result_type.typsend"
+                                                                      - "result_type.typmodin"
+                                                                      - "result_type.typmodout"
+                                                                      - "result_type.typanalyze"
+                                                                      - "result_type.typalign"
+                                                                      - "result_type.typstorage"
+                                                                      - "result_type.typnotnull"
+                                                                      - "result_type.typbasetype"
+                                                                      - "result_type.typtypmod"
+                                                                      - "result_type.typndims"
+                                                                      - "result_type.typcollation"
+                                                                      - "result_type.typdefaultbin"
+                                                                      - "result_type.typdefault"
+                                                                      - "result_type.typacl"
+                                                                    Shared Hit Blocks: 14
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                                  - Node Type: "Hash"
+                                                                    Parent Relationship: "Inner"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Startup Cost: 1.04
+                                                                    Total Cost: 1.04
+                                                                    Plan Rows: 4
+                                                                    Plan Width: 68
+                                                                    Actual Startup Time: 0.011
+                                                                    Actual Total Time: 0.012
+                                                                    Actual Rows: 4
+                                                                    Actual Loops: 1
+                                                                    Output: 
+                                                                      - "result_type_schema.nspname"
+                                                                      - "result_type_schema.oid"
+                                                                    Hash Buckets: 1024
+                                                                    Original Hash Buckets: 1024
+                                                                    Hash Batches: 1
+                                                                    Original Hash Batches: 1
+                                                                    Peak Memory Usage: 9
+                                                                    Shared Hit Blocks: 1
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                                    Plans: 
+                                                                      - Node Type: "Seq Scan"
+                                                                        Parent Relationship: "Outer"
+                                                                        Parallel Aware: false
+                                                                        Async Capable: false
+                                                                        Relation Name: "pg_namespace"
+                                                                        Schema: "pg_catalog"
+                                                                        Alias: "result_type_schema"
+                                                                        Startup Cost: 0.00
+                                                                        Total Cost: 1.04
+                                                                        Plan Rows: 4
+                                                                        Plan Width: 68
+                                                                        Actual Startup Time: 0.002
+                                                                        Actual Total Time: 0.003
+                                                                        Actual Rows: 4
+                                                                        Actual Loops: 1
+                                                                        Output: 
+                                                                          - "result_type_schema.nspname"
+                                                                          - "result_type_schema.oid"
+                                                                        Shared Hit Blocks: 1
+                                                                        Shared Read Blocks: 0
+                                                                        Shared Dirtied Blocks: 0
+                                                                        Shared Written Blocks: 0
+                                                                        Local Hit Blocks: 0
+                                                                        Local Read Blocks: 0
+                                                                        Local Dirtied Blocks: 0
+                                                                        Local Written Blocks: 0
+                                                                        Temp Read Blocks: 0
+                                                                        Temp Written Blocks: 0
+                                                      - Node Type: "Hash"
+                                                        Parent Relationship: "Inner"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Startup Cost: 24.35
+                                                        Total Cost: 24.35
+                                                        Plan Rows: 601
+                                                        Plan Width: 132
+                                                        Actual Startup Time: 0.610
+                                                        Actual Total Time: 0.611
+                                                        Actual Rows: 601
+                                                        Actual Loops: 1
+                                                        Output: 
+                                                          - "right_operand_type.typname"
+                                                          - "right_operand_type.oid"
+                                                          - "right_operand_type_schema.nspname"
+                                                        Hash Buckets: 1024
+                                                        Original Hash Buckets: 1024
+                                                        Hash Batches: 1
+                                                        Original Hash Batches: 1
+                                                        Peak Memory Usage: 105
+                                                        Shared Hit Blocks: 15
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                        Plans: 
+                                                          - Node Type: "Hash Join"
+                                                            Parent Relationship: "Outer"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Join Type: "Inner"
+                                                            Startup Cost: 1.09
+                                                            Total Cost: 24.35
+                                                            Plan Rows: 601
+                                                            Plan Width: 132
+                                                            Actual Startup Time: 0.033
+                                                            Actual Total Time: 0.352
+                                                            Actual Rows: 601
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "right_operand_type.typname"
+                                                              - "right_operand_type.oid"
+                                                              - "right_operand_type_schema.nspname"
+                                                            Inner Unique: true
+                                                            Hash Cond: "(right_operand_type.typnamespace = right_operand_type_schema.oid)"
+                                                            Shared Hit Blocks: 15
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                            Plans: 
+                                                              - Node Type: "Seq Scan"
+                                                                Parent Relationship: "Outer"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Relation Name: "pg_type"
+                                                                Schema: "pg_catalog"
+                                                                Alias: "right_operand_type"
+                                                                Startup Cost: 0.00
+                                                                Total Cost: 20.01
+                                                                Plan Rows: 601
+                                                                Plan Width: 72
+                                                                Actual Startup Time: 0.003
+                                                                Actual Total Time: 0.072
+                                                                Actual Rows: 601
+                                                                Actual Loops: 1
+                                                                Output: 
+                                                                  - "right_operand_type.oid"
+                                                                  - "right_operand_type.typname"
+                                                                  - "right_operand_type.typnamespace"
+                                                                  - "right_operand_type.typowner"
+                                                                  - "right_operand_type.typlen"
+                                                                  - "right_operand_type.typbyval"
+                                                                  - "right_operand_type.typtype"
+                                                                  - "right_operand_type.typcategory"
+                                                                  - "right_operand_type.typispreferred"
+                                                                  - "right_operand_type.typisdefined"
+                                                                  - "right_operand_type.typdelim"
+                                                                  - "right_operand_type.typrelid"
+                                                                  - "right_operand_type.typsubscript"
+                                                                  - "right_operand_type.typelem"
+                                                                  - "right_operand_type.typarray"
+                                                                  - "right_operand_type.typinput"
+                                                                  - "right_operand_type.typoutput"
+                                                                  - "right_operand_type.typreceive"
+                                                                  - "right_operand_type.typsend"
+                                                                  - "right_operand_type.typmodin"
+                                                                  - "right_operand_type.typmodout"
+                                                                  - "right_operand_type.typanalyze"
+                                                                  - "right_operand_type.typalign"
+                                                                  - "right_operand_type.typstorage"
+                                                                  - "right_operand_type.typnotnull"
+                                                                  - "right_operand_type.typbasetype"
+                                                                  - "right_operand_type.typtypmod"
+                                                                  - "right_operand_type.typndims"
+                                                                  - "right_operand_type.typcollation"
+                                                                  - "right_operand_type.typdefaultbin"
+                                                                  - "right_operand_type.typdefault"
+                                                                  - "right_operand_type.typacl"
+                                                                Shared Hit Blocks: 14
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                                              - Node Type: "Hash"
+                                                                Parent Relationship: "Inner"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Startup Cost: 1.04
+                                                                Total Cost: 1.04
+                                                                Plan Rows: 4
+                                                                Plan Width: 68
+                                                                Actual Startup Time: 0.011
+                                                                Actual Total Time: 0.011
+                                                                Actual Rows: 4
+                                                                Actual Loops: 1
+                                                                Output: 
+                                                                  - "right_operand_type_schema.nspname"
+                                                                  - "right_operand_type_schema.oid"
+                                                                Hash Buckets: 1024
+                                                                Original Hash Buckets: 1024
+                                                                Hash Batches: 1
+                                                                Original Hash Batches: 1
+                                                                Peak Memory Usage: 9
+                                                                Shared Hit Blocks: 1
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                                                Plans: 
+                                                                  - Node Type: "Seq Scan"
+                                                                    Parent Relationship: "Outer"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Relation Name: "pg_namespace"
+                                                                    Schema: "pg_catalog"
+                                                                    Alias: "right_operand_type_schema"
+                                                                    Startup Cost: 0.00
+                                                                    Total Cost: 1.04
+                                                                    Plan Rows: 4
+                                                                    Plan Width: 68
+                                                                    Actual Startup Time: 0.002
+                                                                    Actual Total Time: 0.003
+                                                                    Actual Rows: 4
+                                                                    Actual Loops: 1
+                                                                    Output: 
+                                                                      - "right_operand_type_schema.nspname"
+                                                                      - "right_operand_type_schema.oid"
+                                                                    Shared Hit Blocks: 1
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                  - Node Type: "Hash"
+                                                    Parent Relationship: "Inner"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Startup Cost: 24.35
+                                                    Total Cost: 24.35
+                                                    Plan Rows: 601
+                                                    Plan Width: 132
+                                                    Actual Startup Time: 0.609
+                                                    Actual Total Time: 0.610
+                                                    Actual Rows: 601
+                                                    Actual Loops: 1
+                                                    Output: 
+                                                      - "left_operand_type.typname"
+                                                      - "left_operand_type.oid"
+                                                      - "left_operand_type_schema.nspname"
+                                                    Hash Buckets: 1024
+                                                    Original Hash Buckets: 1024
+                                                    Hash Batches: 1
+                                                    Original Hash Batches: 1
+                                                    Peak Memory Usage: 105
+                                                    Shared Hit Blocks: 15
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                                    Plans: 
+                                                      - Node Type: "Hash Join"
+                                                        Parent Relationship: "Outer"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Join Type: "Inner"
+                                                        Startup Cost: 1.09
+                                                        Total Cost: 24.35
+                                                        Plan Rows: 601
+                                                        Plan Width: 132
+                                                        Actual Startup Time: 0.029
+                                                        Actual Total Time: 0.349
+                                                        Actual Rows: 601
+                                                        Actual Loops: 1
+                                                        Output: 
+                                                          - "left_operand_type.typname"
+                                                          - "left_operand_type.oid"
+                                                          - "left_operand_type_schema.nspname"
+                                                        Inner Unique: true
+                                                        Hash Cond: "(left_operand_type.typnamespace = left_operand_type_schema.oid)"
+                                                        Shared Hit Blocks: 15
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                        Plans: 
+                                                          - Node Type: "Seq Scan"
+                                                            Parent Relationship: "Outer"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Relation Name: "pg_type"
+                                                            Schema: "pg_catalog"
+                                                            Alias: "left_operand_type"
+                                                            Startup Cost: 0.00
+                                                            Total Cost: 20.01
+                                                            Plan Rows: 601
+                                                            Plan Width: 72
+                                                            Actual Startup Time: 0.002
+                                                            Actual Total Time: 0.070
+                                                            Actual Rows: 601
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "left_operand_type.oid"
+                                                              - "left_operand_type.typname"
+                                                              - "left_operand_type.typnamespace"
+                                                              - "left_operand_type.typowner"
+                                                              - "left_operand_type.typlen"
+                                                              - "left_operand_type.typbyval"
+                                                              - "left_operand_type.typtype"
+                                                              - "left_operand_type.typcategory"
+                                                              - "left_operand_type.typispreferred"
+                                                              - "left_operand_type.typisdefined"
+                                                              - "left_operand_type.typdelim"
+                                                              - "left_operand_type.typrelid"
+                                                              - "left_operand_type.typsubscript"
+                                                              - "left_operand_type.typelem"
+                                                              - "left_operand_type.typarray"
+                                                              - "left_operand_type.typinput"
+                                                              - "left_operand_type.typoutput"
+                                                              - "left_operand_type.typreceive"
+                                                              - "left_operand_type.typsend"
+                                                              - "left_operand_type.typmodin"
+                                                              - "left_operand_type.typmodout"
+                                                              - "left_operand_type.typanalyze"
+                                                              - "left_operand_type.typalign"
+                                                              - "left_operand_type.typstorage"
+                                                              - "left_operand_type.typnotnull"
+                                                              - "left_operand_type.typbasetype"
+                                                              - "left_operand_type.typtypmod"
+                                                              - "left_operand_type.typndims"
+                                                              - "left_operand_type.typcollation"
+                                                              - "left_operand_type.typdefaultbin"
+                                                              - "left_operand_type.typdefault"
+                                                              - "left_operand_type.typacl"
+                                                            Shared Hit Blocks: 14
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                          - Node Type: "Hash"
+                                                            Parent Relationship: "Inner"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Startup Cost: 1.04
+                                                            Total Cost: 1.04
+                                                            Plan Rows: 4
+                                                            Plan Width: 68
+                                                            Actual Startup Time: 0.011
+                                                            Actual Total Time: 0.011
+                                                            Actual Rows: 4
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "left_operand_type_schema.nspname"
+                                                              - "left_operand_type_schema.oid"
+                                                            Hash Buckets: 1024
+                                                            Original Hash Buckets: 1024
+                                                            Hash Batches: 1
+                                                            Original Hash Batches: 1
+                                                            Peak Memory Usage: 9
+                                                            Shared Hit Blocks: 1
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                            Plans: 
+                                                              - Node Type: "Seq Scan"
+                                                                Parent Relationship: "Outer"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Relation Name: "pg_namespace"
+                                                                Schema: "pg_catalog"
+                                                                Alias: "left_operand_type_schema"
+                                                                Startup Cost: 0.00
+                                                                Total Cost: 1.04
+                                                                Plan Rows: 4
+                                                                Plan Width: 68
+                                                                Actual Startup Time: 0.002
+                                                                Actual Total Time: 0.003
+                                                                Actual Rows: 4
+                                                                Actual Loops: 1
+                                                                Output: 
+                                                                  - "left_operand_type_schema.nspname"
+                                                                  - "left_operand_type_schema.oid"
+                                                                Shared Hit Blocks: 1
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                              - Node Type: "Hash"
+                                                Parent Relationship: "Inner"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Startup Cost: 1.04
+                                                Total Cost: 1.04
+                                                Plan Rows: 4
+                                                Plan Width: 68
+                                                Actual Startup Time: 0.022
+                                                Actual Total Time: 0.022
+                                                Actual Rows: 4
+                                                Actual Loops: 1
+                                                Output: 
+                                                  - "ns.nspname"
+                                                  - "ns.oid"
+                                                Hash Buckets: 1024
+                                                Original Hash Buckets: 1024
+                                                Hash Batches: 1
+                                                Original Hash Batches: 1
+                                                Peak Memory Usage: 9
+                                                Shared Hit Blocks: 1
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                                Plans: 
+                                                  - Node Type: "Seq Scan"
+                                                    Parent Relationship: "Outer"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Relation Name: "pg_namespace"
+                                                    Schema: "pg_catalog"
+                                                    Alias: "ns"
+                                                    Startup Cost: 0.00
+                                                    Total Cost: 1.04
+                                                    Plan Rows: 4
+                                                    Plan Width: 68
+                                                    Actual Startup Time: 0.008
+                                                    Actual Total Time: 0.009
+                                                    Actual Rows: 4
+                                                    Actual Loops: 1
+                                                    Output: 
+                                                      - "ns.nspname"
+                                                      - "ns.oid"
+                                                    Shared Hit Blocks: 1
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                  - Node Type: "Hash"
+                                    Parent Relationship: "Inner"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Startup Cost: 144.42
+                                    Total Cost: 144.42
+                                    Plan Rows: 3202
+                                    Plan Width: 132
+                                    Actual Startup Time: 3.205
+                                    Actual Total Time: 3.206
+                                    Actual Rows: 3202
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "restriction_selectivity_estimation_fn.proname"
+                                      - "restriction_selectivity_estimation_fn.oid"
+                                      - "restriction_selectivity_estimation_fn_schema.nspname"
+                                    Hash Buckets: 4096
+                                    Original Hash Buckets: 4096
+                                    Hash Batches: 1
+                                    Original Hash Batches: 1
+                                    Peak Memory Usage: 545
+                                    Shared Hit Blocks: 95
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Hash Join"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Join Type: "Inner"
+                                        Startup Cost: 1.09
+                                        Total Cost: 144.42
+                                        Plan Rows: 3202
+                                        Plan Width: 132
+                                        Actual Startup Time: 0.030
+                                        Actual Total Time: 1.867
+                                        Actual Rows: 3202
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "restriction_selectivity_estimation_fn.proname"
+                                          - "restriction_selectivity_estimation_fn.oid"
+                                          - "restriction_selectivity_estimation_fn_schema.nspname"
+                                        Inner Unique: true
+                                        Hash Cond: "(restriction_selectivity_estimation_fn.pronamespace = restriction_selectivity_estimation_fn_schema.oid)"
+                                        Shared Hit Blocks: 95
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Seq Scan"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Relation Name: "pg_proc"
+                                            Schema: "pg_catalog"
+                                            Alias: "restriction_selectivity_estimation_fn"
+                                            Startup Cost: 0.00
+                                            Total Cost: 126.02
+                                            Plan Rows: 3202
+                                            Plan Width: 72
+                                            Actual Startup Time: 0.002
+                                            Actual Total Time: 0.404
+                                            Actual Rows: 3202
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "restriction_selectivity_estimation_fn.oid"
+                                              - "restriction_selectivity_estimation_fn.proname"
+                                              - "restriction_selectivity_estimation_fn.pronamespace"
+                                              - "restriction_selectivity_estimation_fn.proowner"
+                                              - "restriction_selectivity_estimation_fn.prolang"
+                                              - "restriction_selectivity_estimation_fn.procost"
+                                              - "restriction_selectivity_estimation_fn.prorows"
+                                              - "restriction_selectivity_estimation_fn.provariadic"
+                                              - "restriction_selectivity_estimation_fn.prosupport"
+                                              - "restriction_selectivity_estimation_fn.prokind"
+                                              - "restriction_selectivity_estimation_fn.prosecdef"
+                                              - "restriction_selectivity_estimation_fn.proleakproof"
+                                              - "restriction_selectivity_estimation_fn.proisstrict"
+                                              - "restriction_selectivity_estimation_fn.proretset"
+                                              - "restriction_selectivity_estimation_fn.provolatile"
+                                              - "restriction_selectivity_estimation_fn.proparallel"
+                                              - "restriction_selectivity_estimation_fn.pronargs"
+                                              - "restriction_selectivity_estimation_fn.pronargdefaults"
+                                              - "restriction_selectivity_estimation_fn.prorettype"
+                                              - "restriction_selectivity_estimation_fn.proargtypes"
+                                              - "restriction_selectivity_estimation_fn.proallargtypes"
+                                              - "restriction_selectivity_estimation_fn.proargmodes"
+                                              - "restriction_selectivity_estimation_fn.proargnames"
+                                              - "restriction_selectivity_estimation_fn.proargdefaults"
+                                              - "restriction_selectivity_estimation_fn.protrftypes"
+                                              - "restriction_selectivity_estimation_fn.prosrc"
+                                              - "restriction_selectivity_estimation_fn.probin"
+                                              - "restriction_selectivity_estimation_fn.prosqlbody"
+                                              - "restriction_selectivity_estimation_fn.proconfig"
+                                              - "restriction_selectivity_estimation_fn.proacl"
+                                            Shared Hit Blocks: 94
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                          - Node Type: "Hash"
+                                            Parent Relationship: "Inner"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Startup Cost: 1.04
+                                            Total Cost: 1.04
+                                            Plan Rows: 4
+                                            Plan Width: 68
+                                            Actual Startup Time: 0.011
+                                            Actual Total Time: 0.011
+                                            Actual Rows: 4
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "restriction_selectivity_estimation_fn_schema.nspname"
+                                              - "restriction_selectivity_estimation_fn_schema.oid"
+                                            Hash Buckets: 1024
+                                            Original Hash Buckets: 1024
+                                            Hash Batches: 1
+                                            Original Hash Batches: 1
+                                            Peak Memory Usage: 9
+                                            Shared Hit Blocks: 1
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                            Plans: 
+                                              - Node Type: "Seq Scan"
+                                                Parent Relationship: "Outer"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Relation Name: "pg_namespace"
+                                                Schema: "pg_catalog"
+                                                Alias: "restriction_selectivity_estimation_fn_schema"
+                                                Startup Cost: 0.00
+                                                Total Cost: 1.04
+                                                Plan Rows: 4
+                                                Plan Width: 68
+                                                Actual Startup Time: 0.002
+                                                Actual Total Time: 0.003
+                                                Actual Rows: 4
+                                                Actual Loops: 1
+                                                Output: 
+                                                  - "restriction_selectivity_estimation_fn_schema.nspname"
+                                                  - "restriction_selectivity_estimation_fn_schema.oid"
+                                                Shared Hit Blocks: 1
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                              - Node Type: "Hash"
+                                Parent Relationship: "Inner"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Startup Cost: 27.48
+                                Total Cost: 27.48
+                                Plan Rows: 804
+                                Plan Width: 132
+                                Actual Startup Time: 0.767
+                                Actual Total Time: 0.767
+                                Actual Rows: 804
+                                Actual Loops: 1
+                                Output: 
+                                  - "negator_operator.oprname"
+                                  - "negator_operator.oid"
+                                  - "negator_operator_schema.nspname"
+                                Hash Buckets: 1024
+                                Original Hash Buckets: 1024
+                                Hash Batches: 1
+                                Original Hash Batches: 1
+                                Peak Memory Usage: 137
+                                Shared Hit Blocks: 15
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Hash Join"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Join Type: "Inner"
+                                    Startup Cost: 1.09
+                                    Total Cost: 27.48
+                                    Plan Rows: 804
+                                    Plan Width: 132
+                                    Actual Startup Time: 0.035
+                                    Actual Total Time: 0.444
+                                    Actual Rows: 804
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "negator_operator.oprname"
+                                      - "negator_operator.oid"
+                                      - "negator_operator_schema.nspname"
+                                    Inner Unique: true
+                                    Hash Cond: "(negator_operator.oprnamespace = negator_operator_schema.oid)"
+                                    Shared Hit Blocks: 15
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Seq Scan"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Relation Name: "pg_operator"
+                                        Schema: "pg_catalog"
+                                        Alias: "negator_operator"
+                                        Startup Cost: 0.00
+                                        Total Cost: 22.04
+                                        Plan Rows: 804
+                                        Plan Width: 72
+                                        Actual Startup Time: 0.004
+                                        Actual Total Time: 0.090
+                                        Actual Rows: 804
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "negator_operator.oid"
+                                          - "negator_operator.oprname"
+                                          - "negator_operator.oprnamespace"
+                                          - "negator_operator.oprowner"
+                                          - "negator_operator.oprkind"
+                                          - "negator_operator.oprcanmerge"
+                                          - "negator_operator.oprcanhash"
+                                          - "negator_operator.oprleft"
+                                          - "negator_operator.oprright"
+                                          - "negator_operator.oprresult"
+                                          - "negator_operator.oprcom"
+                                          - "negator_operator.oprnegate"
+                                          - "negator_operator.oprcode"
+                                          - "negator_operator.oprrest"
+                                          - "negator_operator.oprjoin"
+                                        Shared Hit Blocks: 14
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                      - Node Type: "Hash"
+                                        Parent Relationship: "Inner"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Startup Cost: 1.04
+                                        Total Cost: 1.04
+                                        Plan Rows: 4
+                                        Plan Width: 68
+                                        Actual Startup Time: 0.011
+                                        Actual Total Time: 0.011
+                                        Actual Rows: 4
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "negator_operator_schema.nspname"
+                                          - "negator_operator_schema.oid"
+                                        Hash Buckets: 1024
+                                        Original Hash Buckets: 1024
+                                        Hash Batches: 1
+                                        Original Hash Batches: 1
+                                        Peak Memory Usage: 9
+                                        Shared Hit Blocks: 1
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Seq Scan"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Relation Name: "pg_namespace"
+                                            Schema: "pg_catalog"
+                                            Alias: "negator_operator_schema"
+                                            Startup Cost: 0.00
+                                            Total Cost: 1.04
+                                            Plan Rows: 4
+                                            Plan Width: 68
+                                            Actual Startup Time: 0.002
+                                            Actual Total Time: 0.003
+                                            Actual Rows: 4
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "negator_operator_schema.nspname"
+                                              - "negator_operator_schema.oid"
+                                            Shared Hit Blocks: 1
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                          - Node Type: "Hash"
+                            Parent Relationship: "Inner"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Startup Cost: 27.48
+                            Total Cost: 27.48
+                            Plan Rows: 804
+                            Plan Width: 132
+                            Actual Startup Time: 0.774
+                            Actual Total Time: 0.784
+                            Actual Rows: 804
+                            Actual Loops: 1
+                            Output: 
+                              - "commutator_operator.oprname"
+                              - "commutator_operator.oid"
+                              - "commutator_operator_schema.nspname"
+                            Hash Buckets: 1024
+                            Original Hash Buckets: 1024
+                            Hash Batches: 1
+                            Original Hash Batches: 1
+                            Peak Memory Usage: 137
+                            Shared Hit Blocks: 15
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Hash Join"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Join Type: "Inner"
+                                Startup Cost: 1.09
+                                Total Cost: 27.48
+                                Plan Rows: 804
+                                Plan Width: 132
+                                Actual Startup Time: 0.028
+                                Actual Total Time: 0.445
+                                Actual Rows: 804
+                                Actual Loops: 1
+                                Output: 
+                                  - "commutator_operator.oprname"
+                                  - "commutator_operator.oid"
+                                  - "commutator_operator_schema.nspname"
+                                Inner Unique: true
+                                Hash Cond: "(commutator_operator.oprnamespace = commutator_operator_schema.oid)"
+                                Shared Hit Blocks: 15
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Seq Scan"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Relation Name: "pg_operator"
+                                    Schema: "pg_catalog"
+                                    Alias: "commutator_operator"
+                                    Startup Cost: 0.00
+                                    Total Cost: 22.04
+                                    Plan Rows: 804
+                                    Plan Width: 72
+                                    Actual Startup Time: 0.002
+                                    Actual Total Time: 0.088
+                                    Actual Rows: 804
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "commutator_operator.oid"
+                                      - "commutator_operator.oprname"
+                                      - "commutator_operator.oprnamespace"
+                                      - "commutator_operator.oprowner"
+                                      - "commutator_operator.oprkind"
+                                      - "commutator_operator.oprcanmerge"
+                                      - "commutator_operator.oprcanhash"
+                                      - "commutator_operator.oprleft"
+                                      - "commutator_operator.oprright"
+                                      - "commutator_operator.oprresult"
+                                      - "commutator_operator.oprcom"
+                                      - "commutator_operator.oprnegate"
+                                      - "commutator_operator.oprcode"
+                                      - "commutator_operator.oprrest"
+                                      - "commutator_operator.oprjoin"
+                                    Shared Hit Blocks: 14
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                  - Node Type: "Hash"
+                                    Parent Relationship: "Inner"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Startup Cost: 1.04
+                                    Total Cost: 1.04
+                                    Plan Rows: 4
+                                    Plan Width: 68
+                                    Actual Startup Time: 0.011
+                                    Actual Total Time: 0.020
+                                    Actual Rows: 4
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "commutator_operator_schema.nspname"
+                                      - "commutator_operator_schema.oid"
+                                    Hash Buckets: 1024
+                                    Original Hash Buckets: 1024
+                                    Hash Batches: 1
+                                    Original Hash Batches: 1
+                                    Peak Memory Usage: 9
+                                    Shared Hit Blocks: 1
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Seq Scan"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Relation Name: "pg_namespace"
+                                        Schema: "pg_catalog"
+                                        Alias: "commutator_operator_schema"
+                                        Startup Cost: 0.00
+                                        Total Cost: 1.04
+                                        Plan Rows: 4
+                                        Plan Width: 68
+                                        Actual Startup Time: 0.006
+                                        Actual Total Time: 0.015
+                                        Actual Rows: 4
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "commutator_operator_schema.nspname"
+                                          - "commutator_operator_schema.oid"
+                                        Shared Hit Blocks: 1
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 95
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 2.689
+  Triggers: 
+  Execution Time: 20.307

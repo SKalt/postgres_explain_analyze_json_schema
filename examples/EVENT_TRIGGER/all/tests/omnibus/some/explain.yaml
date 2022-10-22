@@ -1,0 +1,210 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 152.96
+    Total Cost: 153.06
+    Plan Rows: 40
+    Plan Width: 321
+    Actual Startup Time: 1.608
+    Actual Total Time: 1.610
+    Actual Rows: 1
+    Actual Loops: 1
+    Output: 
+      - "trigger_.evtname"
+      - "trigger_.evtevent"
+      - "(pg_get_userbyid(trigger_.evtowner))"
+      - "fn.proname"
+      - "trigger_.evtenabled"
+      - "trigger_.evttags"
+      - "(obj_description(trigger_.oid, 'pg_event_trigger'::name))"
+    Sort Key: 
+      - "trigger_.evtname"
+      - "trigger_.evtevent"
+    Sort Method: "quicksort"
+    Sort Space Used: 25
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 160
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Right"
+        Startup Cost: 1.90
+        Total Cost: 151.89
+        Plan Rows: 40
+        Plan Width: 321
+        Actual Startup Time: 1.587
+        Actual Total Time: 1.594
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "trigger_.evtname"
+          - "trigger_.evtevent"
+          - "pg_get_userbyid(trigger_.evtowner)"
+          - "fn.proname"
+          - "trigger_.evtenabled"
+          - "trigger_.evttags"
+          - "obj_description(trigger_.oid, 'pg_event_trigger'::name)"
+        Inner Unique: false
+        Hash Cond: "(fn.oid = trigger_.evtfoid)"
+        Shared Hit Blocks: 160
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_proc"
+            Schema: "pg_catalog"
+            Alias: "fn"
+            Startup Cost: 0.00
+            Total Cost: 127.36
+            Plan Rows: 3236
+            Plan Width: 68
+            Actual Startup Time: 0.002
+            Actual Total Time: 0.351
+            Actual Rows: 3307
+            Actual Loops: 1
+            Output: 
+              - "fn.oid"
+              - "fn.proname"
+              - "fn.pronamespace"
+              - "fn.proowner"
+              - "fn.prolang"
+              - "fn.procost"
+              - "fn.prorows"
+              - "fn.provariadic"
+              - "fn.prosupport"
+              - "fn.prokind"
+              - "fn.prosecdef"
+              - "fn.proleakproof"
+              - "fn.proisstrict"
+              - "fn.proretset"
+              - "fn.provolatile"
+              - "fn.proparallel"
+              - "fn.pronargs"
+              - "fn.pronargdefaults"
+              - "fn.prorettype"
+              - "fn.proargtypes"
+              - "fn.proallargtypes"
+              - "fn.proargmodes"
+              - "fn.proargnames"
+              - "fn.proargdefaults"
+              - "fn.protrftypes"
+              - "fn.prosrc"
+              - "fn.probin"
+              - "fn.prosqlbody"
+              - "fn.proconfig"
+              - "fn.proacl"
+            Shared Hit Blocks: 95
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 1.40
+            Total Cost: 1.40
+            Plan Rows: 40
+            Plan Width: 173
+            Actual Startup Time: 0.016
+            Actual Total Time: 0.017
+            Actual Rows: 1
+            Actual Loops: 1
+            Output: 
+              - "trigger_.evtname"
+              - "trigger_.evtevent"
+              - "trigger_.evtowner"
+              - "trigger_.evtenabled"
+              - "trigger_.evttags"
+              - "trigger_.oid"
+              - "trigger_.evtfoid"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 9
+            Shared Hit Blocks: 1
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Seq Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Relation Name: "pg_event_trigger"
+                Schema: "pg_catalog"
+                Alias: "trigger_"
+                Startup Cost: 0.00
+                Total Cost: 1.40
+                Plan Rows: 40
+                Plan Width: 173
+                Actual Startup Time: 0.005
+                Actual Total Time: 0.006
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "trigger_.evtname"
+                  - "trigger_.evtevent"
+                  - "trigger_.evtowner"
+                  - "trigger_.evtenabled"
+                  - "trigger_.evttags"
+                  - "trigger_.oid"
+                  - "trigger_.evtfoid"
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 24
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.402
+  Triggers: 
+  Execution Time: 1.681

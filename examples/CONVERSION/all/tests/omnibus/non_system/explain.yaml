@@ -1,0 +1,376 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 104.68
+    Total Cost: 104.76
+    Plan Rows: 32
+    Plan Width: 393
+    Actual Startup Time: 0.093
+    Actual Total Time: 0.095
+    Actual Rows: 1
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "conversion_.conname"
+      - "(pg_get_userbyid(conversion_.conowner))"
+      - "conversion_.conforencoding"
+      - "conversion_.contoencoding"
+      - "fn_ns.nspname"
+      - "fn.proname"
+      - "(pg_get_userbyid(fn.proowner))"
+      - "conversion_.condefault"
+    Sort Key: 
+      - "ns.nspname"
+      - "conversion_.conname"
+    Sort Method: "quicksort"
+    Sort Space Used: 25
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 8
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 1.49
+        Total Cost: 103.88
+        Plan Rows: 32
+        Plan Width: 393
+        Actual Startup Time: 0.083
+        Actual Total Time: 0.085
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "ns.nspname"
+          - "conversion_.conname"
+          - "pg_get_userbyid(conversion_.conowner)"
+          - "conversion_.conforencoding"
+          - "conversion_.contoencoding"
+          - "fn_ns.nspname"
+          - "fn.proname"
+          - "pg_get_userbyid(fn.proowner)"
+          - "conversion_.condefault"
+        Inner Unique: true
+        Shared Hit Blocks: 8
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 1.35
+            Total Cost: 102.56
+            Plan Rows: 32
+            Plan Width: 213
+            Actual Startup Time: 0.072
+            Actual Total Time: 0.073
+            Actual Rows: 1
+            Actual Loops: 1
+            Output: 
+              - "conversion_.conname"
+              - "conversion_.conowner"
+              - "conversion_.conforencoding"
+              - "conversion_.contoencoding"
+              - "conversion_.condefault"
+              - "ns.nspname"
+              - "fn.proname"
+              - "fn.proowner"
+              - "fn.pronamespace"
+            Inner Unique: true
+            Shared Hit Blocks: 6
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 1.07
+                Total Cost: 5.04
+                Plan Rows: 32
+                Plan Width: 145
+                Actual Startup Time: 0.058
+                Actual Total Time: 0.059
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "conversion_.conname"
+                  - "conversion_.conowner"
+                  - "conversion_.conforencoding"
+                  - "conversion_.contoencoding"
+                  - "conversion_.condefault"
+                  - "conversion_.conproc"
+                  - "ns.nspname"
+                Inner Unique: true
+                Hash Cond: "(conversion_.connamespace = ns.oid)"
+                Shared Hit Blocks: 3
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_conversion"
+                    Schema: "pg_catalog"
+                    Alias: "conversion_"
+                    Startup Cost: 0.00
+                    Total Cost: 3.28
+                    Plan Rows: 128
+                    Plan Width: 85
+                    Actual Startup Time: 0.003
+                    Actual Total Time: 0.013
+                    Actual Rows: 129
+                    Actual Loops: 1
+                    Output: 
+                      - "conversion_.oid"
+                      - "conversion_.conname"
+                      - "conversion_.connamespace"
+                      - "conversion_.conowner"
+                      - "conversion_.conforencoding"
+                      - "conversion_.contoencoding"
+                      - "conversion_.conproc"
+                      - "conversion_.condefault"
+                    Shared Hit Blocks: 2
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 1.05
+                    Total Cost: 1.05
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.021
+                    Actual Total Time: 0.021
+                    Actual Rows: 18
+                    Actual Loops: 1
+                    Output: 
+                      - "ns.nspname"
+                      - "ns.oid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 10
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "ns"
+                        Startup Cost: 0.00
+                        Total Cost: 1.05
+                        Plan Rows: 1
+                        Plan Width: 68
+                        Actual Startup Time: 0.005
+                        Actual Total Time: 0.010
+                        Actual Rows: 18
+                        Actual Loops: 1
+                        Output: 
+                          - "ns.nspname"
+                          - "ns.oid"
+                        Filter: "(ns.nspname <> ALL ('{pg_catalog,information_schema,pg_toast}'::name[]))"
+                        Rows Removed by Filter: 3
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Index Scan"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_proc_oid_index"
+                Relation Name: "pg_proc"
+                Schema: "pg_catalog"
+                Alias: "fn"
+                Startup Cost: 0.28
+                Total Cost: 3.05
+                Plan Rows: 1
+                Plan Width: 76
+                Actual Startup Time: 0.012
+                Actual Total Time: 0.012
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "fn.oid"
+                  - "fn.proname"
+                  - "fn.pronamespace"
+                  - "fn.proowner"
+                  - "fn.prolang"
+                  - "fn.procost"
+                  - "fn.prorows"
+                  - "fn.provariadic"
+                  - "fn.prosupport"
+                  - "fn.prokind"
+                  - "fn.prosecdef"
+                  - "fn.proleakproof"
+                  - "fn.proisstrict"
+                  - "fn.proretset"
+                  - "fn.provolatile"
+                  - "fn.proparallel"
+                  - "fn.pronargs"
+                  - "fn.pronargdefaults"
+                  - "fn.prorettype"
+                  - "fn.proargtypes"
+                  - "fn.proallargtypes"
+                  - "fn.proargmodes"
+                  - "fn.proargnames"
+                  - "fn.proargdefaults"
+                  - "fn.protrftypes"
+                  - "fn.prosrc"
+                  - "fn.probin"
+                  - "fn.prosqlbody"
+                  - "fn.proconfig"
+                  - "fn.proacl"
+                Index Cond: "(fn.oid = (conversion_.conproc)::oid)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 3
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+          - Node Type: "Memoize"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 0.14
+            Total Cost: 0.16
+            Plan Rows: 1
+            Plan Width: 68
+            Actual Startup Time: 0.009
+            Actual Total Time: 0.009
+            Actual Rows: 1
+            Actual Loops: 1
+            Output: 
+              - "fn_ns.nspname"
+              - "fn_ns.oid"
+            Cache Key: "fn.pronamespace"
+            Cache Hits: 0
+            Cache Misses: 1
+            Cache Evictions: 0
+            Cache Overflows: 0
+            Peak Memory Usage: 1
+            Shared Hit Blocks: 2
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Index Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_namespace_oid_index"
+                Relation Name: "pg_namespace"
+                Schema: "pg_catalog"
+                Alias: "fn_ns"
+                Startup Cost: 0.13
+                Total Cost: 0.15
+                Plan Rows: 1
+                Plan Width: 68
+                Actual Startup Time: 0.007
+                Actual Total Time: 0.007
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "fn_ns.nspname"
+                  - "fn_ns.oid"
+                Index Cond: "(fn_ns.oid = fn.pronamespace)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 2
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 44
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.497
+  Triggers: 
+  Execution Time: 0.185

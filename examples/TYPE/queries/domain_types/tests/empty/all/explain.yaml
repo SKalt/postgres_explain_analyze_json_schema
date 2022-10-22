@@ -1,0 +1,2842 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 433.10
+    Total Cost: 433.11
+    Plan Rows: 5
+    Plan Width: 1831
+    Actual Startup Time: 1.169
+    Actual Total Time: 1.175
+    Actual Rows: 5
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "type_.typname"
+      - "type_.typlen"
+      - "type_owner.rolname"
+      - "type_.typdefault"
+      - "type_.typacl"
+      - "type_.typcategory"
+      - "type_.typbyval"
+      - "type_.typnotnull"
+      - "type_.typalign"
+      - "type_.typstorage"
+      - "type_.typispreferred"
+      - "type_.typisdefined"
+      - "type_.typdelim"
+      - "subscripting_fn_schema.nspname"
+      - "subscripting_fn.proname"
+      - "element_type_schema.nspname"
+      - "element_type.typname"
+      - "type_.typndims"
+      - "collation_schema.nspname"
+      - "collation_.collname"
+      - "array_type_schema.nspname"
+      - "array_type.typname"
+      - "text_conversion_input_fn_schema.nspname"
+      - "text_conversion_input_fn.proname"
+      - "text_conversion_output_fn_schema.nspname"
+      - "text_conversion_output_fn.proname"
+      - "binary_conversion_input_fn_schema.nspname"
+      - "binary_conversion_input_fn.proname"
+      - "binary_conversion_output_fn_schema.nspname"
+      - "binary_conversion_output_fn.proname"
+      - "type_modifier_input_fn_schema.nspname"
+      - "type_modifier_input_fn.proname"
+      - "type_modifier_output_fn_schema.nspname"
+      - "type_modifier_output_fn.proname"
+      - "custom_analyze_fn_schema.nspname"
+      - "custom_analyze_fn.proname"
+      - "base_type.typname"
+      - "(pg_get_userbyid(base_type.typowner))"
+      - "type_.typtypmod"
+      - "(format_type(type_.oid, type_.typtypmod))"
+    Sort Key: 
+      - "ns.nspname"
+      - "type_.typname"
+    Sort Method: "quicksort"
+    Sort Space Used: 35
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 222
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Left"
+        Startup Cost: 320.53
+        Total Cost: 433.04
+        Plan Rows: 5
+        Plan Width: 1831
+        Actual Startup Time: 1.063
+        Actual Total Time: 1.153
+        Actual Rows: 5
+        Actual Loops: 1
+        Output: 
+          - "ns.nspname"
+          - "type_.typname"
+          - "type_.typlen"
+          - "type_owner.rolname"
+          - "type_.typdefault"
+          - "type_.typacl"
+          - "type_.typcategory"
+          - "type_.typbyval"
+          - "type_.typnotnull"
+          - "type_.typalign"
+          - "type_.typstorage"
+          - "type_.typispreferred"
+          - "type_.typisdefined"
+          - "type_.typdelim"
+          - "subscripting_fn_schema.nspname"
+          - "subscripting_fn.proname"
+          - "element_type_schema.nspname"
+          - "element_type.typname"
+          - "type_.typndims"
+          - "collation_schema.nspname"
+          - "collation_.collname"
+          - "array_type_schema.nspname"
+          - "array_type.typname"
+          - "text_conversion_input_fn_schema.nspname"
+          - "text_conversion_input_fn.proname"
+          - "text_conversion_output_fn_schema.nspname"
+          - "text_conversion_output_fn.proname"
+          - "binary_conversion_input_fn_schema.nspname"
+          - "binary_conversion_input_fn.proname"
+          - "binary_conversion_output_fn_schema.nspname"
+          - "binary_conversion_output_fn.proname"
+          - "type_modifier_input_fn_schema.nspname"
+          - "type_modifier_input_fn.proname"
+          - "type_modifier_output_fn_schema.nspname"
+          - "type_modifier_output_fn.proname"
+          - "custom_analyze_fn_schema.nspname"
+          - "custom_analyze_fn.proname"
+          - "base_type.typname"
+          - "pg_get_userbyid(base_type.typowner)"
+          - "type_.typtypmod"
+          - "format_type(type_.oid, type_.typtypmod)"
+        Inner Unique: false
+        Hash Cond: "(type_.typelem = element_type.oid)"
+        Shared Hit Blocks: 222
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Left"
+            Startup Cost: 288.67
+            Total Cost: 401.09
+            Plan Rows: 5
+            Plan Width: 1619
+            Actual Startup Time: 0.672
+            Actual Total Time: 0.754
+            Actual Rows: 5
+            Actual Loops: 1
+            Output: 
+              - "type_.typname"
+              - "type_.typlen"
+              - "type_.typdefault"
+              - "type_.typacl"
+              - "type_.typcategory"
+              - "type_.typbyval"
+              - "type_.typnotnull"
+              - "type_.typalign"
+              - "type_.typstorage"
+              - "type_.typispreferred"
+              - "type_.typisdefined"
+              - "type_.typdelim"
+              - "type_.typndims"
+              - "type_.typtypmod"
+              - "type_.oid"
+              - "type_.typelem"
+              - "text_conversion_input_fn.proname"
+              - "text_conversion_input_fn_schema.nspname"
+              - "subscripting_fn.proname"
+              - "subscripting_fn_schema.nspname"
+              - "ns.nspname"
+              - "type_owner.rolname"
+              - "base_type.typname"
+              - "base_type.typowner"
+              - "type_modifier_input_fn.proname"
+              - "type_modifier_input_fn_schema.nspname"
+              - "binary_conversion_output_fn.proname"
+              - "binary_conversion_output_fn_schema.nspname"
+              - "binary_conversion_input_fn.proname"
+              - "binary_conversion_input_fn_schema.nspname"
+              - "text_conversion_output_fn.proname"
+              - "text_conversion_output_fn_schema.nspname"
+              - "array_type.typname"
+              - "array_type_schema.nspname"
+              - "collation_.collname"
+              - "collation_schema.nspname"
+              - "custom_analyze_fn.proname"
+              - "custom_analyze_fn_schema.nspname"
+              - "type_modifier_output_fn.proname"
+              - "type_modifier_output_fn_schema.nspname"
+            Inner Unique: false
+            Shared Hit Blocks: 207
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Left"
+                Startup Cost: 288.26
+                Total Cost: 358.75
+                Plan Rows: 5
+                Plan Width: 1495
+                Actual Startup Time: 0.661
+                Actual Total Time: 0.737
+                Actual Rows: 5
+                Actual Loops: 1
+                Output: 
+                  - "type_.typname"
+                  - "type_.typlen"
+                  - "type_.typdefault"
+                  - "type_.typacl"
+                  - "type_.typcategory"
+                  - "type_.typbyval"
+                  - "type_.typnotnull"
+                  - "type_.typalign"
+                  - "type_.typstorage"
+                  - "type_.typispreferred"
+                  - "type_.typisdefined"
+                  - "type_.typdelim"
+                  - "type_.typndims"
+                  - "type_.typtypmod"
+                  - "type_.oid"
+                  - "type_.typmodout"
+                  - "type_.typelem"
+                  - "text_conversion_input_fn.proname"
+                  - "text_conversion_input_fn_schema.nspname"
+                  - "subscripting_fn.proname"
+                  - "subscripting_fn_schema.nspname"
+                  - "ns.nspname"
+                  - "type_owner.rolname"
+                  - "base_type.typname"
+                  - "base_type.typowner"
+                  - "type_modifier_input_fn.proname"
+                  - "type_modifier_input_fn_schema.nspname"
+                  - "binary_conversion_output_fn.proname"
+                  - "binary_conversion_output_fn_schema.nspname"
+                  - "binary_conversion_input_fn.proname"
+                  - "binary_conversion_input_fn_schema.nspname"
+                  - "text_conversion_output_fn.proname"
+                  - "text_conversion_output_fn_schema.nspname"
+                  - "array_type.typname"
+                  - "array_type_schema.nspname"
+                  - "collation_.collname"
+                  - "collation_schema.nspname"
+                  - "custom_analyze_fn.proname"
+                  - "custom_analyze_fn_schema.nspname"
+                Inner Unique: false
+                Shared Hit Blocks: 197
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Hash Join"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Right"
+                    Startup Cost: 287.85
+                    Total Cost: 316.42
+                    Plan Rows: 5
+                    Plan Width: 1371
+                    Actual Startup Time: 0.650
+                    Actual Total Time: 0.719
+                    Actual Rows: 5
+                    Actual Loops: 1
+                    Output: 
+                      - "type_.typname"
+                      - "type_.typlen"
+                      - "type_.typdefault"
+                      - "type_.typacl"
+                      - "type_.typcategory"
+                      - "type_.typbyval"
+                      - "type_.typnotnull"
+                      - "type_.typalign"
+                      - "type_.typstorage"
+                      - "type_.typispreferred"
+                      - "type_.typisdefined"
+                      - "type_.typdelim"
+                      - "type_.typndims"
+                      - "type_.typtypmod"
+                      - "type_.oid"
+                      - "type_.typmodout"
+                      - "type_.typanalyze"
+                      - "type_.typelem"
+                      - "text_conversion_input_fn.proname"
+                      - "text_conversion_input_fn_schema.nspname"
+                      - "subscripting_fn.proname"
+                      - "subscripting_fn_schema.nspname"
+                      - "ns.nspname"
+                      - "type_owner.rolname"
+                      - "base_type.typname"
+                      - "base_type.typowner"
+                      - "type_modifier_input_fn.proname"
+                      - "type_modifier_input_fn_schema.nspname"
+                      - "binary_conversion_output_fn.proname"
+                      - "binary_conversion_output_fn_schema.nspname"
+                      - "binary_conversion_input_fn.proname"
+                      - "binary_conversion_input_fn_schema.nspname"
+                      - "text_conversion_output_fn.proname"
+                      - "text_conversion_output_fn_schema.nspname"
+                      - "array_type.typname"
+                      - "array_type_schema.nspname"
+                      - "collation_.collname"
+                      - "collation_schema.nspname"
+                    Inner Unique: false
+                    Hash Cond: "(array_type.oid = type_.typarray)"
+                    Shared Hit Blocks: 187
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Hash Join"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Join Type: "Inner"
+                        Startup Cost: 1.09
+                        Total Cost: 24.35
+                        Plan Rows: 601
+                        Plan Width: 132
+                        Actual Startup Time: 0.025
+                        Actual Total Time: 0.224
+                        Actual Rows: 601
+                        Actual Loops: 1
+                        Output: 
+                          - "array_type.typname"
+                          - "array_type.oid"
+                          - "array_type_schema.nspname"
+                        Inner Unique: true
+                        Hash Cond: "(array_type.typnamespace = array_type_schema.oid)"
+                        Shared Hit Blocks: 15
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Seq Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Relation Name: "pg_type"
+                            Schema: "pg_catalog"
+                            Alias: "array_type"
+                            Startup Cost: 0.00
+                            Total Cost: 20.01
+                            Plan Rows: 601
+                            Plan Width: 72
+                            Actual Startup Time: 0.002
+                            Actual Total Time: 0.044
+                            Actual Rows: 601
+                            Actual Loops: 1
+                            Output: 
+                              - "array_type.oid"
+                              - "array_type.typname"
+                              - "array_type.typnamespace"
+                              - "array_type.typowner"
+                              - "array_type.typlen"
+                              - "array_type.typbyval"
+                              - "array_type.typtype"
+                              - "array_type.typcategory"
+                              - "array_type.typispreferred"
+                              - "array_type.typisdefined"
+                              - "array_type.typdelim"
+                              - "array_type.typrelid"
+                              - "array_type.typsubscript"
+                              - "array_type.typelem"
+                              - "array_type.typarray"
+                              - "array_type.typinput"
+                              - "array_type.typoutput"
+                              - "array_type.typreceive"
+                              - "array_type.typsend"
+                              - "array_type.typmodin"
+                              - "array_type.typmodout"
+                              - "array_type.typanalyze"
+                              - "array_type.typalign"
+                              - "array_type.typstorage"
+                              - "array_type.typnotnull"
+                              - "array_type.typbasetype"
+                              - "array_type.typtypmod"
+                              - "array_type.typndims"
+                              - "array_type.typcollation"
+                              - "array_type.typdefaultbin"
+                              - "array_type.typdefault"
+                              - "array_type.typacl"
+                            Shared Hit Blocks: 14
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                          - Node Type: "Hash"
+                            Parent Relationship: "Inner"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Startup Cost: 1.04
+                            Total Cost: 1.04
+                            Plan Rows: 4
+                            Plan Width: 68
+                            Actual Startup Time: 0.007
+                            Actual Total Time: 0.007
+                            Actual Rows: 4
+                            Actual Loops: 1
+                            Output: 
+                              - "array_type_schema.nspname"
+                              - "array_type_schema.oid"
+                            Hash Buckets: 1024
+                            Original Hash Buckets: 1024
+                            Hash Batches: 1
+                            Original Hash Batches: 1
+                            Peak Memory Usage: 9
+                            Shared Hit Blocks: 1
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Seq Scan"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Relation Name: "pg_namespace"
+                                Schema: "pg_catalog"
+                                Alias: "array_type_schema"
+                                Startup Cost: 0.00
+                                Total Cost: 1.04
+                                Plan Rows: 4
+                                Plan Width: 68
+                                Actual Startup Time: 0.001
+                                Actual Total Time: 0.002
+                                Actual Rows: 4
+                                Actual Loops: 1
+                                Output: 
+                                  - "array_type_schema.nspname"
+                                  - "array_type_schema.oid"
+                                Shared Hit Blocks: 1
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                      - Node Type: "Hash"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Startup Cost: 286.70
+                        Total Cost: 286.70
+                        Plan Rows: 5
+                        Plan Width: 1247
+                        Actual Startup Time: 0.419
+                        Actual Total Time: 0.423
+                        Actual Rows: 5
+                        Actual Loops: 1
+                        Output: 
+                          - "type_.typname"
+                          - "type_.typlen"
+                          - "type_.typdefault"
+                          - "type_.typacl"
+                          - "type_.typcategory"
+                          - "type_.typbyval"
+                          - "type_.typnotnull"
+                          - "type_.typalign"
+                          - "type_.typstorage"
+                          - "type_.typispreferred"
+                          - "type_.typisdefined"
+                          - "type_.typdelim"
+                          - "type_.typndims"
+                          - "type_.typtypmod"
+                          - "type_.oid"
+                          - "type_.typmodout"
+                          - "type_.typanalyze"
+                          - "type_.typarray"
+                          - "type_.typelem"
+                          - "text_conversion_input_fn.proname"
+                          - "text_conversion_input_fn_schema.nspname"
+                          - "subscripting_fn.proname"
+                          - "subscripting_fn_schema.nspname"
+                          - "ns.nspname"
+                          - "type_owner.rolname"
+                          - "base_type.typname"
+                          - "base_type.typowner"
+                          - "type_modifier_input_fn.proname"
+                          - "type_modifier_input_fn_schema.nspname"
+                          - "binary_conversion_output_fn.proname"
+                          - "binary_conversion_output_fn_schema.nspname"
+                          - "binary_conversion_input_fn.proname"
+                          - "binary_conversion_input_fn_schema.nspname"
+                          - "text_conversion_output_fn.proname"
+                          - "text_conversion_output_fn_schema.nspname"
+                          - "collation_.collname"
+                          - "collation_schema.nspname"
+                        Hash Buckets: 1024
+                        Original Hash Buckets: 1024
+                        Hash Batches: 1
+                        Original Hash Batches: 1
+                        Peak Memory Usage: 13
+                        Shared Hit Blocks: 172
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Merge Join"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Join Type: "Right"
+                            Startup Cost: 286.52
+                            Total Cost: 286.70
+                            Plan Rows: 5
+                            Plan Width: 1247
+                            Actual Startup Time: 0.400
+                            Actual Total Time: 0.411
+                            Actual Rows: 5
+                            Actual Loops: 1
+                            Output: 
+                              - "type_.typname"
+                              - "type_.typlen"
+                              - "type_.typdefault"
+                              - "type_.typacl"
+                              - "type_.typcategory"
+                              - "type_.typbyval"
+                              - "type_.typnotnull"
+                              - "type_.typalign"
+                              - "type_.typstorage"
+                              - "type_.typispreferred"
+                              - "type_.typisdefined"
+                              - "type_.typdelim"
+                              - "type_.typndims"
+                              - "type_.typtypmod"
+                              - "type_.oid"
+                              - "type_.typmodout"
+                              - "type_.typanalyze"
+                              - "type_.typarray"
+                              - "type_.typelem"
+                              - "text_conversion_input_fn.proname"
+                              - "text_conversion_input_fn_schema.nspname"
+                              - "subscripting_fn.proname"
+                              - "subscripting_fn_schema.nspname"
+                              - "ns.nspname"
+                              - "type_owner.rolname"
+                              - "base_type.typname"
+                              - "base_type.typowner"
+                              - "type_modifier_input_fn.proname"
+                              - "type_modifier_input_fn_schema.nspname"
+                              - "binary_conversion_output_fn.proname"
+                              - "binary_conversion_output_fn_schema.nspname"
+                              - "binary_conversion_input_fn.proname"
+                              - "binary_conversion_input_fn_schema.nspname"
+                              - "text_conversion_output_fn.proname"
+                              - "text_conversion_output_fn_schema.nspname"
+                              - "collation_.collname"
+                              - "collation_schema.nspname"
+                            Inner Unique: false
+                            Merge Cond: "(collation_.oid = type_.typcollation)"
+                            Shared Hit Blocks: 172
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Nested Loop"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Join Type: "Inner"
+                                Startup Cost: 0.42
+                                Total Cost: 78.30
+                                Plan Rows: 787
+                                Plan Width: 132
+                                Actual Startup Time: 0.025
+                                Actual Total Time: 0.029
+                                Actual Rows: 3
+                                Actual Loops: 1
+                                Output: 
+                                  - "collation_.collname"
+                                  - "collation_.oid"
+                                  - "collation_schema.nspname"
+                                Inner Unique: true
+                                Shared Hit Blocks: 5
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Index Scan"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Scan Direction: "Forward"
+                                    Index Name: "pg_collation_oid_index"
+                                    Relation Name: "pg_collation"
+                                    Schema: "pg_catalog"
+                                    Alias: "collation_"
+                                    Startup Cost: 0.28
+                                    Total Cost: 60.08
+                                    Plan Rows: 787
+                                    Plan Width: 72
+                                    Actual Startup Time: 0.012
+                                    Actual Total Time: 0.013
+                                    Actual Rows: 3
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "collation_.oid"
+                                      - "collation_.collname"
+                                      - "collation_.collnamespace"
+                                      - "collation_.collowner"
+                                      - "collation_.collprovider"
+                                      - "collation_.collisdeterministic"
+                                      - "collation_.collencoding"
+                                      - "collation_.collcollate"
+                                      - "collation_.collctype"
+                                      - "collation_.collversion"
+                                    Shared Hit Blocks: 3
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                  - Node Type: "Memoize"
+                                    Parent Relationship: "Inner"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Startup Cost: 0.14
+                                    Total Cost: 0.17
+                                    Plan Rows: 1
+                                    Plan Width: 68
+                                    Actual Startup Time: 0.004
+                                    Actual Total Time: 0.004
+                                    Actual Rows: 1
+                                    Actual Loops: 3
+                                    Output: 
+                                      - "collation_schema.nspname"
+                                      - "collation_schema.oid"
+                                    Cache Key: "collation_.collnamespace"
+                                    Cache Hits: 2
+                                    Cache Misses: 1
+                                    Cache Evictions: 0
+                                    Cache Overflows: 0
+                                    Peak Memory Usage: 1
+                                    Shared Hit Blocks: 2
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Index Scan"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Scan Direction: "Forward"
+                                        Index Name: "pg_namespace_oid_index"
+                                        Relation Name: "pg_namespace"
+                                        Schema: "pg_catalog"
+                                        Alias: "collation_schema"
+                                        Startup Cost: 0.13
+                                        Total Cost: 0.16
+                                        Plan Rows: 1
+                                        Plan Width: 68
+                                        Actual Startup Time: 0.008
+                                        Actual Total Time: 0.008
+                                        Actual Rows: 1
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "collation_schema.nspname"
+                                          - "collation_schema.oid"
+                                        Index Cond: "(collation_schema.oid = collation_.collnamespace)"
+                                        Rows Removed by Index Recheck: 0
+                                        Shared Hit Blocks: 2
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                              - Node Type: "Sort"
+                                Parent Relationship: "Inner"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Startup Cost: 286.11
+                                Total Cost: 286.12
+                                Plan Rows: 5
+                                Plan Width: 1123
+                                Actual Startup Time: 0.371
+                                Actual Total Time: 0.375
+                                Actual Rows: 5
+                                Actual Loops: 1
+                                Output: 
+                                  - "type_.typname"
+                                  - "type_.typlen"
+                                  - "type_.typdefault"
+                                  - "type_.typacl"
+                                  - "type_.typcategory"
+                                  - "type_.typbyval"
+                                  - "type_.typnotnull"
+                                  - "type_.typalign"
+                                  - "type_.typstorage"
+                                  - "type_.typispreferred"
+                                  - "type_.typisdefined"
+                                  - "type_.typdelim"
+                                  - "type_.typndims"
+                                  - "type_.typtypmod"
+                                  - "type_.oid"
+                                  - "type_.typmodout"
+                                  - "type_.typanalyze"
+                                  - "type_.typcollation"
+                                  - "type_.typarray"
+                                  - "type_.typelem"
+                                  - "text_conversion_input_fn.proname"
+                                  - "text_conversion_input_fn_schema.nspname"
+                                  - "subscripting_fn.proname"
+                                  - "subscripting_fn_schema.nspname"
+                                  - "ns.nspname"
+                                  - "type_owner.rolname"
+                                  - "base_type.typname"
+                                  - "base_type.typowner"
+                                  - "type_modifier_input_fn.proname"
+                                  - "type_modifier_input_fn_schema.nspname"
+                                  - "binary_conversion_output_fn.proname"
+                                  - "binary_conversion_output_fn_schema.nspname"
+                                  - "binary_conversion_input_fn.proname"
+                                  - "binary_conversion_input_fn_schema.nspname"
+                                  - "text_conversion_output_fn.proname"
+                                  - "text_conversion_output_fn_schema.nspname"
+                                Sort Key: 
+                                  - "type_.typcollation"
+                                Sort Method: "quicksort"
+                                Sort Space Used: 30
+                                Sort Space Type: "Memory"
+                                Shared Hit Blocks: 167
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Nested Loop"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Join Type: "Left"
+                                    Startup Cost: 24.33
+                                    Total Cost: 286.05
+                                    Plan Rows: 5
+                                    Plan Width: 1123
+                                    Actual Startup Time: 0.307
+                                    Actual Total Time: 0.358
+                                    Actual Rows: 5
+                                    Actual Loops: 1
+                                    Output: 
+                                      - "type_.typname"
+                                      - "type_.typlen"
+                                      - "type_.typdefault"
+                                      - "type_.typacl"
+                                      - "type_.typcategory"
+                                      - "type_.typbyval"
+                                      - "type_.typnotnull"
+                                      - "type_.typalign"
+                                      - "type_.typstorage"
+                                      - "type_.typispreferred"
+                                      - "type_.typisdefined"
+                                      - "type_.typdelim"
+                                      - "type_.typndims"
+                                      - "type_.typtypmod"
+                                      - "type_.oid"
+                                      - "type_.typmodout"
+                                      - "type_.typanalyze"
+                                      - "type_.typcollation"
+                                      - "type_.typarray"
+                                      - "type_.typelem"
+                                      - "text_conversion_input_fn.proname"
+                                      - "text_conversion_input_fn_schema.nspname"
+                                      - "subscripting_fn.proname"
+                                      - "subscripting_fn_schema.nspname"
+                                      - "ns.nspname"
+                                      - "type_owner.rolname"
+                                      - "base_type.typname"
+                                      - "base_type.typowner"
+                                      - "type_modifier_input_fn.proname"
+                                      - "type_modifier_input_fn_schema.nspname"
+                                      - "binary_conversion_output_fn.proname"
+                                      - "binary_conversion_output_fn_schema.nspname"
+                                      - "binary_conversion_input_fn.proname"
+                                      - "binary_conversion_input_fn_schema.nspname"
+                                      - "text_conversion_output_fn.proname"
+                                      - "text_conversion_output_fn_schema.nspname"
+                                    Inner Unique: false
+                                    Shared Hit Blocks: 167
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                                    Plans: 
+                                      - Node Type: "Nested Loop"
+                                        Parent Relationship: "Outer"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Join Type: "Left"
+                                        Startup Cost: 23.92
+                                        Total Cost: 243.71
+                                        Plan Rows: 5
+                                        Plan Width: 999
+                                        Actual Startup Time: 0.290
+                                        Actual Total Time: 0.326
+                                        Actual Rows: 5
+                                        Actual Loops: 1
+                                        Output: 
+                                          - "type_.typname"
+                                          - "type_.typlen"
+                                          - "type_.typdefault"
+                                          - "type_.typacl"
+                                          - "type_.typcategory"
+                                          - "type_.typbyval"
+                                          - "type_.typnotnull"
+                                          - "type_.typalign"
+                                          - "type_.typstorage"
+                                          - "type_.typispreferred"
+                                          - "type_.typisdefined"
+                                          - "type_.typdelim"
+                                          - "type_.typndims"
+                                          - "type_.typtypmod"
+                                          - "type_.oid"
+                                          - "type_.typoutput"
+                                          - "type_.typmodout"
+                                          - "type_.typanalyze"
+                                          - "type_.typcollation"
+                                          - "type_.typarray"
+                                          - "type_.typelem"
+                                          - "text_conversion_input_fn.proname"
+                                          - "text_conversion_input_fn_schema.nspname"
+                                          - "subscripting_fn.proname"
+                                          - "subscripting_fn_schema.nspname"
+                                          - "ns.nspname"
+                                          - "type_owner.rolname"
+                                          - "base_type.typname"
+                                          - "base_type.typowner"
+                                          - "type_modifier_input_fn.proname"
+                                          - "type_modifier_input_fn_schema.nspname"
+                                          - "binary_conversion_output_fn.proname"
+                                          - "binary_conversion_output_fn_schema.nspname"
+                                          - "binary_conversion_input_fn.proname"
+                                          - "binary_conversion_input_fn_schema.nspname"
+                                        Inner Unique: false
+                                        Shared Hit Blocks: 142
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Nested Loop"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Join Type: "Left"
+                                            Startup Cost: 23.51
+                                            Total Cost: 201.38
+                                            Plan Rows: 5
+                                            Plan Width: 875
+                                            Actual Startup Time: 0.273
+                                            Actual Total Time: 0.296
+                                            Actual Rows: 5
+                                            Actual Loops: 1
+                                            Output: 
+                                              - "type_.typname"
+                                              - "type_.typlen"
+                                              - "type_.typdefault"
+                                              - "type_.typacl"
+                                              - "type_.typcategory"
+                                              - "type_.typbyval"
+                                              - "type_.typnotnull"
+                                              - "type_.typalign"
+                                              - "type_.typstorage"
+                                              - "type_.typispreferred"
+                                              - "type_.typisdefined"
+                                              - "type_.typdelim"
+                                              - "type_.typndims"
+                                              - "type_.typtypmod"
+                                              - "type_.oid"
+                                              - "type_.typoutput"
+                                              - "type_.typreceive"
+                                              - "type_.typmodout"
+                                              - "type_.typanalyze"
+                                              - "type_.typcollation"
+                                              - "type_.typarray"
+                                              - "type_.typelem"
+                                              - "text_conversion_input_fn.proname"
+                                              - "text_conversion_input_fn_schema.nspname"
+                                              - "subscripting_fn.proname"
+                                              - "subscripting_fn_schema.nspname"
+                                              - "ns.nspname"
+                                              - "type_owner.rolname"
+                                              - "base_type.typname"
+                                              - "base_type.typowner"
+                                              - "type_modifier_input_fn.proname"
+                                              - "type_modifier_input_fn_schema.nspname"
+                                              - "binary_conversion_output_fn.proname"
+                                              - "binary_conversion_output_fn_schema.nspname"
+                                            Inner Unique: false
+                                            Shared Hit Blocks: 117
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                            Plans: 
+                                              - Node Type: "Nested Loop"
+                                                Parent Relationship: "Outer"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Join Type: "Left"
+                                                Startup Cost: 23.10
+                                                Total Cost: 159.04
+                                                Plan Rows: 5
+                                                Plan Width: 751
+                                                Actual Startup Time: 0.255
+                                                Actual Total Time: 0.266
+                                                Actual Rows: 5
+                                                Actual Loops: 1
+                                                Output: 
+                                                  - "type_.typname"
+                                                  - "type_.typlen"
+                                                  - "type_.typdefault"
+                                                  - "type_.typacl"
+                                                  - "type_.typcategory"
+                                                  - "type_.typbyval"
+                                                  - "type_.typnotnull"
+                                                  - "type_.typalign"
+                                                  - "type_.typstorage"
+                                                  - "type_.typispreferred"
+                                                  - "type_.typisdefined"
+                                                  - "type_.typdelim"
+                                                  - "type_.typndims"
+                                                  - "type_.typtypmod"
+                                                  - "type_.oid"
+                                                  - "type_.typoutput"
+                                                  - "type_.typreceive"
+                                                  - "type_.typsend"
+                                                  - "type_.typmodout"
+                                                  - "type_.typanalyze"
+                                                  - "type_.typcollation"
+                                                  - "type_.typarray"
+                                                  - "type_.typelem"
+                                                  - "text_conversion_input_fn.proname"
+                                                  - "text_conversion_input_fn_schema.nspname"
+                                                  - "subscripting_fn.proname"
+                                                  - "subscripting_fn_schema.nspname"
+                                                  - "ns.nspname"
+                                                  - "type_owner.rolname"
+                                                  - "base_type.typname"
+                                                  - "base_type.typowner"
+                                                  - "type_modifier_input_fn.proname"
+                                                  - "type_modifier_input_fn_schema.nspname"
+                                                Inner Unique: false
+                                                Shared Hit Blocks: 92
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                                Plans: 
+                                                  - Node Type: "Nested Loop"
+                                                    Parent Relationship: "Outer"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Join Type: "Inner"
+                                                    Startup Cost: 22.69
+                                                    Total Cost: 116.71
+                                                    Plan Rows: 5
+                                                    Plan Width: 627
+                                                    Actual Startup Time: 0.242
+                                                    Actual Total Time: 0.247
+                                                    Actual Rows: 5
+                                                    Actual Loops: 1
+                                                    Output: 
+                                                      - "type_.typname"
+                                                      - "type_.typlen"
+                                                      - "type_.typdefault"
+                                                      - "type_.typacl"
+                                                      - "type_.typcategory"
+                                                      - "type_.typbyval"
+                                                      - "type_.typnotnull"
+                                                      - "type_.typalign"
+                                                      - "type_.typstorage"
+                                                      - "type_.typispreferred"
+                                                      - "type_.typisdefined"
+                                                      - "type_.typdelim"
+                                                      - "type_.typndims"
+                                                      - "type_.typtypmod"
+                                                      - "type_.oid"
+                                                      - "type_.typoutput"
+                                                      - "type_.typreceive"
+                                                      - "type_.typsend"
+                                                      - "type_.typmodin"
+                                                      - "type_.typmodout"
+                                                      - "type_.typanalyze"
+                                                      - "type_.typcollation"
+                                                      - "type_.typarray"
+                                                      - "type_.typelem"
+                                                      - "text_conversion_input_fn.proname"
+                                                      - "text_conversion_input_fn_schema.nspname"
+                                                      - "subscripting_fn.proname"
+                                                      - "subscripting_fn_schema.nspname"
+                                                      - "ns.nspname"
+                                                      - "type_owner.rolname"
+                                                      - "base_type.typname"
+                                                      - "base_type.typowner"
+                                                    Inner Unique: false
+                                                    Join Filter: "(type_.typowner = type_owner.oid)"
+                                                    Rows Removed by Join Filter: 55
+                                                    Shared Hit Blocks: 82
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                                    Plans: 
+                                                      - Node Type: "Seq Scan"
+                                                        Parent Relationship: "Outer"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Relation Name: "pg_authid"
+                                                        Schema: "pg_catalog"
+                                                        Alias: "type_owner"
+                                                        Startup Cost: 0.00
+                                                        Total Cost: 1.12
+                                                        Plan Rows: 12
+                                                        Plan Width: 68
+                                                        Actual Startup Time: 0.003
+                                                        Actual Total Time: 0.004
+                                                        Actual Rows: 12
+                                                        Actual Loops: 1
+                                                        Output: 
+                                                          - "type_owner.oid"
+                                                          - "type_owner.rolname"
+                                                          - "type_owner.rolsuper"
+                                                          - "type_owner.rolinherit"
+                                                          - "type_owner.rolcreaterole"
+                                                          - "type_owner.rolcreatedb"
+                                                          - "type_owner.rolcanlogin"
+                                                          - "type_owner.rolreplication"
+                                                          - "type_owner.rolbypassrls"
+                                                          - "type_owner.rolconnlimit"
+                                                          - "type_owner.rolpassword"
+                                                          - "type_owner.rolvaliduntil"
+                                                        Shared Hit Blocks: 1
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                      - Node Type: "Materialize"
+                                                        Parent Relationship: "Inner"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Startup Cost: 22.69
+                                                        Total Cost: 114.70
+                                                        Plan Rows: 5
+                                                        Plan Width: 567
+                                                        Actual Startup Time: 0.011
+                                                        Actual Total Time: 0.019
+                                                        Actual Rows: 5
+                                                        Actual Loops: 12
+                                                        Output: 
+                                                          - "type_.typname"
+                                                          - "type_.typlen"
+                                                          - "type_.typdefault"
+                                                          - "type_.typacl"
+                                                          - "type_.typcategory"
+                                                          - "type_.typbyval"
+                                                          - "type_.typnotnull"
+                                                          - "type_.typalign"
+                                                          - "type_.typstorage"
+                                                          - "type_.typispreferred"
+                                                          - "type_.typisdefined"
+                                                          - "type_.typdelim"
+                                                          - "type_.typndims"
+                                                          - "type_.typtypmod"
+                                                          - "type_.oid"
+                                                          - "type_.typowner"
+                                                          - "type_.typoutput"
+                                                          - "type_.typreceive"
+                                                          - "type_.typsend"
+                                                          - "type_.typmodin"
+                                                          - "type_.typmodout"
+                                                          - "type_.typanalyze"
+                                                          - "type_.typcollation"
+                                                          - "type_.typarray"
+                                                          - "type_.typelem"
+                                                          - "text_conversion_input_fn.proname"
+                                                          - "text_conversion_input_fn_schema.nspname"
+                                                          - "subscripting_fn.proname"
+                                                          - "subscripting_fn_schema.nspname"
+                                                          - "ns.nspname"
+                                                          - "base_type.typname"
+                                                          - "base_type.typowner"
+                                                        Shared Hit Blocks: 81
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                        Plans: 
+                                                          - Node Type: "Nested Loop"
+                                                            Parent Relationship: "Outer"
+                                                            Parallel Aware: false
+                                                            Async Capable: false
+                                                            Join Type: "Inner"
+                                                            Startup Cost: 22.69
+                                                            Total Cost: 114.67
+                                                            Plan Rows: 5
+                                                            Plan Width: 567
+                                                            Actual Startup Time: 0.124
+                                                            Actual Total Time: 0.213
+                                                            Actual Rows: 5
+                                                            Actual Loops: 1
+                                                            Output: 
+                                                              - "type_.typname"
+                                                              - "type_.typlen"
+                                                              - "type_.typdefault"
+                                                              - "type_.typacl"
+                                                              - "type_.typcategory"
+                                                              - "type_.typbyval"
+                                                              - "type_.typnotnull"
+                                                              - "type_.typalign"
+                                                              - "type_.typstorage"
+                                                              - "type_.typispreferred"
+                                                              - "type_.typisdefined"
+                                                              - "type_.typdelim"
+                                                              - "type_.typndims"
+                                                              - "type_.typtypmod"
+                                                              - "type_.oid"
+                                                              - "type_.typowner"
+                                                              - "type_.typoutput"
+                                                              - "type_.typreceive"
+                                                              - "type_.typsend"
+                                                              - "type_.typmodin"
+                                                              - "type_.typmodout"
+                                                              - "type_.typanalyze"
+                                                              - "type_.typcollation"
+                                                              - "type_.typarray"
+                                                              - "type_.typelem"
+                                                              - "text_conversion_input_fn.proname"
+                                                              - "text_conversion_input_fn_schema.nspname"
+                                                              - "subscripting_fn.proname"
+                                                              - "subscripting_fn_schema.nspname"
+                                                              - "ns.nspname"
+                                                              - "base_type.typname"
+                                                              - "base_type.typowner"
+                                                            Inner Unique: true
+                                                            Join Filter: "(type_.typnamespace = ns.oid)"
+                                                            Rows Removed by Join Filter: 15
+                                                            Shared Hit Blocks: 81
+                                                            Shared Read Blocks: 0
+                                                            Shared Dirtied Blocks: 0
+                                                            Shared Written Blocks: 0
+                                                            Local Hit Blocks: 0
+                                                            Local Read Blocks: 0
+                                                            Local Dirtied Blocks: 0
+                                                            Local Written Blocks: 0
+                                                            Temp Read Blocks: 0
+                                                            Temp Written Blocks: 0
+                                                            Plans: 
+                                                              - Node Type: "Nested Loop"
+                                                                Parent Relationship: "Outer"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Join Type: "Left"
+                                                                Startup Cost: 22.69
+                                                                Total Cost: 113.36
+                                                                Plan Rows: 5
+                                                                Plan Width: 507
+                                                                Actual Startup Time: 0.115
+                                                                Actual Total Time: 0.199
+                                                                Actual Rows: 5
+                                                                Actual Loops: 1
+                                                                Output: 
+                                                                  - "type_.typname"
+                                                                  - "type_.typlen"
+                                                                  - "type_.typdefault"
+                                                                  - "type_.typacl"
+                                                                  - "type_.typcategory"
+                                                                  - "type_.typbyval"
+                                                                  - "type_.typnotnull"
+                                                                  - "type_.typalign"
+                                                                  - "type_.typstorage"
+                                                                  - "type_.typispreferred"
+                                                                  - "type_.typisdefined"
+                                                                  - "type_.typdelim"
+                                                                  - "type_.typndims"
+                                                                  - "type_.typtypmod"
+                                                                  - "type_.oid"
+                                                                  - "type_.typnamespace"
+                                                                  - "type_.typowner"
+                                                                  - "type_.typoutput"
+                                                                  - "type_.typreceive"
+                                                                  - "type_.typsend"
+                                                                  - "type_.typmodin"
+                                                                  - "type_.typmodout"
+                                                                  - "type_.typanalyze"
+                                                                  - "type_.typcollation"
+                                                                  - "type_.typarray"
+                                                                  - "type_.typelem"
+                                                                  - "text_conversion_input_fn.proname"
+                                                                  - "text_conversion_input_fn_schema.nspname"
+                                                                  - "subscripting_fn.proname"
+                                                                  - "subscripting_fn_schema.nspname"
+                                                                  - "base_type.typname"
+                                                                  - "base_type.typowner"
+                                                                Inner Unique: false
+                                                                Shared Hit Blocks: 80
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                                                Plans: 
+                                                                  - Node Type: "Nested Loop"
+                                                                    Parent Relationship: "Outer"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Join Type: "Left"
+                                                                    Startup Cost: 22.28
+                                                                    Total Cost: 71.02
+                                                                    Plan Rows: 5
+                                                                    Plan Width: 383
+                                                                    Actual Startup Time: 0.106
+                                                                    Actual Total Time: 0.156
+                                                                    Actual Rows: 5
+                                                                    Actual Loops: 1
+                                                                    Output: 
+                                                                      - "type_.typname"
+                                                                      - "type_.typlen"
+                                                                      - "type_.typdefault"
+                                                                      - "type_.typacl"
+                                                                      - "type_.typcategory"
+                                                                      - "type_.typbyval"
+                                                                      - "type_.typnotnull"
+                                                                      - "type_.typalign"
+                                                                      - "type_.typstorage"
+                                                                      - "type_.typispreferred"
+                                                                      - "type_.typisdefined"
+                                                                      - "type_.typdelim"
+                                                                      - "type_.typndims"
+                                                                      - "type_.typtypmod"
+                                                                      - "type_.oid"
+                                                                      - "type_.typnamespace"
+                                                                      - "type_.typowner"
+                                                                      - "type_.typsubscript"
+                                                                      - "type_.typoutput"
+                                                                      - "type_.typreceive"
+                                                                      - "type_.typsend"
+                                                                      - "type_.typmodin"
+                                                                      - "type_.typmodout"
+                                                                      - "type_.typanalyze"
+                                                                      - "type_.typcollation"
+                                                                      - "type_.typarray"
+                                                                      - "type_.typelem"
+                                                                      - "text_conversion_input_fn.proname"
+                                                                      - "text_conversion_input_fn_schema.nspname"
+                                                                      - "base_type.typname"
+                                                                      - "base_type.typowner"
+                                                                    Inner Unique: false
+                                                                    Shared Hit Blocks: 70
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                                    Plans: 
+                                                                      - Node Type: "Merge Join"
+                                                                        Parent Relationship: "Outer"
+                                                                        Parallel Aware: false
+                                                                        Async Capable: false
+                                                                        Join Type: "Inner"
+                                                                        Startup Cost: 21.87
+                                                                        Total Cost: 28.69
+                                                                        Plan Rows: 5
+                                                                        Plan Width: 259
+                                                                        Actual Startup Time: 0.085
+                                                                        Actual Total Time: 0.110
+                                                                        Actual Rows: 5
+                                                                        Actual Loops: 1
+                                                                        Output: 
+                                                                          - "type_.typname"
+                                                                          - "type_.typlen"
+                                                                          - "type_.typdefault"
+                                                                          - "type_.typacl"
+                                                                          - "type_.typcategory"
+                                                                          - "type_.typbyval"
+                                                                          - "type_.typnotnull"
+                                                                          - "type_.typalign"
+                                                                          - "type_.typstorage"
+                                                                          - "type_.typispreferred"
+                                                                          - "type_.typisdefined"
+                                                                          - "type_.typdelim"
+                                                                          - "type_.typndims"
+                                                                          - "type_.typtypmod"
+                                                                          - "type_.oid"
+                                                                          - "type_.typnamespace"
+                                                                          - "type_.typowner"
+                                                                          - "type_.typsubscript"
+                                                                          - "type_.typinput"
+                                                                          - "type_.typoutput"
+                                                                          - "type_.typreceive"
+                                                                          - "type_.typsend"
+                                                                          - "type_.typmodin"
+                                                                          - "type_.typmodout"
+                                                                          - "type_.typanalyze"
+                                                                          - "type_.typcollation"
+                                                                          - "type_.typarray"
+                                                                          - "type_.typelem"
+                                                                          - "base_type.typname"
+                                                                          - "base_type.typowner"
+                                                                        Inner Unique: false
+                                                                        Merge Cond: "(base_type.oid = type_.typbasetype)"
+                                                                        Shared Hit Blocks: 45
+                                                                        Shared Read Blocks: 0
+                                                                        Shared Dirtied Blocks: 0
+                                                                        Shared Written Blocks: 0
+                                                                        Local Hit Blocks: 0
+                                                                        Local Read Blocks: 0
+                                                                        Local Dirtied Blocks: 0
+                                                                        Local Written Blocks: 0
+                                                                        Temp Read Blocks: 0
+                                                                        Temp Written Blocks: 0
+                                                                        Plans: 
+                                                                          - Node Type: "Index Scan"
+                                                                            Parent Relationship: "Outer"
+                                                                            Parallel Aware: false
+                                                                            Async Capable: false
+                                                                            Scan Direction: "Forward"
+                                                                            Index Name: "pg_type_oid_index"
+                                                                            Relation Name: "pg_type"
+                                                                            Schema: "pg_catalog"
+                                                                            Alias: "base_type"
+                                                                            Startup Cost: 0.28
+                                                                            Total Cost: 43.95
+                                                                            Plan Rows: 601
+                                                                            Plan Width: 72
+                                                                            Actual Startup Time: 0.009
+                                                                            Actual Total Time: 0.024
+                                                                            Actual Rows: 90
+                                                                            Actual Loops: 1
+                                                                            Output: 
+                                                                              - "base_type.oid"
+                                                                              - "base_type.typname"
+                                                                              - "base_type.typnamespace"
+                                                                              - "base_type.typowner"
+                                                                              - "base_type.typlen"
+                                                                              - "base_type.typbyval"
+                                                                              - "base_type.typtype"
+                                                                              - "base_type.typcategory"
+                                                                              - "base_type.typispreferred"
+                                                                              - "base_type.typisdefined"
+                                                                              - "base_type.typdelim"
+                                                                              - "base_type.typrelid"
+                                                                              - "base_type.typsubscript"
+                                                                              - "base_type.typelem"
+                                                                              - "base_type.typarray"
+                                                                              - "base_type.typinput"
+                                                                              - "base_type.typoutput"
+                                                                              - "base_type.typreceive"
+                                                                              - "base_type.typsend"
+                                                                              - "base_type.typmodin"
+                                                                              - "base_type.typmodout"
+                                                                              - "base_type.typanalyze"
+                                                                              - "base_type.typalign"
+                                                                              - "base_type.typstorage"
+                                                                              - "base_type.typnotnull"
+                                                                              - "base_type.typbasetype"
+                                                                              - "base_type.typtypmod"
+                                                                              - "base_type.typndims"
+                                                                              - "base_type.typcollation"
+                                                                              - "base_type.typdefaultbin"
+                                                                              - "base_type.typdefault"
+                                                                              - "base_type.typacl"
+                                                                            Shared Hit Blocks: 31
+                                                                            Shared Read Blocks: 0
+                                                                            Shared Dirtied Blocks: 0
+                                                                            Shared Written Blocks: 0
+                                                                            Local Hit Blocks: 0
+                                                                            Local Read Blocks: 0
+                                                                            Local Dirtied Blocks: 0
+                                                                            Local Written Blocks: 0
+                                                                            Temp Read Blocks: 0
+                                                                            Temp Written Blocks: 0
+                                                                          - Node Type: "Sort"
+                                                                            Parent Relationship: "Inner"
+                                                                            Parallel Aware: false
+                                                                            Async Capable: false
+                                                                            Startup Cost: 21.57
+                                                                            Total Cost: 21.58
+                                                                            Plan Rows: 5
+                                                                            Plan Width: 195
+                                                                            Actual Startup Time: 0.070
+                                                                            Actual Total Time: 0.071
+                                                                            Actual Rows: 5
+                                                                            Actual Loops: 1
+                                                                            Output: 
+                                                                              - "type_.typname"
+                                                                              - "type_.typlen"
+                                                                              - "type_.typdefault"
+                                                                              - "type_.typacl"
+                                                                              - "type_.typcategory"
+                                                                              - "type_.typbyval"
+                                                                              - "type_.typnotnull"
+                                                                              - "type_.typalign"
+                                                                              - "type_.typstorage"
+                                                                              - "type_.typispreferred"
+                                                                              - "type_.typisdefined"
+                                                                              - "type_.typdelim"
+                                                                              - "type_.typndims"
+                                                                              - "type_.typtypmod"
+                                                                              - "type_.oid"
+                                                                              - "type_.typnamespace"
+                                                                              - "type_.typowner"
+                                                                              - "type_.typbasetype"
+                                                                              - "type_.typsubscript"
+                                                                              - "type_.typinput"
+                                                                              - "type_.typoutput"
+                                                                              - "type_.typreceive"
+                                                                              - "type_.typsend"
+                                                                              - "type_.typmodin"
+                                                                              - "type_.typmodout"
+                                                                              - "type_.typanalyze"
+                                                                              - "type_.typcollation"
+                                                                              - "type_.typarray"
+                                                                              - "type_.typelem"
+                                                                            Sort Key: 
+                                                                              - "type_.typbasetype"
+                                                                            Sort Method: "quicksort"
+                                                                            Sort Space Used: 26
+                                                                            Sort Space Type: "Memory"
+                                                                            Shared Hit Blocks: 14
+                                                                            Shared Read Blocks: 0
+                                                                            Shared Dirtied Blocks: 0
+                                                                            Shared Written Blocks: 0
+                                                                            Local Hit Blocks: 0
+                                                                            Local Read Blocks: 0
+                                                                            Local Dirtied Blocks: 0
+                                                                            Local Written Blocks: 0
+                                                                            Temp Read Blocks: 0
+                                                                            Temp Written Blocks: 0
+                                                                            Plans: 
+                                                                              - Node Type: "Seq Scan"
+                                                                                Parent Relationship: "Outer"
+                                                                                Parallel Aware: false
+                                                                                Async Capable: false
+                                                                                Relation Name: "pg_type"
+                                                                                Schema: "pg_catalog"
+                                                                                Alias: "type_"
+                                                                                Startup Cost: 0.00
+                                                                                Total Cost: 21.51
+                                                                                Plan Rows: 5
+                                                                                Plan Width: 195
+                                                                                Actual Startup Time: 0.043
+                                                                                Actual Total Time: 0.056
+                                                                                Actual Rows: 5
+                                                                                Actual Loops: 1
+                                                                                Output: 
+                                                                                  - "type_.typname"
+                                                                                  - "type_.typlen"
+                                                                                  - "type_.typdefault"
+                                                                                  - "type_.typacl"
+                                                                                  - "type_.typcategory"
+                                                                                  - "type_.typbyval"
+                                                                                  - "type_.typnotnull"
+                                                                                  - "type_.typalign"
+                                                                                  - "type_.typstorage"
+                                                                                  - "type_.typispreferred"
+                                                                                  - "type_.typisdefined"
+                                                                                  - "type_.typdelim"
+                                                                                  - "type_.typndims"
+                                                                                  - "type_.typtypmod"
+                                                                                  - "type_.oid"
+                                                                                  - "type_.typnamespace"
+                                                                                  - "type_.typowner"
+                                                                                  - "type_.typbasetype"
+                                                                                  - "type_.typsubscript"
+                                                                                  - "type_.typinput"
+                                                                                  - "type_.typoutput"
+                                                                                  - "type_.typreceive"
+                                                                                  - "type_.typsend"
+                                                                                  - "type_.typmodin"
+                                                                                  - "type_.typmodout"
+                                                                                  - "type_.typanalyze"
+                                                                                  - "type_.typcollation"
+                                                                                  - "type_.typarray"
+                                                                                  - "type_.typelem"
+                                                                                Filter: "(type_.typtype = 'd'::\"char\")"
+                                                                                Rows Removed by Filter: 596
+                                                                                Shared Hit Blocks: 14
+                                                                                Shared Read Blocks: 0
+                                                                                Shared Dirtied Blocks: 0
+                                                                                Shared Written Blocks: 0
+                                                                                Local Hit Blocks: 0
+                                                                                Local Read Blocks: 0
+                                                                                Local Dirtied Blocks: 0
+                                                                                Local Written Blocks: 0
+                                                                                Temp Read Blocks: 0
+                                                                                Temp Written Blocks: 0
+                                                                      - Node Type: "Nested Loop"
+                                                                        Parent Relationship: "Inner"
+                                                                        Parallel Aware: false
+                                                                        Async Capable: false
+                                                                        Join Type: "Inner"
+                                                                        Startup Cost: 0.41
+                                                                        Total Cost: 8.46
+                                                                        Plan Rows: 1
+                                                                        Plan Width: 132
+                                                                        Actual Startup Time: 0.008
+                                                                        Actual Total Time: 0.008
+                                                                        Actual Rows: 1
+                                                                        Actual Loops: 5
+                                                                        Output: 
+                                                                          - "text_conversion_input_fn.proname"
+                                                                          - "text_conversion_input_fn.oid"
+                                                                          - "text_conversion_input_fn_schema.nspname"
+                                                                        Inner Unique: true
+                                                                        Shared Hit Blocks: 25
+                                                                        Shared Read Blocks: 0
+                                                                        Shared Dirtied Blocks: 0
+                                                                        Shared Written Blocks: 0
+                                                                        Local Hit Blocks: 0
+                                                                        Local Read Blocks: 0
+                                                                        Local Dirtied Blocks: 0
+                                                                        Local Written Blocks: 0
+                                                                        Temp Read Blocks: 0
+                                                                        Temp Written Blocks: 0
+                                                                        Plans: 
+                                                                          - Node Type: "Index Scan"
+                                                                            Parent Relationship: "Outer"
+                                                                            Parallel Aware: false
+                                                                            Async Capable: false
+                                                                            Scan Direction: "Forward"
+                                                                            Index Name: "pg_proc_oid_index"
+                                                                            Relation Name: "pg_proc"
+                                                                            Schema: "pg_catalog"
+                                                                            Alias: "text_conversion_input_fn"
+                                                                            Startup Cost: 0.28
+                                                                            Total Cost: 8.30
+                                                                            Plan Rows: 1
+                                                                            Plan Width: 72
+                                                                            Actual Startup Time: 0.003
+                                                                            Actual Total Time: 0.003
+                                                                            Actual Rows: 1
+                                                                            Actual Loops: 5
+                                                                            Output: 
+                                                                              - "text_conversion_input_fn.oid"
+                                                                              - "text_conversion_input_fn.proname"
+                                                                              - "text_conversion_input_fn.pronamespace"
+                                                                              - "text_conversion_input_fn.proowner"
+                                                                              - "text_conversion_input_fn.prolang"
+                                                                              - "text_conversion_input_fn.procost"
+                                                                              - "text_conversion_input_fn.prorows"
+                                                                              - "text_conversion_input_fn.provariadic"
+                                                                              - "text_conversion_input_fn.prosupport"
+                                                                              - "text_conversion_input_fn.prokind"
+                                                                              - "text_conversion_input_fn.prosecdef"
+                                                                              - "text_conversion_input_fn.proleakproof"
+                                                                              - "text_conversion_input_fn.proisstrict"
+                                                                              - "text_conversion_input_fn.proretset"
+                                                                              - "text_conversion_input_fn.provolatile"
+                                                                              - "text_conversion_input_fn.proparallel"
+                                                                              - "text_conversion_input_fn.pronargs"
+                                                                              - "text_conversion_input_fn.pronargdefaults"
+                                                                              - "text_conversion_input_fn.prorettype"
+                                                                              - "text_conversion_input_fn.proargtypes"
+                                                                              - "text_conversion_input_fn.proallargtypes"
+                                                                              - "text_conversion_input_fn.proargmodes"
+                                                                              - "text_conversion_input_fn.proargnames"
+                                                                              - "text_conversion_input_fn.proargdefaults"
+                                                                              - "text_conversion_input_fn.protrftypes"
+                                                                              - "text_conversion_input_fn.prosrc"
+                                                                              - "text_conversion_input_fn.probin"
+                                                                              - "text_conversion_input_fn.prosqlbody"
+                                                                              - "text_conversion_input_fn.proconfig"
+                                                                              - "text_conversion_input_fn.proacl"
+                                                                            Index Cond: "(text_conversion_input_fn.oid = (type_.typinput)::oid)"
+                                                                            Rows Removed by Index Recheck: 0
+                                                                            Shared Hit Blocks: 15
+                                                                            Shared Read Blocks: 0
+                                                                            Shared Dirtied Blocks: 0
+                                                                            Shared Written Blocks: 0
+                                                                            Local Hit Blocks: 0
+                                                                            Local Read Blocks: 0
+                                                                            Local Dirtied Blocks: 0
+                                                                            Local Written Blocks: 0
+                                                                            Temp Read Blocks: 0
+                                                                            Temp Written Blocks: 0
+                                                                          - Node Type: "Index Scan"
+                                                                            Parent Relationship: "Inner"
+                                                                            Parallel Aware: false
+                                                                            Async Capable: false
+                                                                            Scan Direction: "Forward"
+                                                                            Index Name: "pg_namespace_oid_index"
+                                                                            Relation Name: "pg_namespace"
+                                                                            Schema: "pg_catalog"
+                                                                            Alias: "text_conversion_input_fn_schema"
+                                                                            Startup Cost: 0.13
+                                                                            Total Cost: 0.15
+                                                                            Plan Rows: 1
+                                                                            Plan Width: 68
+                                                                            Actual Startup Time: 0.002
+                                                                            Actual Total Time: 0.002
+                                                                            Actual Rows: 1
+                                                                            Actual Loops: 5
+                                                                            Output: 
+                                                                              - "text_conversion_input_fn_schema.oid"
+                                                                              - "text_conversion_input_fn_schema.nspname"
+                                                                              - "text_conversion_input_fn_schema.nspowner"
+                                                                              - "text_conversion_input_fn_schema.nspacl"
+                                                                            Index Cond: "(text_conversion_input_fn_schema.oid = text_conversion_input_fn.pronamespace)"
+                                                                            Rows Removed by Index Recheck: 0
+                                                                            Shared Hit Blocks: 10
+                                                                            Shared Read Blocks: 0
+                                                                            Shared Dirtied Blocks: 0
+                                                                            Shared Written Blocks: 0
+                                                                            Local Hit Blocks: 0
+                                                                            Local Read Blocks: 0
+                                                                            Local Dirtied Blocks: 0
+                                                                            Local Written Blocks: 0
+                                                                            Temp Read Blocks: 0
+                                                                            Temp Written Blocks: 0
+                                                                  - Node Type: "Nested Loop"
+                                                                    Parent Relationship: "Inner"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Join Type: "Inner"
+                                                                    Startup Cost: 0.41
+                                                                    Total Cost: 8.46
+                                                                    Plan Rows: 1
+                                                                    Plan Width: 132
+                                                                    Actual Startup Time: 0.002
+                                                                    Actual Total Time: 0.002
+                                                                    Actual Rows: 0
+                                                                    Actual Loops: 5
+                                                                    Output: 
+                                                                      - "subscripting_fn.proname"
+                                                                      - "subscripting_fn.oid"
+                                                                      - "subscripting_fn_schema.nspname"
+                                                                    Inner Unique: true
+                                                                    Shared Hit Blocks: 10
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                                    Plans: 
+                                                                      - Node Type: "Index Scan"
+                                                                        Parent Relationship: "Outer"
+                                                                        Parallel Aware: false
+                                                                        Async Capable: false
+                                                                        Scan Direction: "Forward"
+                                                                        Index Name: "pg_proc_oid_index"
+                                                                        Relation Name: "pg_proc"
+                                                                        Schema: "pg_catalog"
+                                                                        Alias: "subscripting_fn"
+                                                                        Startup Cost: 0.28
+                                                                        Total Cost: 8.30
+                                                                        Plan Rows: 1
+                                                                        Plan Width: 72
+                                                                        Actual Startup Time: 0.002
+                                                                        Actual Total Time: 0.002
+                                                                        Actual Rows: 0
+                                                                        Actual Loops: 5
+                                                                        Output: 
+                                                                          - "subscripting_fn.oid"
+                                                                          - "subscripting_fn.proname"
+                                                                          - "subscripting_fn.pronamespace"
+                                                                          - "subscripting_fn.proowner"
+                                                                          - "subscripting_fn.prolang"
+                                                                          - "subscripting_fn.procost"
+                                                                          - "subscripting_fn.prorows"
+                                                                          - "subscripting_fn.provariadic"
+                                                                          - "subscripting_fn.prosupport"
+                                                                          - "subscripting_fn.prokind"
+                                                                          - "subscripting_fn.prosecdef"
+                                                                          - "subscripting_fn.proleakproof"
+                                                                          - "subscripting_fn.proisstrict"
+                                                                          - "subscripting_fn.proretset"
+                                                                          - "subscripting_fn.provolatile"
+                                                                          - "subscripting_fn.proparallel"
+                                                                          - "subscripting_fn.pronargs"
+                                                                          - "subscripting_fn.pronargdefaults"
+                                                                          - "subscripting_fn.prorettype"
+                                                                          - "subscripting_fn.proargtypes"
+                                                                          - "subscripting_fn.proallargtypes"
+                                                                          - "subscripting_fn.proargmodes"
+                                                                          - "subscripting_fn.proargnames"
+                                                                          - "subscripting_fn.proargdefaults"
+                                                                          - "subscripting_fn.protrftypes"
+                                                                          - "subscripting_fn.prosrc"
+                                                                          - "subscripting_fn.probin"
+                                                                          - "subscripting_fn.prosqlbody"
+                                                                          - "subscripting_fn.proconfig"
+                                                                          - "subscripting_fn.proacl"
+                                                                        Index Cond: "(subscripting_fn.oid = (type_.typsubscript)::oid)"
+                                                                        Rows Removed by Index Recheck: 0
+                                                                        Shared Hit Blocks: 10
+                                                                        Shared Read Blocks: 0
+                                                                        Shared Dirtied Blocks: 0
+                                                                        Shared Written Blocks: 0
+                                                                        Local Hit Blocks: 0
+                                                                        Local Read Blocks: 0
+                                                                        Local Dirtied Blocks: 0
+                                                                        Local Written Blocks: 0
+                                                                        Temp Read Blocks: 0
+                                                                        Temp Written Blocks: 0
+                                                                      - Node Type: "Index Scan"
+                                                                        Parent Relationship: "Inner"
+                                                                        Parallel Aware: false
+                                                                        Async Capable: false
+                                                                        Scan Direction: "Forward"
+                                                                        Index Name: "pg_namespace_oid_index"
+                                                                        Relation Name: "pg_namespace"
+                                                                        Schema: "pg_catalog"
+                                                                        Alias: "subscripting_fn_schema"
+                                                                        Startup Cost: 0.13
+                                                                        Total Cost: 0.15
+                                                                        Plan Rows: 1
+                                                                        Plan Width: 68
+                                                                        Actual Startup Time: 0.000
+                                                                        Actual Total Time: 0.000
+                                                                        Actual Rows: 0
+                                                                        Actual Loops: 0
+                                                                        Output: 
+                                                                          - "subscripting_fn_schema.oid"
+                                                                          - "subscripting_fn_schema.nspname"
+                                                                          - "subscripting_fn_schema.nspowner"
+                                                                          - "subscripting_fn_schema.nspacl"
+                                                                        Index Cond: "(subscripting_fn_schema.oid = subscripting_fn.pronamespace)"
+                                                                        Rows Removed by Index Recheck: 0
+                                                                        Shared Hit Blocks: 0
+                                                                        Shared Read Blocks: 0
+                                                                        Shared Dirtied Blocks: 0
+                                                                        Shared Written Blocks: 0
+                                                                        Local Hit Blocks: 0
+                                                                        Local Read Blocks: 0
+                                                                        Local Dirtied Blocks: 0
+                                                                        Local Written Blocks: 0
+                                                                        Temp Read Blocks: 0
+                                                                        Temp Written Blocks: 0
+                                                              - Node Type: "Materialize"
+                                                                Parent Relationship: "Inner"
+                                                                Parallel Aware: false
+                                                                Async Capable: false
+                                                                Startup Cost: 0.00
+                                                                Total Cost: 1.06
+                                                                Plan Rows: 4
+                                                                Plan Width: 68
+                                                                Actual Startup Time: 0.001
+                                                                Actual Total Time: 0.001
+                                                                Actual Rows: 4
+                                                                Actual Loops: 5
+                                                                Output: 
+                                                                  - "ns.nspname"
+                                                                  - "ns.oid"
+                                                                Shared Hit Blocks: 1
+                                                                Shared Read Blocks: 0
+                                                                Shared Dirtied Blocks: 0
+                                                                Shared Written Blocks: 0
+                                                                Local Hit Blocks: 0
+                                                                Local Read Blocks: 0
+                                                                Local Dirtied Blocks: 0
+                                                                Local Written Blocks: 0
+                                                                Temp Read Blocks: 0
+                                                                Temp Written Blocks: 0
+                                                                Plans: 
+                                                                  - Node Type: "Seq Scan"
+                                                                    Parent Relationship: "Outer"
+                                                                    Parallel Aware: false
+                                                                    Async Capable: false
+                                                                    Relation Name: "pg_namespace"
+                                                                    Schema: "pg_catalog"
+                                                                    Alias: "ns"
+                                                                    Startup Cost: 0.00
+                                                                    Total Cost: 1.04
+                                                                    Plan Rows: 4
+                                                                    Plan Width: 68
+                                                                    Actual Startup Time: 0.002
+                                                                    Actual Total Time: 0.002
+                                                                    Actual Rows: 4
+                                                                    Actual Loops: 1
+                                                                    Output: 
+                                                                      - "ns.nspname"
+                                                                      - "ns.oid"
+                                                                    Shared Hit Blocks: 1
+                                                                    Shared Read Blocks: 0
+                                                                    Shared Dirtied Blocks: 0
+                                                                    Shared Written Blocks: 0
+                                                                    Local Hit Blocks: 0
+                                                                    Local Read Blocks: 0
+                                                                    Local Dirtied Blocks: 0
+                                                                    Local Written Blocks: 0
+                                                                    Temp Read Blocks: 0
+                                                                    Temp Written Blocks: 0
+                                                  - Node Type: "Nested Loop"
+                                                    Parent Relationship: "Inner"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Join Type: "Inner"
+                                                    Startup Cost: 0.41
+                                                    Total Cost: 8.46
+                                                    Plan Rows: 1
+                                                    Plan Width: 132
+                                                    Actual Startup Time: 0.003
+                                                    Actual Total Time: 0.003
+                                                    Actual Rows: 0
+                                                    Actual Loops: 5
+                                                    Output: 
+                                                      - "type_modifier_input_fn.proname"
+                                                      - "type_modifier_input_fn.oid"
+                                                      - "type_modifier_input_fn_schema.nspname"
+                                                    Inner Unique: true
+                                                    Shared Hit Blocks: 10
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                                    Plans: 
+                                                      - Node Type: "Index Scan"
+                                                        Parent Relationship: "Outer"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Scan Direction: "Forward"
+                                                        Index Name: "pg_proc_oid_index"
+                                                        Relation Name: "pg_proc"
+                                                        Schema: "pg_catalog"
+                                                        Alias: "type_modifier_input_fn"
+                                                        Startup Cost: 0.28
+                                                        Total Cost: 8.30
+                                                        Plan Rows: 1
+                                                        Plan Width: 72
+                                                        Actual Startup Time: 0.002
+                                                        Actual Total Time: 0.002
+                                                        Actual Rows: 0
+                                                        Actual Loops: 5
+                                                        Output: 
+                                                          - "type_modifier_input_fn.oid"
+                                                          - "type_modifier_input_fn.proname"
+                                                          - "type_modifier_input_fn.pronamespace"
+                                                          - "type_modifier_input_fn.proowner"
+                                                          - "type_modifier_input_fn.prolang"
+                                                          - "type_modifier_input_fn.procost"
+                                                          - "type_modifier_input_fn.prorows"
+                                                          - "type_modifier_input_fn.provariadic"
+                                                          - "type_modifier_input_fn.prosupport"
+                                                          - "type_modifier_input_fn.prokind"
+                                                          - "type_modifier_input_fn.prosecdef"
+                                                          - "type_modifier_input_fn.proleakproof"
+                                                          - "type_modifier_input_fn.proisstrict"
+                                                          - "type_modifier_input_fn.proretset"
+                                                          - "type_modifier_input_fn.provolatile"
+                                                          - "type_modifier_input_fn.proparallel"
+                                                          - "type_modifier_input_fn.pronargs"
+                                                          - "type_modifier_input_fn.pronargdefaults"
+                                                          - "type_modifier_input_fn.prorettype"
+                                                          - "type_modifier_input_fn.proargtypes"
+                                                          - "type_modifier_input_fn.proallargtypes"
+                                                          - "type_modifier_input_fn.proargmodes"
+                                                          - "type_modifier_input_fn.proargnames"
+                                                          - "type_modifier_input_fn.proargdefaults"
+                                                          - "type_modifier_input_fn.protrftypes"
+                                                          - "type_modifier_input_fn.prosrc"
+                                                          - "type_modifier_input_fn.probin"
+                                                          - "type_modifier_input_fn.prosqlbody"
+                                                          - "type_modifier_input_fn.proconfig"
+                                                          - "type_modifier_input_fn.proacl"
+                                                        Index Cond: "(type_modifier_input_fn.oid = (type_.typmodin)::oid)"
+                                                        Rows Removed by Index Recheck: 0
+                                                        Shared Hit Blocks: 10
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                                      - Node Type: "Index Scan"
+                                                        Parent Relationship: "Inner"
+                                                        Parallel Aware: false
+                                                        Async Capable: false
+                                                        Scan Direction: "Forward"
+                                                        Index Name: "pg_namespace_oid_index"
+                                                        Relation Name: "pg_namespace"
+                                                        Schema: "pg_catalog"
+                                                        Alias: "type_modifier_input_fn_schema"
+                                                        Startup Cost: 0.13
+                                                        Total Cost: 0.15
+                                                        Plan Rows: 1
+                                                        Plan Width: 68
+                                                        Actual Startup Time: 0.000
+                                                        Actual Total Time: 0.000
+                                                        Actual Rows: 0
+                                                        Actual Loops: 0
+                                                        Output: 
+                                                          - "type_modifier_input_fn_schema.oid"
+                                                          - "type_modifier_input_fn_schema.nspname"
+                                                          - "type_modifier_input_fn_schema.nspowner"
+                                                          - "type_modifier_input_fn_schema.nspacl"
+                                                        Index Cond: "(type_modifier_input_fn_schema.oid = type_modifier_input_fn.pronamespace)"
+                                                        Rows Removed by Index Recheck: 0
+                                                        Shared Hit Blocks: 0
+                                                        Shared Read Blocks: 0
+                                                        Shared Dirtied Blocks: 0
+                                                        Shared Written Blocks: 0
+                                                        Local Hit Blocks: 0
+                                                        Local Read Blocks: 0
+                                                        Local Dirtied Blocks: 0
+                                                        Local Written Blocks: 0
+                                                        Temp Read Blocks: 0
+                                                        Temp Written Blocks: 0
+                                              - Node Type: "Nested Loop"
+                                                Parent Relationship: "Inner"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Join Type: "Inner"
+                                                Startup Cost: 0.41
+                                                Total Cost: 8.46
+                                                Plan Rows: 1
+                                                Plan Width: 132
+                                                Actual Startup Time: 0.005
+                                                Actual Total Time: 0.005
+                                                Actual Rows: 1
+                                                Actual Loops: 5
+                                                Output: 
+                                                  - "binary_conversion_output_fn.proname"
+                                                  - "binary_conversion_output_fn.oid"
+                                                  - "binary_conversion_output_fn_schema.nspname"
+                                                Inner Unique: true
+                                                Shared Hit Blocks: 25
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                                Plans: 
+                                                  - Node Type: "Index Scan"
+                                                    Parent Relationship: "Outer"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Scan Direction: "Forward"
+                                                    Index Name: "pg_proc_oid_index"
+                                                    Relation Name: "pg_proc"
+                                                    Schema: "pg_catalog"
+                                                    Alias: "binary_conversion_output_fn"
+                                                    Startup Cost: 0.28
+                                                    Total Cost: 8.30
+                                                    Plan Rows: 1
+                                                    Plan Width: 72
+                                                    Actual Startup Time: 0.002
+                                                    Actual Total Time: 0.003
+                                                    Actual Rows: 1
+                                                    Actual Loops: 5
+                                                    Output: 
+                                                      - "binary_conversion_output_fn.oid"
+                                                      - "binary_conversion_output_fn.proname"
+                                                      - "binary_conversion_output_fn.pronamespace"
+                                                      - "binary_conversion_output_fn.proowner"
+                                                      - "binary_conversion_output_fn.prolang"
+                                                      - "binary_conversion_output_fn.procost"
+                                                      - "binary_conversion_output_fn.prorows"
+                                                      - "binary_conversion_output_fn.provariadic"
+                                                      - "binary_conversion_output_fn.prosupport"
+                                                      - "binary_conversion_output_fn.prokind"
+                                                      - "binary_conversion_output_fn.prosecdef"
+                                                      - "binary_conversion_output_fn.proleakproof"
+                                                      - "binary_conversion_output_fn.proisstrict"
+                                                      - "binary_conversion_output_fn.proretset"
+                                                      - "binary_conversion_output_fn.provolatile"
+                                                      - "binary_conversion_output_fn.proparallel"
+                                                      - "binary_conversion_output_fn.pronargs"
+                                                      - "binary_conversion_output_fn.pronargdefaults"
+                                                      - "binary_conversion_output_fn.prorettype"
+                                                      - "binary_conversion_output_fn.proargtypes"
+                                                      - "binary_conversion_output_fn.proallargtypes"
+                                                      - "binary_conversion_output_fn.proargmodes"
+                                                      - "binary_conversion_output_fn.proargnames"
+                                                      - "binary_conversion_output_fn.proargdefaults"
+                                                      - "binary_conversion_output_fn.protrftypes"
+                                                      - "binary_conversion_output_fn.prosrc"
+                                                      - "binary_conversion_output_fn.probin"
+                                                      - "binary_conversion_output_fn.prosqlbody"
+                                                      - "binary_conversion_output_fn.proconfig"
+                                                      - "binary_conversion_output_fn.proacl"
+                                                    Index Cond: "(binary_conversion_output_fn.oid = (type_.typsend)::oid)"
+                                                    Rows Removed by Index Recheck: 0
+                                                    Shared Hit Blocks: 15
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                                  - Node Type: "Index Scan"
+                                                    Parent Relationship: "Inner"
+                                                    Parallel Aware: false
+                                                    Async Capable: false
+                                                    Scan Direction: "Forward"
+                                                    Index Name: "pg_namespace_oid_index"
+                                                    Relation Name: "pg_namespace"
+                                                    Schema: "pg_catalog"
+                                                    Alias: "binary_conversion_output_fn_schema"
+                                                    Startup Cost: 0.13
+                                                    Total Cost: 0.15
+                                                    Plan Rows: 1
+                                                    Plan Width: 68
+                                                    Actual Startup Time: 0.002
+                                                    Actual Total Time: 0.002
+                                                    Actual Rows: 1
+                                                    Actual Loops: 5
+                                                    Output: 
+                                                      - "binary_conversion_output_fn_schema.oid"
+                                                      - "binary_conversion_output_fn_schema.nspname"
+                                                      - "binary_conversion_output_fn_schema.nspowner"
+                                                      - "binary_conversion_output_fn_schema.nspacl"
+                                                    Index Cond: "(binary_conversion_output_fn_schema.oid = binary_conversion_output_fn.pronamespace)"
+                                                    Rows Removed by Index Recheck: 0
+                                                    Shared Hit Blocks: 10
+                                                    Shared Read Blocks: 0
+                                                    Shared Dirtied Blocks: 0
+                                                    Shared Written Blocks: 0
+                                                    Local Hit Blocks: 0
+                                                    Local Read Blocks: 0
+                                                    Local Dirtied Blocks: 0
+                                                    Local Written Blocks: 0
+                                                    Temp Read Blocks: 0
+                                                    Temp Written Blocks: 0
+                                          - Node Type: "Nested Loop"
+                                            Parent Relationship: "Inner"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Join Type: "Inner"
+                                            Startup Cost: 0.41
+                                            Total Cost: 8.46
+                                            Plan Rows: 1
+                                            Plan Width: 132
+                                            Actual Startup Time: 0.004
+                                            Actual Total Time: 0.005
+                                            Actual Rows: 1
+                                            Actual Loops: 5
+                                            Output: 
+                                              - "binary_conversion_input_fn.proname"
+                                              - "binary_conversion_input_fn.oid"
+                                              - "binary_conversion_input_fn_schema.nspname"
+                                            Inner Unique: true
+                                            Shared Hit Blocks: 25
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                            Plans: 
+                                              - Node Type: "Index Scan"
+                                                Parent Relationship: "Outer"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Scan Direction: "Forward"
+                                                Index Name: "pg_proc_oid_index"
+                                                Relation Name: "pg_proc"
+                                                Schema: "pg_catalog"
+                                                Alias: "binary_conversion_input_fn"
+                                                Startup Cost: 0.28
+                                                Total Cost: 8.30
+                                                Plan Rows: 1
+                                                Plan Width: 72
+                                                Actual Startup Time: 0.002
+                                                Actual Total Time: 0.002
+                                                Actual Rows: 1
+                                                Actual Loops: 5
+                                                Output: 
+                                                  - "binary_conversion_input_fn.oid"
+                                                  - "binary_conversion_input_fn.proname"
+                                                  - "binary_conversion_input_fn.pronamespace"
+                                                  - "binary_conversion_input_fn.proowner"
+                                                  - "binary_conversion_input_fn.prolang"
+                                                  - "binary_conversion_input_fn.procost"
+                                                  - "binary_conversion_input_fn.prorows"
+                                                  - "binary_conversion_input_fn.provariadic"
+                                                  - "binary_conversion_input_fn.prosupport"
+                                                  - "binary_conversion_input_fn.prokind"
+                                                  - "binary_conversion_input_fn.prosecdef"
+                                                  - "binary_conversion_input_fn.proleakproof"
+                                                  - "binary_conversion_input_fn.proisstrict"
+                                                  - "binary_conversion_input_fn.proretset"
+                                                  - "binary_conversion_input_fn.provolatile"
+                                                  - "binary_conversion_input_fn.proparallel"
+                                                  - "binary_conversion_input_fn.pronargs"
+                                                  - "binary_conversion_input_fn.pronargdefaults"
+                                                  - "binary_conversion_input_fn.prorettype"
+                                                  - "binary_conversion_input_fn.proargtypes"
+                                                  - "binary_conversion_input_fn.proallargtypes"
+                                                  - "binary_conversion_input_fn.proargmodes"
+                                                  - "binary_conversion_input_fn.proargnames"
+                                                  - "binary_conversion_input_fn.proargdefaults"
+                                                  - "binary_conversion_input_fn.protrftypes"
+                                                  - "binary_conversion_input_fn.prosrc"
+                                                  - "binary_conversion_input_fn.probin"
+                                                  - "binary_conversion_input_fn.prosqlbody"
+                                                  - "binary_conversion_input_fn.proconfig"
+                                                  - "binary_conversion_input_fn.proacl"
+                                                Index Cond: "(binary_conversion_input_fn.oid = (type_.typreceive)::oid)"
+                                                Rows Removed by Index Recheck: 0
+                                                Shared Hit Blocks: 15
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                              - Node Type: "Index Scan"
+                                                Parent Relationship: "Inner"
+                                                Parallel Aware: false
+                                                Async Capable: false
+                                                Scan Direction: "Forward"
+                                                Index Name: "pg_namespace_oid_index"
+                                                Relation Name: "pg_namespace"
+                                                Schema: "pg_catalog"
+                                                Alias: "binary_conversion_input_fn_schema"
+                                                Startup Cost: 0.13
+                                                Total Cost: 0.15
+                                                Plan Rows: 1
+                                                Plan Width: 68
+                                                Actual Startup Time: 0.001
+                                                Actual Total Time: 0.001
+                                                Actual Rows: 1
+                                                Actual Loops: 5
+                                                Output: 
+                                                  - "binary_conversion_input_fn_schema.oid"
+                                                  - "binary_conversion_input_fn_schema.nspname"
+                                                  - "binary_conversion_input_fn_schema.nspowner"
+                                                  - "binary_conversion_input_fn_schema.nspacl"
+                                                Index Cond: "(binary_conversion_input_fn_schema.oid = binary_conversion_input_fn.pronamespace)"
+                                                Rows Removed by Index Recheck: 0
+                                                Shared Hit Blocks: 10
+                                                Shared Read Blocks: 0
+                                                Shared Dirtied Blocks: 0
+                                                Shared Written Blocks: 0
+                                                Local Hit Blocks: 0
+                                                Local Read Blocks: 0
+                                                Local Dirtied Blocks: 0
+                                                Local Written Blocks: 0
+                                                Temp Read Blocks: 0
+                                                Temp Written Blocks: 0
+                                      - Node Type: "Nested Loop"
+                                        Parent Relationship: "Inner"
+                                        Parallel Aware: false
+                                        Async Capable: false
+                                        Join Type: "Inner"
+                                        Startup Cost: 0.41
+                                        Total Cost: 8.46
+                                        Plan Rows: 1
+                                        Plan Width: 132
+                                        Actual Startup Time: 0.005
+                                        Actual Total Time: 0.005
+                                        Actual Rows: 1
+                                        Actual Loops: 5
+                                        Output: 
+                                          - "text_conversion_output_fn.proname"
+                                          - "text_conversion_output_fn.oid"
+                                          - "text_conversion_output_fn_schema.nspname"
+                                        Inner Unique: true
+                                        Shared Hit Blocks: 25
+                                        Shared Read Blocks: 0
+                                        Shared Dirtied Blocks: 0
+                                        Shared Written Blocks: 0
+                                        Local Hit Blocks: 0
+                                        Local Read Blocks: 0
+                                        Local Dirtied Blocks: 0
+                                        Local Written Blocks: 0
+                                        Temp Read Blocks: 0
+                                        Temp Written Blocks: 0
+                                        Plans: 
+                                          - Node Type: "Index Scan"
+                                            Parent Relationship: "Outer"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Scan Direction: "Forward"
+                                            Index Name: "pg_proc_oid_index"
+                                            Relation Name: "pg_proc"
+                                            Schema: "pg_catalog"
+                                            Alias: "text_conversion_output_fn"
+                                            Startup Cost: 0.28
+                                            Total Cost: 8.30
+                                            Plan Rows: 1
+                                            Plan Width: 72
+                                            Actual Startup Time: 0.003
+                                            Actual Total Time: 0.003
+                                            Actual Rows: 1
+                                            Actual Loops: 5
+                                            Output: 
+                                              - "text_conversion_output_fn.oid"
+                                              - "text_conversion_output_fn.proname"
+                                              - "text_conversion_output_fn.pronamespace"
+                                              - "text_conversion_output_fn.proowner"
+                                              - "text_conversion_output_fn.prolang"
+                                              - "text_conversion_output_fn.procost"
+                                              - "text_conversion_output_fn.prorows"
+                                              - "text_conversion_output_fn.provariadic"
+                                              - "text_conversion_output_fn.prosupport"
+                                              - "text_conversion_output_fn.prokind"
+                                              - "text_conversion_output_fn.prosecdef"
+                                              - "text_conversion_output_fn.proleakproof"
+                                              - "text_conversion_output_fn.proisstrict"
+                                              - "text_conversion_output_fn.proretset"
+                                              - "text_conversion_output_fn.provolatile"
+                                              - "text_conversion_output_fn.proparallel"
+                                              - "text_conversion_output_fn.pronargs"
+                                              - "text_conversion_output_fn.pronargdefaults"
+                                              - "text_conversion_output_fn.prorettype"
+                                              - "text_conversion_output_fn.proargtypes"
+                                              - "text_conversion_output_fn.proallargtypes"
+                                              - "text_conversion_output_fn.proargmodes"
+                                              - "text_conversion_output_fn.proargnames"
+                                              - "text_conversion_output_fn.proargdefaults"
+                                              - "text_conversion_output_fn.protrftypes"
+                                              - "text_conversion_output_fn.prosrc"
+                                              - "text_conversion_output_fn.probin"
+                                              - "text_conversion_output_fn.prosqlbody"
+                                              - "text_conversion_output_fn.proconfig"
+                                              - "text_conversion_output_fn.proacl"
+                                            Index Cond: "(text_conversion_output_fn.oid = (type_.typoutput)::oid)"
+                                            Rows Removed by Index Recheck: 0
+                                            Shared Hit Blocks: 15
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                                          - Node Type: "Index Scan"
+                                            Parent Relationship: "Inner"
+                                            Parallel Aware: false
+                                            Async Capable: false
+                                            Scan Direction: "Forward"
+                                            Index Name: "pg_namespace_oid_index"
+                                            Relation Name: "pg_namespace"
+                                            Schema: "pg_catalog"
+                                            Alias: "text_conversion_output_fn_schema"
+                                            Startup Cost: 0.13
+                                            Total Cost: 0.15
+                                            Plan Rows: 1
+                                            Plan Width: 68
+                                            Actual Startup Time: 0.001
+                                            Actual Total Time: 0.002
+                                            Actual Rows: 1
+                                            Actual Loops: 5
+                                            Output: 
+                                              - "text_conversion_output_fn_schema.oid"
+                                              - "text_conversion_output_fn_schema.nspname"
+                                              - "text_conversion_output_fn_schema.nspowner"
+                                              - "text_conversion_output_fn_schema.nspacl"
+                                            Index Cond: "(text_conversion_output_fn_schema.oid = text_conversion_output_fn.pronamespace)"
+                                            Rows Removed by Index Recheck: 0
+                                            Shared Hit Blocks: 10
+                                            Shared Read Blocks: 0
+                                            Shared Dirtied Blocks: 0
+                                            Shared Written Blocks: 0
+                                            Local Hit Blocks: 0
+                                            Local Read Blocks: 0
+                                            Local Dirtied Blocks: 0
+                                            Local Written Blocks: 0
+                                            Temp Read Blocks: 0
+                                            Temp Written Blocks: 0
+                  - Node Type: "Nested Loop"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 0.41
+                    Total Cost: 8.46
+                    Plan Rows: 1
+                    Plan Width: 132
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.002
+                    Actual Rows: 0
+                    Actual Loops: 5
+                    Output: 
+                      - "custom_analyze_fn.proname"
+                      - "custom_analyze_fn.oid"
+                      - "custom_analyze_fn_schema.nspname"
+                    Inner Unique: true
+                    Shared Hit Blocks: 10
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Index Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Scan Direction: "Forward"
+                        Index Name: "pg_proc_oid_index"
+                        Relation Name: "pg_proc"
+                        Schema: "pg_catalog"
+                        Alias: "custom_analyze_fn"
+                        Startup Cost: 0.28
+                        Total Cost: 8.30
+                        Plan Rows: 1
+                        Plan Width: 72
+                        Actual Startup Time: 0.002
+                        Actual Total Time: 0.002
+                        Actual Rows: 0
+                        Actual Loops: 5
+                        Output: 
+                          - "custom_analyze_fn.oid"
+                          - "custom_analyze_fn.proname"
+                          - "custom_analyze_fn.pronamespace"
+                          - "custom_analyze_fn.proowner"
+                          - "custom_analyze_fn.prolang"
+                          - "custom_analyze_fn.procost"
+                          - "custom_analyze_fn.prorows"
+                          - "custom_analyze_fn.provariadic"
+                          - "custom_analyze_fn.prosupport"
+                          - "custom_analyze_fn.prokind"
+                          - "custom_analyze_fn.prosecdef"
+                          - "custom_analyze_fn.proleakproof"
+                          - "custom_analyze_fn.proisstrict"
+                          - "custom_analyze_fn.proretset"
+                          - "custom_analyze_fn.provolatile"
+                          - "custom_analyze_fn.proparallel"
+                          - "custom_analyze_fn.pronargs"
+                          - "custom_analyze_fn.pronargdefaults"
+                          - "custom_analyze_fn.prorettype"
+                          - "custom_analyze_fn.proargtypes"
+                          - "custom_analyze_fn.proallargtypes"
+                          - "custom_analyze_fn.proargmodes"
+                          - "custom_analyze_fn.proargnames"
+                          - "custom_analyze_fn.proargdefaults"
+                          - "custom_analyze_fn.protrftypes"
+                          - "custom_analyze_fn.prosrc"
+                          - "custom_analyze_fn.probin"
+                          - "custom_analyze_fn.prosqlbody"
+                          - "custom_analyze_fn.proconfig"
+                          - "custom_analyze_fn.proacl"
+                        Index Cond: "(custom_analyze_fn.oid = (type_.typanalyze)::oid)"
+                        Rows Removed by Index Recheck: 0
+                        Shared Hit Blocks: 10
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Index Scan"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Scan Direction: "Forward"
+                        Index Name: "pg_namespace_oid_index"
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "custom_analyze_fn_schema"
+                        Startup Cost: 0.13
+                        Total Cost: 0.15
+                        Plan Rows: 1
+                        Plan Width: 68
+                        Actual Startup Time: 0.000
+                        Actual Total Time: 0.000
+                        Actual Rows: 0
+                        Actual Loops: 0
+                        Output: 
+                          - "custom_analyze_fn_schema.oid"
+                          - "custom_analyze_fn_schema.nspname"
+                          - "custom_analyze_fn_schema.nspowner"
+                          - "custom_analyze_fn_schema.nspacl"
+                        Index Cond: "(custom_analyze_fn_schema.oid = custom_analyze_fn.pronamespace)"
+                        Rows Removed by Index Recheck: 0
+                        Shared Hit Blocks: 0
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 0.41
+                Total Cost: 8.46
+                Plan Rows: 1
+                Plan Width: 132
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.002
+                Actual Rows: 0
+                Actual Loops: 5
+                Output: 
+                  - "type_modifier_output_fn.proname"
+                  - "type_modifier_output_fn.oid"
+                  - "type_modifier_output_fn_schema.nspname"
+                Inner Unique: true
+                Shared Hit Blocks: 10
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_proc_oid_index"
+                    Relation Name: "pg_proc"
+                    Schema: "pg_catalog"
+                    Alias: "type_modifier_output_fn"
+                    Startup Cost: 0.28
+                    Total Cost: 8.30
+                    Plan Rows: 1
+                    Plan Width: 72
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.002
+                    Actual Rows: 0
+                    Actual Loops: 5
+                    Output: 
+                      - "type_modifier_output_fn.oid"
+                      - "type_modifier_output_fn.proname"
+                      - "type_modifier_output_fn.pronamespace"
+                      - "type_modifier_output_fn.proowner"
+                      - "type_modifier_output_fn.prolang"
+                      - "type_modifier_output_fn.procost"
+                      - "type_modifier_output_fn.prorows"
+                      - "type_modifier_output_fn.provariadic"
+                      - "type_modifier_output_fn.prosupport"
+                      - "type_modifier_output_fn.prokind"
+                      - "type_modifier_output_fn.prosecdef"
+                      - "type_modifier_output_fn.proleakproof"
+                      - "type_modifier_output_fn.proisstrict"
+                      - "type_modifier_output_fn.proretset"
+                      - "type_modifier_output_fn.provolatile"
+                      - "type_modifier_output_fn.proparallel"
+                      - "type_modifier_output_fn.pronargs"
+                      - "type_modifier_output_fn.pronargdefaults"
+                      - "type_modifier_output_fn.prorettype"
+                      - "type_modifier_output_fn.proargtypes"
+                      - "type_modifier_output_fn.proallargtypes"
+                      - "type_modifier_output_fn.proargmodes"
+                      - "type_modifier_output_fn.proargnames"
+                      - "type_modifier_output_fn.proargdefaults"
+                      - "type_modifier_output_fn.protrftypes"
+                      - "type_modifier_output_fn.prosrc"
+                      - "type_modifier_output_fn.probin"
+                      - "type_modifier_output_fn.prosqlbody"
+                      - "type_modifier_output_fn.proconfig"
+                      - "type_modifier_output_fn.proacl"
+                    Index Cond: "(type_modifier_output_fn.oid = (type_.typmodout)::oid)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 10
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_namespace_oid_index"
+                    Relation Name: "pg_namespace"
+                    Schema: "pg_catalog"
+                    Alias: "type_modifier_output_fn_schema"
+                    Startup Cost: 0.13
+                    Total Cost: 0.15
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.000
+                    Actual Total Time: 0.000
+                    Actual Rows: 0
+                    Actual Loops: 0
+                    Output: 
+                      - "type_modifier_output_fn_schema.oid"
+                      - "type_modifier_output_fn_schema.nspname"
+                      - "type_modifier_output_fn_schema.nspowner"
+                      - "type_modifier_output_fn_schema.nspacl"
+                    Index Cond: "(type_modifier_output_fn_schema.oid = type_modifier_output_fn.pronamespace)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 0
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 24.35
+            Total Cost: 24.35
+            Plan Rows: 601
+            Plan Width: 132
+            Actual Startup Time: 0.375
+            Actual Total Time: 0.376
+            Actual Rows: 601
+            Actual Loops: 1
+            Output: 
+              - "element_type.typname"
+              - "element_type.oid"
+              - "element_type_schema.nspname"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 105
+            Shared Hit Blocks: 15
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 1.09
+                Total Cost: 24.35
+                Plan Rows: 601
+                Plan Width: 132
+                Actual Startup Time: 0.020
+                Actual Total Time: 0.217
+                Actual Rows: 601
+                Actual Loops: 1
+                Output: 
+                  - "element_type.typname"
+                  - "element_type.oid"
+                  - "element_type_schema.nspname"
+                Inner Unique: true
+                Hash Cond: "(element_type.typnamespace = element_type_schema.oid)"
+                Shared Hit Blocks: 15
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_type"
+                    Schema: "pg_catalog"
+                    Alias: "element_type"
+                    Startup Cost: 0.00
+                    Total Cost: 20.01
+                    Plan Rows: 601
+                    Plan Width: 72
+                    Actual Startup Time: 0.001
+                    Actual Total Time: 0.043
+                    Actual Rows: 601
+                    Actual Loops: 1
+                    Output: 
+                      - "element_type.oid"
+                      - "element_type.typname"
+                      - "element_type.typnamespace"
+                      - "element_type.typowner"
+                      - "element_type.typlen"
+                      - "element_type.typbyval"
+                      - "element_type.typtype"
+                      - "element_type.typcategory"
+                      - "element_type.typispreferred"
+                      - "element_type.typisdefined"
+                      - "element_type.typdelim"
+                      - "element_type.typrelid"
+                      - "element_type.typsubscript"
+                      - "element_type.typelem"
+                      - "element_type.typarray"
+                      - "element_type.typinput"
+                      - "element_type.typoutput"
+                      - "element_type.typreceive"
+                      - "element_type.typsend"
+                      - "element_type.typmodin"
+                      - "element_type.typmodout"
+                      - "element_type.typanalyze"
+                      - "element_type.typalign"
+                      - "element_type.typstorage"
+                      - "element_type.typnotnull"
+                      - "element_type.typbasetype"
+                      - "element_type.typtypmod"
+                      - "element_type.typndims"
+                      - "element_type.typcollation"
+                      - "element_type.typdefaultbin"
+                      - "element_type.typdefault"
+                      - "element_type.typacl"
+                    Shared Hit Blocks: 14
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 1.04
+                    Total Cost: 1.04
+                    Plan Rows: 4
+                    Plan Width: 68
+                    Actual Startup Time: 0.007
+                    Actual Total Time: 0.007
+                    Actual Rows: 4
+                    Actual Loops: 1
+                    Output: 
+                      - "element_type_schema.nspname"
+                      - "element_type_schema.oid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 9
+                    Shared Hit Blocks: 1
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_namespace"
+                        Schema: "pg_catalog"
+                        Alias: "element_type_schema"
+                        Startup Cost: 0.00
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 68
+                        Actual Startup Time: 0.001
+                        Actual Total Time: 0.002
+                        Actual Rows: 4
+                        Actual Loops: 1
+                        Output: 
+                          - "element_type_schema.nspname"
+                          - "element_type_schema.oid"
+                        Shared Hit Blocks: 1
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 100
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 2.283
+  Triggers: 
+  Execution Time: 1.734

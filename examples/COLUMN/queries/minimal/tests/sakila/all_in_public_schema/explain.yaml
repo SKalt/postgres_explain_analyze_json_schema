@@ -1,0 +1,590 @@
+- Plan: 
+    Node Type: "Hash Join"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Left"
+    Startup Cost: 27.00
+    Total Cost: 379.83
+    Plan Rows: 651
+    Plan Width: 466
+    Actual Startup Time: 0.376
+    Actual Total Time: 6.357
+    Actual Rows: 253
+    Actual Loops: 1
+    Output: 
+      - "rel_schema.nspname"
+      - "rel.relname"
+      - "col.attname"
+      - "col.attnum"
+      - "type_ns.nspname"
+      - "type_.typname"
+      - "col.attstattarget"
+      - "col.attndims"
+      - "col.atttypmod"
+      - "(((1 << CASE WHEN col.attnotnull THEN 1 ELSE 0 END) | (CASE col.attidentity WHEN ''::\"char\" THEN 1 WHEN 'a'::\"char\" THEN 2 WHEN 'd'::\"char\" THEN 3 ELSE 0 END << 1)) | (CASE col.attgenerated WHEN ''::\"char\" THEN 1 WHEN 's'::\"char\" THEN 2 ELSE 0 END << 3))"
+      - "CASE WHEN col.atthasdef THEN pg_get_expr(col_def.adbin, col_def.adrelid) ELSE NULL::text END"
+      - "col.attoptions"
+      - "col.attfdwoptions"
+      - "col_description(col.attrelid, (col.attnum)::integer)"
+    Inner Unique: true
+    Hash Cond: "((col.attrelid = col_def.adrelid) AND (col.attnum = col_def.adnum))"
+    Join Filter: "col.atthasdef"
+    Rows Removed by Join Filter: 0
+    Shared Hit Blocks: 637
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Seq Scan"
+        Parent Relationship: "InitPlan"
+        Subplan Name: "InitPlan 1 (returns $0)"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_namespace"
+        Schema: "pg_catalog"
+        Alias: "ns"
+        Startup Cost: 0.00
+        Total Cost: 1.05
+        Plan Rows: 1
+        Plan Width: 4
+        Actual Startup Time: 0.001
+        Actual Total Time: 0.002
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "ns.oid"
+        Filter: "(ns.nspname = 'public'::name)"
+        Rows Removed by Filter: 3
+        Shared Hit Blocks: 1
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+      - Node Type: "Hash Join"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 21.95
+        Total Cost: 189.08
+        Plan Rows: 651
+        Plan Width: 406
+        Actual Startup Time: 0.255
+        Actual Total Time: 1.334
+        Actual Rows: 253
+        Actual Loops: 1
+        Output: 
+          - "col.attname"
+          - "col.attnum"
+          - "col.attstattarget"
+          - "col.attndims"
+          - "col.atttypmod"
+          - "col.attnotnull"
+          - "col.attidentity"
+          - "col.attgenerated"
+          - "col.atthasdef"
+          - "col.attoptions"
+          - "col.attfdwoptions"
+          - "col.attrelid"
+          - "rel.relname"
+          - "rel_schema.nspname"
+          - "type_.typname"
+          - "type_ns.nspname"
+        Inner Unique: true
+        Hash Cond: "(type_.typnamespace = type_ns.oid)"
+        Shared Hit Blocks: 128
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 20.86
+            Total Cost: 184.47
+            Plan Rows: 651
+            Plan Width: 346
+            Actual Startup Time: 0.238
+            Actual Total Time: 1.219
+            Actual Rows: 253
+            Actual Loops: 1
+            Output: 
+              - "col.attname"
+              - "col.attnum"
+              - "col.attstattarget"
+              - "col.attndims"
+              - "col.atttypmod"
+              - "col.attnotnull"
+              - "col.attidentity"
+              - "col.attgenerated"
+              - "col.atthasdef"
+              - "col.attoptions"
+              - "col.attfdwoptions"
+              - "col.attrelid"
+              - "rel.relname"
+              - "rel_schema.nspname"
+              - "type_.typname"
+              - "type_.typnamespace"
+            Inner Unique: true
+            Shared Hit Blocks: 127
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 20.57
+                Total Cost: 150.79
+                Plan Rows: 651
+                Plan Width: 282
+                Actual Startup Time: 0.226
+                Actual Total Time: 0.948
+                Actual Rows: 253
+                Actual Loops: 1
+                Output: 
+                  - "col.attname"
+                  - "col.attnum"
+                  - "col.attstattarget"
+                  - "col.attndims"
+                  - "col.atttypmod"
+                  - "col.attnotnull"
+                  - "col.attidentity"
+                  - "col.attgenerated"
+                  - "col.atthasdef"
+                  - "col.attoptions"
+                  - "col.attfdwoptions"
+                  - "col.attrelid"
+                  - "col.atttypid"
+                  - "rel.relname"
+                  - "rel_schema.nspname"
+                Inner Unique: false
+                Shared Hit Blocks: 79
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Seq Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Relation Name: "pg_namespace"
+                    Schema: "pg_catalog"
+                    Alias: "rel_schema"
+                    Startup Cost: 0.00
+                    Total Cost: 1.05
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.004
+                    Actual Total Time: 0.004
+                    Actual Rows: 1
+                    Actual Loops: 1
+                    Output: 
+                      - "rel_schema.oid"
+                      - "rel_schema.nspname"
+                      - "rel_schema.nspowner"
+                      - "rel_schema.nspacl"
+                    Filter: "(rel_schema.oid = $0)"
+                    Rows Removed by Filter: 3
+                    Shared Hit Blocks: 2
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Hash Join"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 20.57
+                    Total Cost: 143.23
+                    Plan Rows: 651
+                    Plan Width: 222
+                    Actual Startup Time: 0.221
+                    Actual Total Time: 0.877
+                    Actual Rows: 253
+                    Actual Loops: 1
+                    Output: 
+                      - "col.attname"
+                      - "col.attnum"
+                      - "col.attstattarget"
+                      - "col.attndims"
+                      - "col.atttypmod"
+                      - "col.attnotnull"
+                      - "col.attidentity"
+                      - "col.attgenerated"
+                      - "col.atthasdef"
+                      - "col.attoptions"
+                      - "col.attfdwoptions"
+                      - "col.attrelid"
+                      - "col.atttypid"
+                      - "rel.relname"
+                      - "rel.relnamespace"
+                    Inner Unique: true
+                    Hash Cond: "(col.attrelid = rel.oid)"
+                    Shared Hit Blocks: 77
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_attribute"
+                        Schema: "pg_catalog"
+                        Alias: "col"
+                        Startup Cost: 0.00
+                        Total Cost: 115.75
+                        Plan Rows: 2610
+                        Plan Width: 154
+                        Actual Startup Time: 0.002
+                        Actual Total Time: 0.485
+                        Actual Rows: 2610
+                        Actual Loops: 1
+                        Output: 
+                          - "col.attrelid"
+                          - "col.attname"
+                          - "col.atttypid"
+                          - "col.attstattarget"
+                          - "col.attlen"
+                          - "col.attnum"
+                          - "col.attndims"
+                          - "col.attcacheoff"
+                          - "col.atttypmod"
+                          - "col.attbyval"
+                          - "col.attalign"
+                          - "col.attstorage"
+                          - "col.attcompression"
+                          - "col.attnotnull"
+                          - "col.atthasdef"
+                          - "col.atthasmissing"
+                          - "col.attidentity"
+                          - "col.attgenerated"
+                          - "col.attisdropped"
+                          - "col.attislocal"
+                          - "col.attinhcount"
+                          - "col.attcollation"
+                          - "col.attacl"
+                          - "col.attoptions"
+                          - "col.attfdwoptions"
+                          - "col.attmissingval"
+                        Filter: "((col.attnum > 0) AND (col.atttypid > '0'::oid))"
+                        Rows Removed by Filter: 840
+                        Shared Hit Blocks: 64
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Hash"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Startup Cost: 19.06
+                        Total Cost: 19.06
+                        Plan Rows: 121
+                        Plan Width: 72
+                        Actual Startup Time: 0.072
+                        Actual Total Time: 0.072
+                        Actual Rows: 85
+                        Actual Loops: 1
+                        Output: 
+                          - "rel.relname"
+                          - "rel.oid"
+                          - "rel.relnamespace"
+                        Hash Buckets: 1024
+                        Original Hash Buckets: 1024
+                        Hash Batches: 1
+                        Original Hash Batches: 1
+                        Peak Memory Usage: 17
+                        Shared Hit Blocks: 13
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Seq Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Relation Name: "pg_class"
+                            Schema: "pg_catalog"
+                            Alias: "rel"
+                            Startup Cost: 0.00
+                            Total Cost: 19.06
+                            Plan Rows: 121
+                            Plan Width: 72
+                            Actual Startup Time: 0.004
+                            Actual Total Time: 0.053
+                            Actual Rows: 85
+                            Actual Loops: 1
+                            Output: 
+                              - "rel.relname"
+                              - "rel.oid"
+                              - "rel.relnamespace"
+                            Filter: "(rel.relnamespace = $0)"
+                            Rows Removed by Filter: 400
+                            Shared Hit Blocks: 13
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+              - Node Type: "Memoize"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Startup Cost: 0.29
+                Total Cost: 0.33
+                Plan Rows: 1
+                Plan Width: 72
+                Actual Startup Time: 0.000
+                Actual Total Time: 0.000
+                Actual Rows: 1
+                Actual Loops: 253
+                Output: 
+                  - "type_.typname"
+                  - "type_.oid"
+                  - "type_.typnamespace"
+                Cache Key: "col.atttypid"
+                Cache Hits: 237
+                Cache Misses: 16
+                Cache Evictions: 0
+                Cache Overflows: 0
+                Peak Memory Usage: 3
+                Shared Hit Blocks: 48
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_type_oid_index"
+                    Relation Name: "pg_type"
+                    Schema: "pg_catalog"
+                    Alias: "type_"
+                    Startup Cost: 0.28
+                    Total Cost: 0.32
+                    Plan Rows: 1
+                    Plan Width: 72
+                    Actual Startup Time: 0.002
+                    Actual Total Time: 0.002
+                    Actual Rows: 1
+                    Actual Loops: 16
+                    Output: 
+                      - "type_.typname"
+                      - "type_.oid"
+                      - "type_.typnamespace"
+                    Index Cond: "(type_.oid = col.atttypid)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 48
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+          - Node Type: "Hash"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 1.04
+            Total Cost: 1.04
+            Plan Rows: 4
+            Plan Width: 68
+            Actual Startup Time: 0.010
+            Actual Total Time: 0.010
+            Actual Rows: 4
+            Actual Loops: 1
+            Output: 
+              - "type_ns.nspname"
+              - "type_ns.oid"
+            Hash Buckets: 1024
+            Original Hash Buckets: 1024
+            Hash Batches: 1
+            Original Hash Batches: 1
+            Peak Memory Usage: 9
+            Shared Hit Blocks: 1
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Seq Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Relation Name: "pg_namespace"
+                Schema: "pg_catalog"
+                Alias: "type_ns"
+                Startup Cost: 0.00
+                Total Cost: 1.04
+                Plan Rows: 4
+                Plan Width: 68
+                Actual Startup Time: 0.003
+                Actual Total Time: 0.004
+                Actual Rows: 4
+                Actual Loops: 1
+                Output: 
+                  - "type_ns.nspname"
+                  - "type_ns.oid"
+                Shared Hit Blocks: 1
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+      - Node Type: "Hash"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Startup Cost: 3.40
+        Total Cost: 3.40
+        Plan Rows: 40
+        Plan Width: 370
+        Actual Startup Time: 0.025
+        Actual Total Time: 0.025
+        Actual Rows: 40
+        Actual Loops: 1
+        Output: 
+          - "col_def.adbin"
+          - "col_def.adrelid"
+          - "col_def.adnum"
+        Hash Buckets: 1024
+        Original Hash Buckets: 1024
+        Hash Batches: 1
+        Original Hash Batches: 1
+        Peak Memory Usage: 24
+        Shared Hit Blocks: 3
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_attrdef"
+            Schema: "pg_catalog"
+            Alias: "col_def"
+            Startup Cost: 0.00
+            Total Cost: 3.40
+            Plan Rows: 40
+            Plan Width: 370
+            Actual Startup Time: 0.002
+            Actual Total Time: 0.008
+            Actual Rows: 40
+            Actual Loops: 1
+            Output: 
+              - "col_def.adbin"
+              - "col_def.adrelid"
+              - "col_def.adnum"
+            Shared Hit Blocks: 3
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 50
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.878
+  Triggers: 
+  Execution Time: 6.533

@@ -1,0 +1,115 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Inner"
+    Startup Cost: 0.00
+    Total Cost: 2.10
+    Plan Rows: 1
+    Plan Width: 269
+    Actual Startup Time: 0.019
+    Actual Total Time: 0.021
+    Actual Rows: 1
+    Actual Loops: 1
+    Output: 
+      - "ext.oid"
+      - "ext.extname"
+      - "pg_get_userbyid(ext.extowner)"
+      - "ext.extnamespace"
+      - "ns.nspname"
+      - "ext.extrelocatable"
+      - "ext.extversion"
+      - "ext.extconfig"
+      - "ext.extcondition"
+    Inner Unique: true
+    Join Filter: "(ext.extnamespace = ns.oid)"
+    Rows Removed by Join Filter: 1
+    Shared Hit Blocks: 2
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Seq Scan"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_extension"
+        Schema: "pg_catalog"
+        Alias: "ext"
+        Startup Cost: 0.00
+        Total Cost: 1.01
+        Plan Rows: 1
+        Plan Width: 145
+        Actual Startup Time: 0.004
+        Actual Total Time: 0.005
+        Actual Rows: 1
+        Actual Loops: 1
+        Output: 
+          - "ext.oid"
+          - "ext.extname"
+          - "ext.extowner"
+          - "ext.extnamespace"
+          - "ext.extrelocatable"
+          - "ext.extversion"
+          - "ext.extconfig"
+          - "ext.extcondition"
+        Shared Hit Blocks: 1
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+      - Node Type: "Seq Scan"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_namespace"
+        Schema: "pg_catalog"
+        Alias: "ns"
+        Startup Cost: 0.00
+        Total Cost: 1.04
+        Plan Rows: 4
+        Plan Width: 68
+        Actual Startup Time: 0.002
+        Actual Total Time: 0.002
+        Actual Rows: 2
+        Actual Loops: 1
+        Output: 
+          - "ns.oid"
+          - "ns.nspname"
+          - "ns.nspowner"
+          - "ns.nspacl"
+        Shared Hit Blocks: 1
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 43
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.546
+  Triggers: 
+  Execution Time: 0.039

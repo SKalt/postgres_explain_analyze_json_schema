@@ -1,0 +1,271 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Inner"
+    Startup Cost: 0.40
+    Total Cost: 9.92
+    Plan Rows: 1
+    Plan Width: 290
+    Actual Startup Time: 0.002
+    Actual Total Time: 0.003
+    Actual Rows: 0
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "tbl.relname"
+      - "policy_.polname"
+      - "policy_.polcmd"
+      - "policy_.polpermissive"
+      - "(SubPlan 1)"
+      - "pg_get_expr(policy_.polqual, policy_.polrelid)"
+      - "pg_get_expr(policy_.polwithcheck, policy_.polrelid)"
+    Inner Unique: true
+    Shared Hit Blocks: 0
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 0.27
+        Total Cost: 8.33
+        Plan Rows: 1
+        Plan Width: 234
+        Actual Startup Time: 0.002
+        Actual Total Time: 0.002
+        Actual Rows: 0
+        Actual Loops: 1
+        Output: 
+          - "policy_.polname"
+          - "policy_.polcmd"
+          - "policy_.polpermissive"
+          - "policy_.polroles"
+          - "policy_.polqual"
+          - "policy_.polrelid"
+          - "policy_.polwithcheck"
+          - "tbl.relname"
+          - "tbl.relnamespace"
+        Inner Unique: true
+        Shared Hit Blocks: 0
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_policy"
+            Schema: "pg_catalog"
+            Alias: "policy_"
+            Startup Cost: 0.00
+            Total Cost: 0.00
+            Plan Rows: 1
+            Plan Width: 166
+            Actual Startup Time: 0.002
+            Actual Total Time: 0.002
+            Actual Rows: 0
+            Actual Loops: 1
+            Output: 
+              - "policy_.oid"
+              - "policy_.polname"
+              - "policy_.polrelid"
+              - "policy_.polcmd"
+              - "policy_.polpermissive"
+              - "policy_.polroles"
+              - "policy_.polqual"
+              - "policy_.polwithcheck"
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+          - Node Type: "Index Scan"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Scan Direction: "Forward"
+            Index Name: "pg_class_oid_index"
+            Relation Name: "pg_class"
+            Schema: "pg_catalog"
+            Alias: "tbl"
+            Startup Cost: 0.27
+            Total Cost: 8.29
+            Plan Rows: 1
+            Plan Width: 72
+            Actual Startup Time: 0.000
+            Actual Total Time: 0.000
+            Actual Rows: 0
+            Actual Loops: 0
+            Output: 
+              - "tbl.oid"
+              - "tbl.relname"
+              - "tbl.relnamespace"
+              - "tbl.reltype"
+              - "tbl.reloftype"
+              - "tbl.relowner"
+              - "tbl.relam"
+              - "tbl.relfilenode"
+              - "tbl.reltablespace"
+              - "tbl.relpages"
+              - "tbl.reltuples"
+              - "tbl.relallvisible"
+              - "tbl.reltoastrelid"
+              - "tbl.relhasindex"
+              - "tbl.relisshared"
+              - "tbl.relpersistence"
+              - "tbl.relkind"
+              - "tbl.relnatts"
+              - "tbl.relchecks"
+              - "tbl.relhasrules"
+              - "tbl.relhastriggers"
+              - "tbl.relhassubclass"
+              - "tbl.relrowsecurity"
+              - "tbl.relforcerowsecurity"
+              - "tbl.relispopulated"
+              - "tbl.relreplident"
+              - "tbl.relispartition"
+              - "tbl.relrewrite"
+              - "tbl.relfrozenxid"
+              - "tbl.relminmxid"
+              - "tbl.relacl"
+              - "tbl.reloptions"
+              - "tbl.relpartbound"
+            Index Cond: "(tbl.oid = policy_.polrelid)"
+            Rows Removed by Index Recheck: 0
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+      - Node Type: "Index Scan"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Scan Direction: "Forward"
+        Index Name: "pg_namespace_oid_index"
+        Relation Name: "pg_namespace"
+        Schema: "pg_catalog"
+        Alias: "ns"
+        Startup Cost: 0.13
+        Total Cost: 0.18
+        Plan Rows: 1
+        Plan Width: 68
+        Actual Startup Time: 0.000
+        Actual Total Time: 0.000
+        Actual Rows: 0
+        Actual Loops: 0
+        Output: 
+          - "ns.oid"
+          - "ns.nspname"
+          - "ns.nspowner"
+          - "ns.nspacl"
+        Index Cond: "(ns.oid = tbl.relnamespace)"
+        Rows Removed by Index Recheck: 0
+        Shared Hit Blocks: 0
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+      - Node Type: "Sort"
+        Parent Relationship: "SubPlan"
+        Subplan Name: "SubPlan 1"
+        Parallel Aware: false
+        Async Capable: false
+        Startup Cost: 1.37
+        Total Cost: 1.39
+        Plan Rows: 7
+        Plan Width: 64
+        Actual Startup Time: 0.000
+        Actual Total Time: 0.000
+        Actual Rows: 0
+        Actual Loops: 0
+        Output: 
+          - "pg_authid.rolname"
+        Sort Key: 
+          - "pg_authid.rolname"
+        Shared Hit Blocks: 0
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_authid"
+            Schema: "pg_catalog"
+            Alias: "pg_authid"
+            Startup Cost: 0.00
+            Total Cost: 1.27
+            Plan Rows: 7
+            Plan Width: 64
+            Actual Startup Time: 0.000
+            Actual Total Time: 0.000
+            Actual Rows: 0
+            Actual Loops: 0
+            Output: 
+              - "pg_authid.rolname"
+            Filter: "(pg_authid.oid = ANY (policy_.polroles))"
+            Rows Removed by Filter: 0
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 29
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.422
+  Triggers: 
+  Execution Time: 0.047

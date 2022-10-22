@@ -1,0 +1,177 @@
+- Plan: 
+    Node Type: "Sort"
+    Parallel Aware: false
+    Async Capable: false
+    Startup Cost: 8.57
+    Total Cost: 8.57
+    Plan Rows: 1
+    Plan Width: 321
+    Actual Startup Time: 0.014
+    Actual Total Time: 0.014
+    Actual Rows: 0
+    Actual Loops: 1
+    Output: 
+      - "trigger_.evtname"
+      - "trigger_.evtevent"
+      - "(pg_get_userbyid(trigger_.evtowner))"
+      - "fn.proname"
+      - "trigger_.evtenabled"
+      - "trigger_.evttags"
+      - "(obj_description(trigger_.oid, 'pg_event_trigger'::name))"
+    Sort Key: 
+      - "trigger_.evtname"
+      - "trigger_.evtevent"
+    Sort Method: "quicksort"
+    Sort Space Used: 25
+    Sort Space Type: "Memory"
+    Shared Hit Blocks: 0
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Left"
+        Startup Cost: 0.28
+        Total Cost: 8.56
+        Plan Rows: 1
+        Plan Width: 321
+        Actual Startup Time: 0.002
+        Actual Total Time: 0.003
+        Actual Rows: 0
+        Actual Loops: 1
+        Output: 
+          - "trigger_.evtname"
+          - "trigger_.evtevent"
+          - "pg_get_userbyid(trigger_.evtowner)"
+          - "fn.proname"
+          - "trigger_.evtenabled"
+          - "trigger_.evttags"
+          - "obj_description(trigger_.oid, 'pg_event_trigger'::name)"
+        Inner Unique: true
+        Shared Hit Blocks: 0
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Seq Scan"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Relation Name: "pg_event_trigger"
+            Schema: "pg_catalog"
+            Alias: "trigger_"
+            Startup Cost: 0.00
+            Total Cost: 0.00
+            Plan Rows: 1
+            Plan Width: 173
+            Actual Startup Time: 0.002
+            Actual Total Time: 0.002
+            Actual Rows: 0
+            Actual Loops: 1
+            Output: 
+              - "trigger_.oid"
+              - "trigger_.evtname"
+              - "trigger_.evtevent"
+              - "trigger_.evtowner"
+              - "trigger_.evtfoid"
+              - "trigger_.evtenabled"
+              - "trigger_.evttags"
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+          - Node Type: "Index Scan"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Scan Direction: "Forward"
+            Index Name: "pg_proc_oid_index"
+            Relation Name: "pg_proc"
+            Schema: "pg_catalog"
+            Alias: "fn"
+            Startup Cost: 0.28
+            Total Cost: 8.30
+            Plan Rows: 1
+            Plan Width: 68
+            Actual Startup Time: 0.000
+            Actual Total Time: 0.000
+            Actual Rows: 0
+            Actual Loops: 0
+            Output: 
+              - "fn.oid"
+              - "fn.proname"
+              - "fn.pronamespace"
+              - "fn.proowner"
+              - "fn.prolang"
+              - "fn.procost"
+              - "fn.prorows"
+              - "fn.provariadic"
+              - "fn.prosupport"
+              - "fn.prokind"
+              - "fn.prosecdef"
+              - "fn.proleakproof"
+              - "fn.proisstrict"
+              - "fn.proretset"
+              - "fn.provolatile"
+              - "fn.proparallel"
+              - "fn.pronargs"
+              - "fn.pronargdefaults"
+              - "fn.prorettype"
+              - "fn.proargtypes"
+              - "fn.proallargtypes"
+              - "fn.proargmodes"
+              - "fn.proargnames"
+              - "fn.proargdefaults"
+              - "fn.protrftypes"
+              - "fn.prosrc"
+              - "fn.probin"
+              - "fn.prosqlbody"
+              - "fn.proconfig"
+              - "fn.proacl"
+            Index Cond: "(fn.oid = trigger_.evtfoid)"
+            Rows Removed by Index Recheck: 0
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 16
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 0.365
+  Triggers: 
+  Execution Time: 0.043

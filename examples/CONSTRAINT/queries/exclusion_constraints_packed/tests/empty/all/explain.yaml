@@ -1,0 +1,687 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Inner"
+    Startup Cost: 6.25
+    Total Cost: 28.60
+    Plan Rows: 1
+    Plan Width: 606
+    Actual Startup Time: 0.023
+    Actual Total Time: 0.025
+    Actual Rows: 0
+    Actual Loops: 1
+    Output: 
+      - "ns.nspname"
+      - "constraint_.conname"
+      - "((((((0 | CASE WHEN constraint_.condeferrable THEN 1 ELSE 0 END) | CASE WHEN constraint_.condeferred THEN 2 ELSE 0 END) | CASE WHEN constraint_.convalidated THEN 4 ELSE 0 END) | CASE WHEN constraint_.conislocal THEN 8 ELSE 0 END) | CASE WHEN constraint_.connoinherit THEN 16 ELSE 0 END))::smallint"
+      - "tbl_ns.nspname"
+      - "tbl.relname"
+      - "parent_constraint_schema.nspname"
+      - "parent_constraint.conname"
+      - "pg_get_constraintdef(constraint_.oid, true)"
+      - "type_ns.nspname"
+      - "type_.typname"
+      - "constraint_.coninhcount"
+      - "constraint_.conkey"
+      - "constraint_.conexclop"
+    Inner Unique: true
+    Join Filter: "(constraint_.connamespace = ns.oid)"
+    Rows Removed by Join Filter: 0
+    Shared Hit Blocks: 3
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Left"
+        Startup Cost: 6.25
+        Total Cost: 27.49
+        Plan Rows: 1
+        Plan Width: 521
+        Actual Startup Time: 0.023
+        Actual Total Time: 0.024
+        Actual Rows: 0
+        Actual Loops: 1
+        Output: 
+          - "constraint_.conname"
+          - "constraint_.condeferrable"
+          - "constraint_.condeferred"
+          - "constraint_.convalidated"
+          - "constraint_.conislocal"
+          - "constraint_.connoinherit"
+          - "constraint_.oid"
+          - "constraint_.coninhcount"
+          - "constraint_.conkey"
+          - "constraint_.conexclop"
+          - "constraint_.connamespace"
+          - "parent_constraint.conname"
+          - "parent_constraint_schema.nspname"
+          - "type_.typname"
+          - "type_ns.nspname"
+          - "tbl.relname"
+          - "tbl_ns.nspname"
+        Inner Unique: false
+        Join Filter: "(constraint_.conrelid > '0'::oid)"
+        Rows Removed by Join Filter: 0
+        Shared Hit Blocks: 3
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Left"
+            Startup Cost: 5.85
+            Total Cost: 18.99
+            Plan Rows: 1
+            Plan Width: 397
+            Actual Startup Time: 0.023
+            Actual Total Time: 0.024
+            Actual Rows: 0
+            Actual Loops: 1
+            Output: 
+              - "constraint_.conname"
+              - "constraint_.condeferrable"
+              - "constraint_.condeferred"
+              - "constraint_.convalidated"
+              - "constraint_.conislocal"
+              - "constraint_.connoinherit"
+              - "constraint_.oid"
+              - "constraint_.coninhcount"
+              - "constraint_.conkey"
+              - "constraint_.conexclop"
+              - "constraint_.connamespace"
+              - "constraint_.conrelid"
+              - "parent_constraint.conname"
+              - "parent_constraint_schema.nspname"
+              - "type_.typname"
+              - "type_ns.nspname"
+            Inner Unique: false
+            Join Filter: "(constraint_.contypid > '0'::oid)"
+            Rows Removed by Join Filter: 0
+            Shared Hit Blocks: 3
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Hash Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Right"
+                Startup Cost: 5.44
+                Total Cost: 10.50
+                Plan Rows: 1
+                Plan Width: 273
+                Actual Startup Time: 0.022
+                Actual Total Time: 0.023
+                Actual Rows: 0
+                Actual Loops: 1
+                Output: 
+                  - "constraint_.conname"
+                  - "constraint_.condeferrable"
+                  - "constraint_.condeferred"
+                  - "constraint_.convalidated"
+                  - "constraint_.conislocal"
+                  - "constraint_.connoinherit"
+                  - "constraint_.oid"
+                  - "constraint_.coninhcount"
+                  - "constraint_.conkey"
+                  - "constraint_.conexclop"
+                  - "constraint_.connamespace"
+                  - "constraint_.conrelid"
+                  - "constraint_.contypid"
+                  - "parent_constraint.conname"
+                  - "parent_constraint_schema.nspname"
+                Inner Unique: false
+                Hash Cond: "(parent_constraint.oid = constraint_.conparentid)"
+                Shared Hit Blocks: 3
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Hash Join"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 1.09
+                    Total Cost: 5.74
+                    Plan Rows: 107
+                    Plan Width: 132
+                    Actual Startup Time: 0.000
+                    Actual Total Time: 0.000
+                    Actual Rows: 0
+                    Actual Loops: 0
+                    Output: 
+                      - "parent_constraint.conname"
+                      - "parent_constraint.oid"
+                      - "parent_constraint_schema.nspname"
+                    Inner Unique: true
+                    Hash Cond: "(parent_constraint.connamespace = parent_constraint_schema.oid)"
+                    Shared Hit Blocks: 0
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_constraint"
+                        Schema: "pg_catalog"
+                        Alias: "parent_constraint"
+                        Startup Cost: 0.00
+                        Total Cost: 4.07
+                        Plan Rows: 107
+                        Plan Width: 72
+                        Actual Startup Time: 0.000
+                        Actual Total Time: 0.000
+                        Actual Rows: 0
+                        Actual Loops: 0
+                        Output: 
+                          - "parent_constraint.oid"
+                          - "parent_constraint.conname"
+                          - "parent_constraint.connamespace"
+                          - "parent_constraint.contype"
+                          - "parent_constraint.condeferrable"
+                          - "parent_constraint.condeferred"
+                          - "parent_constraint.convalidated"
+                          - "parent_constraint.conrelid"
+                          - "parent_constraint.contypid"
+                          - "parent_constraint.conindid"
+                          - "parent_constraint.conparentid"
+                          - "parent_constraint.confrelid"
+                          - "parent_constraint.confupdtype"
+                          - "parent_constraint.confdeltype"
+                          - "parent_constraint.confmatchtype"
+                          - "parent_constraint.conislocal"
+                          - "parent_constraint.coninhcount"
+                          - "parent_constraint.connoinherit"
+                          - "parent_constraint.conkey"
+                          - "parent_constraint.confkey"
+                          - "parent_constraint.conpfeqop"
+                          - "parent_constraint.conppeqop"
+                          - "parent_constraint.conffeqop"
+                          - "parent_constraint.conexclop"
+                          - "parent_constraint.conbin"
+                        Shared Hit Blocks: 0
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                      - Node Type: "Hash"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Startup Cost: 1.04
+                        Total Cost: 1.04
+                        Plan Rows: 4
+                        Plan Width: 68
+                        Actual Startup Time: 0.000
+                        Actual Total Time: 0.000
+                        Actual Rows: 0
+                        Actual Loops: 0
+                        Output: 
+                          - "parent_constraint_schema.nspname"
+                          - "parent_constraint_schema.oid"
+                        Shared Hit Blocks: 0
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Seq Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Relation Name: "pg_namespace"
+                            Schema: "pg_catalog"
+                            Alias: "parent_constraint_schema"
+                            Startup Cost: 0.00
+                            Total Cost: 1.04
+                            Plan Rows: 4
+                            Plan Width: 68
+                            Actual Startup Time: 0.000
+                            Actual Total Time: 0.000
+                            Actual Rows: 0
+                            Actual Loops: 0
+                            Output: 
+                              - "parent_constraint_schema.nspname"
+                              - "parent_constraint_schema.oid"
+                            Shared Hit Blocks: 0
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                  - Node Type: "Hash"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 4.34
+                    Total Cost: 4.34
+                    Plan Rows: 1
+                    Plan Width: 149
+                    Actual Startup Time: 0.016
+                    Actual Total Time: 0.016
+                    Actual Rows: 0
+                    Actual Loops: 1
+                    Output: 
+                      - "constraint_.conname"
+                      - "constraint_.condeferrable"
+                      - "constraint_.condeferred"
+                      - "constraint_.convalidated"
+                      - "constraint_.conislocal"
+                      - "constraint_.connoinherit"
+                      - "constraint_.oid"
+                      - "constraint_.coninhcount"
+                      - "constraint_.conkey"
+                      - "constraint_.conexclop"
+                      - "constraint_.connamespace"
+                      - "constraint_.conrelid"
+                      - "constraint_.contypid"
+                      - "constraint_.conparentid"
+                    Hash Buckets: 1024
+                    Original Hash Buckets: 1024
+                    Hash Batches: 1
+                    Original Hash Batches: 1
+                    Peak Memory Usage: 8
+                    Shared Hit Blocks: 3
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_constraint"
+                        Schema: "pg_catalog"
+                        Alias: "constraint_"
+                        Startup Cost: 0.00
+                        Total Cost: 4.34
+                        Plan Rows: 1
+                        Plan Width: 149
+                        Actual Startup Time: 0.016
+                        Actual Total Time: 0.016
+                        Actual Rows: 0
+                        Actual Loops: 1
+                        Output: 
+                          - "constraint_.conname"
+                          - "constraint_.condeferrable"
+                          - "constraint_.condeferred"
+                          - "constraint_.convalidated"
+                          - "constraint_.conislocal"
+                          - "constraint_.connoinherit"
+                          - "constraint_.oid"
+                          - "constraint_.coninhcount"
+                          - "constraint_.conkey"
+                          - "constraint_.conexclop"
+                          - "constraint_.connamespace"
+                          - "constraint_.conrelid"
+                          - "constraint_.contypid"
+                          - "constraint_.conparentid"
+                        Filter: "(constraint_.contype = 'x'::\"char\")"
+                        Rows Removed by Filter: 107
+                        Shared Hit Blocks: 3
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Nested Loop"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 0.41
+                Total Cost: 8.47
+                Plan Rows: 1
+                Plan Width: 132
+                Actual Startup Time: 0.000
+                Actual Total Time: 0.000
+                Actual Rows: 0
+                Actual Loops: 0
+                Output: 
+                  - "type_.typname"
+                  - "type_.oid"
+                  - "type_ns.nspname"
+                Inner Unique: true
+                Shared Hit Blocks: 0
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_type_oid_index"
+                    Relation Name: "pg_type"
+                    Schema: "pg_catalog"
+                    Alias: "type_"
+                    Startup Cost: 0.28
+                    Total Cost: 8.29
+                    Plan Rows: 1
+                    Plan Width: 72
+                    Actual Startup Time: 0.000
+                    Actual Total Time: 0.000
+                    Actual Rows: 0
+                    Actual Loops: 0
+                    Output: 
+                      - "type_.oid"
+                      - "type_.typname"
+                      - "type_.typnamespace"
+                      - "type_.typowner"
+                      - "type_.typlen"
+                      - "type_.typbyval"
+                      - "type_.typtype"
+                      - "type_.typcategory"
+                      - "type_.typispreferred"
+                      - "type_.typisdefined"
+                      - "type_.typdelim"
+                      - "type_.typrelid"
+                      - "type_.typsubscript"
+                      - "type_.typelem"
+                      - "type_.typarray"
+                      - "type_.typinput"
+                      - "type_.typoutput"
+                      - "type_.typreceive"
+                      - "type_.typsend"
+                      - "type_.typmodin"
+                      - "type_.typmodout"
+                      - "type_.typanalyze"
+                      - "type_.typalign"
+                      - "type_.typstorage"
+                      - "type_.typnotnull"
+                      - "type_.typbasetype"
+                      - "type_.typtypmod"
+                      - "type_.typndims"
+                      - "type_.typcollation"
+                      - "type_.typdefaultbin"
+                      - "type_.typdefault"
+                      - "type_.typacl"
+                    Index Cond: "(type_.oid = constraint_.contypid)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 0
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                  - Node Type: "Index Scan"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Scan Direction: "Forward"
+                    Index Name: "pg_namespace_oid_index"
+                    Relation Name: "pg_namespace"
+                    Schema: "pg_catalog"
+                    Alias: "type_ns"
+                    Startup Cost: 0.13
+                    Total Cost: 0.17
+                    Plan Rows: 1
+                    Plan Width: 68
+                    Actual Startup Time: 0.000
+                    Actual Total Time: 0.000
+                    Actual Rows: 0
+                    Actual Loops: 0
+                    Output: 
+                      - "type_ns.oid"
+                      - "type_ns.nspname"
+                      - "type_ns.nspowner"
+                      - "type_ns.nspacl"
+                    Index Cond: "(type_ns.oid = type_.typnamespace)"
+                    Rows Removed by Index Recheck: 0
+                    Shared Hit Blocks: 0
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 0.40
+            Total Cost: 8.49
+            Plan Rows: 1
+            Plan Width: 132
+            Actual Startup Time: 0.000
+            Actual Total Time: 0.000
+            Actual Rows: 0
+            Actual Loops: 0
+            Output: 
+              - "tbl.relname"
+              - "tbl.oid"
+              - "tbl_ns.nspname"
+            Inner Unique: true
+            Shared Hit Blocks: 0
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Index Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_class_oid_index"
+                Relation Name: "pg_class"
+                Schema: "pg_catalog"
+                Alias: "tbl"
+                Startup Cost: 0.27
+                Total Cost: 8.29
+                Plan Rows: 1
+                Plan Width: 72
+                Actual Startup Time: 0.000
+                Actual Total Time: 0.000
+                Actual Rows: 0
+                Actual Loops: 0
+                Output: 
+                  - "tbl.oid"
+                  - "tbl.relname"
+                  - "tbl.relnamespace"
+                  - "tbl.reltype"
+                  - "tbl.reloftype"
+                  - "tbl.relowner"
+                  - "tbl.relam"
+                  - "tbl.relfilenode"
+                  - "tbl.reltablespace"
+                  - "tbl.relpages"
+                  - "tbl.reltuples"
+                  - "tbl.relallvisible"
+                  - "tbl.reltoastrelid"
+                  - "tbl.relhasindex"
+                  - "tbl.relisshared"
+                  - "tbl.relpersistence"
+                  - "tbl.relkind"
+                  - "tbl.relnatts"
+                  - "tbl.relchecks"
+                  - "tbl.relhasrules"
+                  - "tbl.relhastriggers"
+                  - "tbl.relhassubclass"
+                  - "tbl.relrowsecurity"
+                  - "tbl.relforcerowsecurity"
+                  - "tbl.relispopulated"
+                  - "tbl.relreplident"
+                  - "tbl.relispartition"
+                  - "tbl.relrewrite"
+                  - "tbl.relfrozenxid"
+                  - "tbl.relminmxid"
+                  - "tbl.relacl"
+                  - "tbl.reloptions"
+                  - "tbl.relpartbound"
+                Index Cond: "(tbl.oid = constraint_.conrelid)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 0
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+              - Node Type: "Index Scan"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_namespace_oid_index"
+                Relation Name: "pg_namespace"
+                Schema: "pg_catalog"
+                Alias: "tbl_ns"
+                Startup Cost: 0.13
+                Total Cost: 0.18
+                Plan Rows: 1
+                Plan Width: 68
+                Actual Startup Time: 0.000
+                Actual Total Time: 0.000
+                Actual Rows: 0
+                Actual Loops: 0
+                Output: 
+                  - "tbl_ns.oid"
+                  - "tbl_ns.nspname"
+                  - "tbl_ns.nspowner"
+                  - "tbl_ns.nspacl"
+                Index Cond: "(tbl_ns.oid = tbl.relnamespace)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 0
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+      - Node Type: "Seq Scan"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Relation Name: "pg_namespace"
+        Schema: "pg_catalog"
+        Alias: "ns"
+        Startup Cost: 0.00
+        Total Cost: 1.04
+        Plan Rows: 4
+        Plan Width: 68
+        Actual Startup Time: 0.000
+        Actual Total Time: 0.000
+        Actual Rows: 0
+        Actual Loops: 0
+        Output: 
+          - "ns.oid"
+          - "ns.nspname"
+          - "ns.nspowner"
+          - "ns.nspacl"
+        Shared Hit Blocks: 0
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 44
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 1.022
+  Triggers: 
+  Execution Time: 0.173

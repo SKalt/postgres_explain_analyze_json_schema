@@ -1,0 +1,865 @@
+- Plan: 
+    Node Type: "Nested Loop"
+    Parallel Aware: false
+    Async Capable: false
+    Join Type: "Left"
+    Startup Cost: 15.01
+    Total Cost: 71.28
+    Plan Rows: 11
+    Plan Width: 450
+    Actual Startup Time: 0.300
+    Actual Total Time: 4.178
+    Actual Rows: 234
+    Actual Loops: 1
+    Output: 
+      - "src_ns.nspname"
+      - "src_owner.rolname"
+      - "src.typname"
+      - "src_ns.nspname"
+      - "src_owner.rolname"
+      - "target_.typname"
+      - "fn.proname"
+      - "cast_.castcontext"
+      - "cast_.castmethod"
+    Inner Unique: false
+    Join Filter: "(cast_.castfunc > '0'::oid)"
+    Rows Removed by Join Filter: 0
+    Shared Hit Blocks: 2153
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+    Plans: 
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Outer"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 14.46
+        Total Cost: 44.07
+        Plan Rows: 11
+        Plan Width: 262
+        Actual Startup Time: 0.250
+        Actual Total Time: 2.846
+        Actual Rows: 234
+        Actual Loops: 1
+        Output: 
+          - "cast_.castcontext"
+          - "cast_.castmethod"
+          - "cast_.castfunc"
+          - "src.typname"
+          - "src_ns.nspname"
+          - "src_owner.rolname"
+          - "target_.typname"
+        Inner Unique: true
+        Shared Hit Blocks: 858
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 14.31
+            Total Cost: 43.18
+            Plan Rows: 11
+            Plan Width: 266
+            Actual Startup Time: 0.228
+            Actual Total Time: 2.613
+            Actual Rows: 234
+            Actual Loops: 1
+            Output: 
+              - "cast_.castcontext"
+              - "cast_.castmethod"
+              - "cast_.castfunc"
+              - "src.typname"
+              - "src_ns.nspname"
+              - "src_owner.rolname"
+              - "target_.typname"
+              - "target_.typowner"
+            Inner Unique: true
+            Shared Hit Blocks: 855
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Merge Join"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Join Type: "Inner"
+                Startup Cost: 14.03
+                Total Cost: 32.47
+                Plan Rows: 11
+                Plan Width: 202
+                Actual Startup Time: 0.210
+                Actual Total Time: 2.064
+                Actual Rows: 234
+                Actual Loops: 1
+                Output: 
+                  - "cast_.castcontext"
+                  - "cast_.castmethod"
+                  - "cast_.casttarget"
+                  - "cast_.castfunc"
+                  - "src.typname"
+                  - "src_ns.nspname"
+                  - "src_owner.rolname"
+                Inner Unique: false
+                Merge Cond: "(src.oid = cast_.castsource)"
+                Shared Hit Blocks: 153
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+                Plans: 
+                  - Node Type: "Nested Loop"
+                    Parent Relationship: "Outer"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Join Type: "Inner"
+                    Startup Cost: 0.71
+                    Total Cost: 130.35
+                    Plan Rows: 68
+                    Plan Width: 196
+                    Actual Startup Time: 0.042
+                    Actual Total Time: 1.697
+                    Actual Rows: 629
+                    Actual Loops: 1
+                    Output: 
+                      - "src.typname"
+                      - "src.oid"
+                      - "src_ns.nspname"
+                      - "src_owner.rolname"
+                    Inner Unique: true
+                    Shared Hit Blocks: 151
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Nested Loop"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Join Type: "Inner"
+                        Startup Cost: 0.56
+                        Total Cost: 128.01
+                        Plan Rows: 68
+                        Plan Width: 136
+                        Actual Startup Time: 0.034
+                        Actual Total Time: 1.255
+                        Actual Rows: 629
+                        Actual Loops: 1
+                        Output: 
+                          - "src.typname"
+                          - "src.oid"
+                          - "src.typowner"
+                          - "src_ns.nspname"
+                        Inner Unique: true
+                        Shared Hit Blocks: 149
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Nested Loop"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Join Type: "Inner"
+                            Startup Cost: 0.42
+                            Total Cost: 117.63
+                            Plan Rows: 304
+                            Plan Width: 80
+                            Actual Startup Time: 0.024
+                            Actual Total Time: 0.768
+                            Actual Rows: 629
+                            Actual Loops: 1
+                            Output: 
+                              - "src.typname"
+                              - "src.oid"
+                              - "src.typnamespace"
+                              - "src.typowner"
+                              - "target_ns.oid"
+                            Inner Unique: true
+                            Shared Hit Blocks: 133
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Index Scan"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Scan Direction: "Forward"
+                                Index Name: "pg_type_oid_index"
+                                Relation Name: "pg_type"
+                                Schema: "pg_catalog"
+                                Alias: "src"
+                                Startup Cost: 0.28
+                                Total Cost: 81.27
+                                Plan Rows: 1366
+                                Plan Width: 76
+                                Actual Startup Time: 0.010
+                                Actual Total Time: 0.205
+                                Actual Rows: 629
+                                Actual Loops: 1
+                                Output: 
+                                  - "src.oid"
+                                  - "src.typname"
+                                  - "src.typnamespace"
+                                  - "src.typowner"
+                                  - "src.typlen"
+                                  - "src.typbyval"
+                                  - "src.typtype"
+                                  - "src.typcategory"
+                                  - "src.typispreferred"
+                                  - "src.typisdefined"
+                                  - "src.typdelim"
+                                  - "src.typrelid"
+                                  - "src.typsubscript"
+                                  - "src.typelem"
+                                  - "src.typarray"
+                                  - "src.typinput"
+                                  - "src.typoutput"
+                                  - "src.typreceive"
+                                  - "src.typsend"
+                                  - "src.typmodin"
+                                  - "src.typmodout"
+                                  - "src.typanalyze"
+                                  - "src.typalign"
+                                  - "src.typstorage"
+                                  - "src.typnotnull"
+                                  - "src.typbasetype"
+                                  - "src.typtypmod"
+                                  - "src.typndims"
+                                  - "src.typcollation"
+                                  - "src.typdefaultbin"
+                                  - "src.typdefault"
+                                  - "src.typacl"
+                                Shared Hit Blocks: 116
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                              - Node Type: "Memoize"
+                                Parent Relationship: "Inner"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Startup Cost: 0.14
+                                Total Cost: 0.16
+                                Plan Rows: 1
+                                Plan Width: 4
+                                Actual Startup Time: 0.000
+                                Actual Total Time: 0.000
+                                Actual Rows: 1
+                                Actual Loops: 629
+                                Output: 
+                                  - "target_ns.oid"
+                                Cache Key: "src.typnamespace"
+                                Cache Hits: 621
+                                Cache Misses: 8
+                                Cache Evictions: 0
+                                Cache Overflows: 0
+                                Peak Memory Usage: 1
+                                Shared Hit Blocks: 17
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                                Plans: 
+                                  - Node Type: "Index Only Scan"
+                                    Parent Relationship: "Outer"
+                                    Parallel Aware: false
+                                    Async Capable: false
+                                    Scan Direction: "Forward"
+                                    Index Name: "pg_namespace_oid_index"
+                                    Relation Name: "pg_namespace"
+                                    Schema: "pg_catalog"
+                                    Alias: "target_ns"
+                                    Startup Cost: 0.13
+                                    Total Cost: 0.15
+                                    Plan Rows: 1
+                                    Plan Width: 4
+                                    Actual Startup Time: 0.002
+                                    Actual Total Time: 0.002
+                                    Actual Rows: 1
+                                    Actual Loops: 8
+                                    Output: 
+                                      - "target_ns.oid"
+                                    Index Cond: "(target_ns.oid = src.typnamespace)"
+                                    Rows Removed by Index Recheck: 0
+                                    Heap Fetches: 8
+                                    Shared Hit Blocks: 17
+                                    Shared Read Blocks: 0
+                                    Shared Dirtied Blocks: 0
+                                    Shared Written Blocks: 0
+                                    Local Hit Blocks: 0
+                                    Local Read Blocks: 0
+                                    Local Dirtied Blocks: 0
+                                    Local Written Blocks: 0
+                                    Temp Read Blocks: 0
+                                    Temp Written Blocks: 0
+                          - Node Type: "Memoize"
+                            Parent Relationship: "Inner"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Startup Cost: 0.14
+                            Total Cost: 0.17
+                            Plan Rows: 1
+                            Plan Width: 68
+                            Actual Startup Time: 0.000
+                            Actual Total Time: 0.000
+                            Actual Rows: 1
+                            Actual Loops: 629
+                            Output: 
+                              - "src_ns.nspname"
+                              - "src_ns.oid"
+                            Cache Key: "src.typnamespace"
+                            Cache Hits: 621
+                            Cache Misses: 8
+                            Cache Evictions: 0
+                            Cache Overflows: 0
+                            Peak Memory Usage: 2
+                            Shared Hit Blocks: 16
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                            Plans: 
+                              - Node Type: "Index Scan"
+                                Parent Relationship: "Outer"
+                                Parallel Aware: false
+                                Async Capable: false
+                                Scan Direction: "Forward"
+                                Index Name: "pg_namespace_oid_index"
+                                Relation Name: "pg_namespace"
+                                Schema: "pg_catalog"
+                                Alias: "src_ns"
+                                Startup Cost: 0.13
+                                Total Cost: 0.16
+                                Plan Rows: 1
+                                Plan Width: 68
+                                Actual Startup Time: 0.002
+                                Actual Total Time: 0.002
+                                Actual Rows: 1
+                                Actual Loops: 8
+                                Output: 
+                                  - "src_ns.nspname"
+                                  - "src_ns.oid"
+                                Index Cond: "(src_ns.oid = src.typnamespace)"
+                                Rows Removed by Index Recheck: 0
+                                Shared Hit Blocks: 16
+                                Shared Read Blocks: 0
+                                Shared Dirtied Blocks: 0
+                                Shared Written Blocks: 0
+                                Local Hit Blocks: 0
+                                Local Read Blocks: 0
+                                Local Dirtied Blocks: 0
+                                Local Written Blocks: 0
+                                Temp Read Blocks: 0
+                                Temp Written Blocks: 0
+                      - Node Type: "Memoize"
+                        Parent Relationship: "Inner"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Startup Cost: 0.15
+                        Total Cost: 0.18
+                        Plan Rows: 1
+                        Plan Width: 68
+                        Actual Startup Time: 0.000
+                        Actual Total Time: 0.000
+                        Actual Rows: 1
+                        Actual Loops: 629
+                        Output: 
+                          - "src_owner.rolname"
+                          - "src_owner.oid"
+                        Cache Key: "src.typowner"
+                        Cache Hits: 628
+                        Cache Misses: 1
+                        Cache Evictions: 0
+                        Cache Overflows: 0
+                        Peak Memory Usage: 1
+                        Shared Hit Blocks: 2
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+                        Plans: 
+                          - Node Type: "Index Scan"
+                            Parent Relationship: "Outer"
+                            Parallel Aware: false
+                            Async Capable: false
+                            Scan Direction: "Forward"
+                            Index Name: "pg_authid_oid_index"
+                            Relation Name: "pg_authid"
+                            Schema: "pg_catalog"
+                            Alias: "src_owner"
+                            Startup Cost: 0.14
+                            Total Cost: 0.17
+                            Plan Rows: 1
+                            Plan Width: 68
+                            Actual Startup Time: 0.007
+                            Actual Total Time: 0.007
+                            Actual Rows: 1
+                            Actual Loops: 1
+                            Output: 
+                              - "src_owner.rolname"
+                              - "src_owner.oid"
+                            Index Cond: "(src_owner.oid = src.typowner)"
+                            Rows Removed by Index Recheck: 0
+                            Shared Hit Blocks: 2
+                            Shared Read Blocks: 0
+                            Shared Dirtied Blocks: 0
+                            Shared Written Blocks: 0
+                            Local Hit Blocks: 0
+                            Local Read Blocks: 0
+                            Local Dirtied Blocks: 0
+                            Local Written Blocks: 0
+                            Temp Read Blocks: 0
+                            Temp Written Blocks: 0
+                  - Node Type: "Sort"
+                    Parent Relationship: "Inner"
+                    Parallel Aware: false
+                    Async Capable: false
+                    Startup Cost: 13.32
+                    Total Cost: 13.90
+                    Plan Rows: 230
+                    Plan Width: 14
+                    Actual Startup Time: 0.165
+                    Actual Total Time: 0.192
+                    Actual Rows: 234
+                    Actual Loops: 1
+                    Output: 
+                      - "cast_.castcontext"
+                      - "cast_.castmethod"
+                      - "cast_.castsource"
+                      - "cast_.casttarget"
+                      - "cast_.castfunc"
+                    Sort Key: 
+                      - "cast_.castsource"
+                    Sort Method: "quicksort"
+                    Sort Space Used: 35
+                    Sort Space Type: "Memory"
+                    Shared Hit Blocks: 2
+                    Shared Read Blocks: 0
+                    Shared Dirtied Blocks: 0
+                    Shared Written Blocks: 0
+                    Local Hit Blocks: 0
+                    Local Read Blocks: 0
+                    Local Dirtied Blocks: 0
+                    Local Written Blocks: 0
+                    Temp Read Blocks: 0
+                    Temp Written Blocks: 0
+                    Plans: 
+                      - Node Type: "Seq Scan"
+                        Parent Relationship: "Outer"
+                        Parallel Aware: false
+                        Async Capable: false
+                        Relation Name: "pg_cast"
+                        Schema: "pg_catalog"
+                        Alias: "cast_"
+                        Startup Cost: 0.00
+                        Total Cost: 4.30
+                        Plan Rows: 230
+                        Plan Width: 14
+                        Actual Startup Time: 0.003
+                        Actual Total Time: 0.052
+                        Actual Rows: 234
+                        Actual Loops: 1
+                        Output: 
+                          - "cast_.castcontext"
+                          - "cast_.castmethod"
+                          - "cast_.castsource"
+                          - "cast_.casttarget"
+                          - "cast_.castfunc"
+                        Shared Hit Blocks: 2
+                        Shared Read Blocks: 0
+                        Shared Dirtied Blocks: 0
+                        Shared Written Blocks: 0
+                        Local Hit Blocks: 0
+                        Local Read Blocks: 0
+                        Local Dirtied Blocks: 0
+                        Local Written Blocks: 0
+                        Temp Read Blocks: 0
+                        Temp Written Blocks: 0
+              - Node Type: "Index Scan"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_type_oid_index"
+                Relation Name: "pg_type"
+                Schema: "pg_catalog"
+                Alias: "target_"
+                Startup Cost: 0.28
+                Total Cost: 0.97
+                Plan Rows: 1
+                Plan Width: 72
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.002
+                Actual Rows: 1
+                Actual Loops: 234
+                Output: 
+                  - "target_.oid"
+                  - "target_.typname"
+                  - "target_.typnamespace"
+                  - "target_.typowner"
+                  - "target_.typlen"
+                  - "target_.typbyval"
+                  - "target_.typtype"
+                  - "target_.typcategory"
+                  - "target_.typispreferred"
+                  - "target_.typisdefined"
+                  - "target_.typdelim"
+                  - "target_.typrelid"
+                  - "target_.typsubscript"
+                  - "target_.typelem"
+                  - "target_.typarray"
+                  - "target_.typinput"
+                  - "target_.typoutput"
+                  - "target_.typreceive"
+                  - "target_.typsend"
+                  - "target_.typmodin"
+                  - "target_.typmodout"
+                  - "target_.typanalyze"
+                  - "target_.typalign"
+                  - "target_.typstorage"
+                  - "target_.typnotnull"
+                  - "target_.typbasetype"
+                  - "target_.typtypmod"
+                  - "target_.typndims"
+                  - "target_.typcollation"
+                  - "target_.typdefaultbin"
+                  - "target_.typdefault"
+                  - "target_.typacl"
+                Index Cond: "(target_.oid = cast_.casttarget)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 702
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+          - Node Type: "Memoize"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Startup Cost: 0.15
+            Total Cost: 0.18
+            Plan Rows: 1
+            Plan Width: 4
+            Actual Startup Time: 0.000
+            Actual Total Time: 0.000
+            Actual Rows: 1
+            Actual Loops: 234
+            Output: 
+              - "target_owner.oid"
+            Cache Key: "target_.typowner"
+            Cache Hits: 233
+            Cache Misses: 1
+            Cache Evictions: 0
+            Cache Overflows: 0
+            Peak Memory Usage: 1
+            Shared Hit Blocks: 3
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Index Only Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_authid_oid_index"
+                Relation Name: "pg_authid"
+                Schema: "pg_catalog"
+                Alias: "target_owner"
+                Startup Cost: 0.14
+                Total Cost: 0.17
+                Plan Rows: 1
+                Plan Width: 4
+                Actual Startup Time: 0.019
+                Actual Total Time: 0.019
+                Actual Rows: 1
+                Actual Loops: 1
+                Output: 
+                  - "target_owner.oid"
+                Index Cond: "(target_owner.oid = target_.typowner)"
+                Rows Removed by Index Recheck: 0
+                Heap Fetches: 1
+                Shared Hit Blocks: 3
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+      - Node Type: "Nested Loop"
+        Parent Relationship: "Inner"
+        Parallel Aware: false
+        Async Capable: false
+        Join Type: "Inner"
+        Startup Cost: 0.55
+        Total Cost: 2.46
+        Plan Rows: 1
+        Plan Width: 68
+        Actual Startup Time: 0.005
+        Actual Total Time: 0.005
+        Actual Rows: 1
+        Actual Loops: 234
+        Output: 
+          - "fn.proname"
+          - "fn.oid"
+        Inner Unique: true
+        Shared Hit Blocks: 1295
+        Shared Read Blocks: 0
+        Shared Dirtied Blocks: 0
+        Shared Written Blocks: 0
+        Local Hit Blocks: 0
+        Local Read Blocks: 0
+        Local Dirtied Blocks: 0
+        Local Written Blocks: 0
+        Temp Read Blocks: 0
+        Temp Written Blocks: 0
+        Plans: 
+          - Node Type: "Nested Loop"
+            Parent Relationship: "Outer"
+            Parallel Aware: false
+            Async Capable: false
+            Join Type: "Inner"
+            Startup Cost: 0.41
+            Total Cost: 2.30
+            Plan Rows: 1
+            Plan Width: 72
+            Actual Startup Time: 0.003
+            Actual Total Time: 0.003
+            Actual Rows: 1
+            Actual Loops: 234
+            Output: 
+              - "fn.proname"
+              - "fn.proowner"
+              - "fn.oid"
+            Inner Unique: true
+            Shared Hit Blocks: 964
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+            Plans: 
+              - Node Type: "Index Scan"
+                Parent Relationship: "Outer"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_proc_oid_index"
+                Relation Name: "pg_proc"
+                Schema: "pg_catalog"
+                Alias: "fn"
+                Startup Cost: 0.28
+                Total Cost: 2.14
+                Plan Rows: 1
+                Plan Width: 76
+                Actual Startup Time: 0.002
+                Actual Total Time: 0.002
+                Actual Rows: 1
+                Actual Loops: 234
+                Output: 
+                  - "fn.oid"
+                  - "fn.proname"
+                  - "fn.pronamespace"
+                  - "fn.proowner"
+                  - "fn.prolang"
+                  - "fn.procost"
+                  - "fn.prorows"
+                  - "fn.provariadic"
+                  - "fn.prosupport"
+                  - "fn.prokind"
+                  - "fn.prosecdef"
+                  - "fn.proleakproof"
+                  - "fn.proisstrict"
+                  - "fn.proretset"
+                  - "fn.provolatile"
+                  - "fn.proparallel"
+                  - "fn.pronargs"
+                  - "fn.pronargdefaults"
+                  - "fn.prorettype"
+                  - "fn.proargtypes"
+                  - "fn.proallargtypes"
+                  - "fn.proargmodes"
+                  - "fn.proargnames"
+                  - "fn.proargdefaults"
+                  - "fn.protrftypes"
+                  - "fn.prosrc"
+                  - "fn.probin"
+                  - "fn.prosqlbody"
+                  - "fn.proconfig"
+                  - "fn.proacl"
+                Index Cond: "(fn.oid = cast_.castfunc)"
+                Rows Removed by Index Recheck: 0
+                Shared Hit Blocks: 633
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+              - Node Type: "Index Only Scan"
+                Parent Relationship: "Inner"
+                Parallel Aware: false
+                Async Capable: false
+                Scan Direction: "Forward"
+                Index Name: "pg_namespace_oid_index"
+                Relation Name: "pg_namespace"
+                Schema: "pg_catalog"
+                Alias: "fn_ns"
+                Startup Cost: 0.13
+                Total Cost: 0.15
+                Plan Rows: 1
+                Plan Width: 4
+                Actual Startup Time: 0.001
+                Actual Total Time: 0.001
+                Actual Rows: 1
+                Actual Loops: 165
+                Output: 
+                  - "fn_ns.oid"
+                Index Cond: "(fn_ns.oid = fn.pronamespace)"
+                Rows Removed by Index Recheck: 0
+                Heap Fetches: 165
+                Shared Hit Blocks: 331
+                Shared Read Blocks: 0
+                Shared Dirtied Blocks: 0
+                Shared Written Blocks: 0
+                Local Hit Blocks: 0
+                Local Read Blocks: 0
+                Local Dirtied Blocks: 0
+                Local Written Blocks: 0
+                Temp Read Blocks: 0
+                Temp Written Blocks: 0
+          - Node Type: "Index Only Scan"
+            Parent Relationship: "Inner"
+            Parallel Aware: false
+            Async Capable: false
+            Scan Direction: "Forward"
+            Index Name: "pg_authid_oid_index"
+            Relation Name: "pg_authid"
+            Schema: "pg_catalog"
+            Alias: "fn_owner"
+            Startup Cost: 0.14
+            Total Cost: 0.16
+            Plan Rows: 1
+            Plan Width: 4
+            Actual Startup Time: 0.001
+            Actual Total Time: 0.001
+            Actual Rows: 1
+            Actual Loops: 165
+            Output: 
+              - "fn_owner.oid"
+            Index Cond: "(fn_owner.oid = fn.proowner)"
+            Rows Removed by Index Recheck: 0
+            Heap Fetches: 165
+            Shared Hit Blocks: 331
+            Shared Read Blocks: 0
+            Shared Dirtied Blocks: 0
+            Shared Written Blocks: 0
+            Local Hit Blocks: 0
+            Local Read Blocks: 0
+            Local Dirtied Blocks: 0
+            Local Written Blocks: 0
+            Temp Read Blocks: 0
+            Temp Written Blocks: 0
+  Planning: 
+    Shared Hit Blocks: 147
+    Shared Read Blocks: 0
+    Shared Dirtied Blocks: 0
+    Shared Written Blocks: 0
+    Local Hit Blocks: 0
+    Local Read Blocks: 0
+    Local Dirtied Blocks: 0
+    Local Written Blocks: 0
+    Temp Read Blocks: 0
+    Temp Written Blocks: 0
+  Planning Time: 1.926
+  Triggers: 
+  Execution Time: 4.437
